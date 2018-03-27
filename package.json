@@ -1,0 +1,25 @@
+{
+  "name": "fit-search",
+  "version": "1.0.0",
+  "description": "fitness coach search application",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrobind/Fit-Search.git"
+  },
+  "keywords": [
+    "fitness",
+    "comparison",
+    "personal",
+    "trainer"
+  ],
+  "author": "James Robinson <jrobind@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrobind/Fit-Search/issues"
+  },
+  "homepage": "https://github.com/jrobind/Fit-Search#readme"
+}
