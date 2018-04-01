@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(webpackMiddleware(webpack(webpackConfig)));
 
 app.use(session({
-    secret: 'fit-finder is the best',
+    secret: 'fit-search super secret',
     resave: false,
     saveUninitialized: false
 }));
@@ -27,7 +27,7 @@ app.use(passport.session()); // persistent login sessions
 
 //routes
 
-// catch all route
+// catch-all route
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client/index.html'));
 });
