@@ -10,28 +10,17 @@ router.get('/trainers/:query', middleware.processSearchQuery, (req, res) => {
 
 // update profile 
 router.put('/', (req, res) => {
-    db.UserModel.findByIdAndUpdate(req.body.id, {$set: {'profile': req.body.data}}, {new: true}, (error, updatedUser) => {
-        if (error) {
-            res.json(error);
-        } else {
-            res.json(updatedUser);
-        }
-    })
-
+    db.UserModel.findByIdAndUpdate(req.body.id, {$set: {'profile': req.body.data}}, {new: true})
+        .then((updatedUser) => res.json(updatedUser))
+        .catch((error) => console.log(error));
 });
 
 // find user profile 
 router.get('/find/:id', (req, res) => {
-    db.UserModel.findById(req.params.id).populate('reviews').exec((error, profile) => {
-       if (error) {
-           console.log(error);
-           res.json(error);
-       } else {
-           res.json(profile);
-       }
-    });
+    db.UserModel.findById(req.params.id)
+        .populate('reviews')
+        .then((profile) => res.json(profile))
+        .catch((error) => console.log(error));
 });
 
 module.exports = router;
-
-

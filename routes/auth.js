@@ -7,19 +7,16 @@ const middleware = require('../middleware');
 
 // login 
 router.post('/login', passport.authenticate('local'), (req, res) => {
-    db.UserModel.findById(req.user._id).populate('reviews').exec((error, user) => {
-        if (error) {
-            console.log(error);    
-        } else {
-            res.json({message:"Success", userType: user.userType, id: user._id});    
-        }
-    })
-  });
+    db.UserModel.findById(req.user._id)
+        .populate('reviews')
+        .then((user) => res.json({message:"Success", userType: user.userType, id: user._id}))
+        .catch((error) => console.log(error));
+});
 
 // logout
 router.get('/logout', (req, res) => {
     req.logout();
-    res.json({message: 'logged out'})
+    res.json({message: 'logged out'});
 });
 
 
@@ -29,7 +26,7 @@ router.post('/register', middleware.checkForDuplicateEmail, (req, res) => {
         email: req.body.email,
         password: req.body.password,
         userType: req.body.checked
-    })
+    });
     
     bcrypt.genSalt(10, (error, salt) => {
         bcrypt.hash(newUser.password, salt, (error, hash) => {
@@ -43,7 +40,7 @@ router.post('/register', middleware.checkForDuplicateEmail, (req, res) => {
                 .catch((error) => console.log(error))
         });
     });
-})
+});
 
 
 module.exports = router;

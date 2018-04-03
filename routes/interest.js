@@ -13,7 +13,8 @@ router.post('/', middleware.createInterest, (req, res) => {
 router.get('/:id', (req, res) => {
     db.InterestModel.find({'trainerId': req.params.id })
         .populate('requestee')
-        .exec((error, requests) => res.json(requests));
+        .then((requests) => res.json(requests))
+        .catch((error) => console.log(error));
 });
 
 module.exports = router;
