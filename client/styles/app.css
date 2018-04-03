@@ -1,0 +1,313 @@
+body {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.portal-container {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.portal-container ul {
+    padding-left: 0;
+}
+
+.portal-container img {
+    width: 300px;
+    margin: auto;
+}
+
+.portal-container li {
+    list-style-type: none;
+    margin: 25px;
+    text-align: center;
+}
+
+.profile-title {
+    font-weight: 700;
+    font-size: 1.5em;
+    text-decoration: underline;
+}
+
+.interest-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+    margin: 30px 25%;
+    border: 1px solid rgba(0, 0, 0, 0.2)
+}
+
+.request-notifications {
+    margin-left: 5px;
+    padding: 1px 7px;
+    border-radius: 50%;
+    background-color: crimson;
+    color: white;
+}
+
+.interest-container img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+.interest-container div {
+    padding: 10px;
+}
+
+.interest-card {
+    margin: 30px 50px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.interest-disable {
+    background-color: rgba(220, 20, 60, 0.8);
+    color: white;
+    padding: 7px;
+}
+
+.search-container {
+    display: flex;
+}
+
+.search-toggle-container {
+    flex-basis: 20%;
+    padding: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: none;
+    height: 100vh;
+}
+
+.search-toggle-container h5, h3 {
+    margin: 18px 0;
+}
+
+.search-results {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 78%
+}
+.search-banner {
+    display: flex;
+    flex-direction: column;
+    text-align: center
+}
+
+.trainer-card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.search-results p {
+    margin: 0 100px;
+    text-align: center;
+}
+
+select {
+    padding: 3px;
+}
+
+.single-view {
+    width: 70%;
+}
+
+.trainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    flex-basis: 44%;
+}
+
+.trainer img {
+    width: 150px;
+}
+
+.trainer-reviews {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.trainer-reviews img {
+    border-radius: 0;
+}
+
+.portal-container button {
+    background-color: crimson;
+    color: white;
+    width: 30%;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.trainer:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+}
+
+.map-container {
+    height: 500px;
+    width: 600px;
+    margin: 20px 0;
+}
+
+.bold-me {
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.update, .review {
+    background-color: crimson;
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    width: 30%;
+    margin: auto;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.justify {
+    text-align: justify;
+}
+
+input {
+    margin: 5px 0;
+    padding: 5px;
+}
+
+.hourly {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    justify-content: space-around;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 0;
+    padding: 15px 0;
+}
+
+.radio-label {
+    font-weight: 600;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.navbar li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+hr {
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 1px;
+    width: 100%;
+}
+
+.home-profiles {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+}
+
+.home-profiles div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.home-profiles div span {
+    padding: 0 0 10px 0;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.home-profiles img {
+    width: 200px;
+    height: 150px;
+    border-radius: 5%;
+}
+
+.signup-container, .login-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 25%;
+    
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit {
+    border: none;
+    background-color: crimson;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    margin: auto;
+    width: 60%;
+    margin-top: 15px; 
+}
+
+
+.interest {
+    background-color: crimson;
+    color: white;
+    padding: 7px;
+    border-radius: 3px;
+}
+
+.setup-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-toggle-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-toggle-container a:hover {
+    cursor: pointer;
+}

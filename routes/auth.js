@@ -11,24 +11,25 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
         if (error) {
             console.log(error);    
         } else {
-            res.json({message:"logged in", userType: user.userType, id: user._id});    
+            res.json({message:"Success", userType: user.userType, id: user._id});    
         }
     })
-});
+  });
 
-// logout 
+// logout
 router.get('/logout', (req, res) => {
     req.logout();
     res.json({message: 'logged out'})
 });
 
-// handle auth sign up
+
+// sign up
 router.post('/register', middleware.checkForDuplicateEmail, (req, res) => {
     const newUser = new db.UserModel({
         email: req.body.email,
         password: req.body.password,
         userType: req.body.checked
-    });
+    })
     
     bcrypt.genSalt(10, (error, salt) => {
         bcrypt.hash(newUser.password, salt, (error, hash) => {
@@ -39,10 +40,10 @@ router.post('/register', middleware.checkForDuplicateEmail, (req, res) => {
             
             newUser.save()
                 .then((newUser) => res.send(newUser))
-                .catch((error) => console.log(error));
+                .catch((error) => console.log(error))
         });
     });
-});
+})
 
 
 module.exports = router;

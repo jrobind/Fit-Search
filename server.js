@@ -8,6 +8,12 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 
+// require routes
+const profileRoutes = require('./routes/profile');
+const authRoutes = require('./routes/auth');
+const reviewRoutes = require('./routes/review');
+const interestRoutes  = require('./routes/interest');
+
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -25,7 +31,11 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
-//routes
+// routes
+app.use('/api/profile', profileRoutes);
+app.use('/api', authRoutes);
+app.use('/api/review', reviewRoutes);
+app.use('/api/interest', interestRoutes);
 
 // catch-all route
 app.get('*', (req, res) => {

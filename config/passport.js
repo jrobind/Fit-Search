@@ -10,6 +10,12 @@ const config = (passport) => {
         });
     });
     
+    passport.deserializeUser((id, done) => {
+       db.UserModel.findById(id, (error, user) => {
+          done(error, user); 
+       }); 
+    });
+    
     passport.use(new LocalStrategy({
         usernameField: 'email', 
         passwordField: 'password',
@@ -39,4 +45,5 @@ const config = (passport) => {
     }));
 };
 
-module.exports = config; 
+
+module.exports = config;

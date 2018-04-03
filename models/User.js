@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Profile = require('./Profile');
 
 // User schema
 const userSchema = mongoose.Schema({
@@ -11,15 +10,22 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    userType: {
-        type: String,
-        required: true
+    userType: String,
+    profile: {
+        name: String,
+        avatar: String,
+        bio: String,
+        rate: Number,
+        region: String,
+        base: String,
+        radius: Number,
+        notes: String,
     },
-    profile: [Profile.schema],
-    created: {
-        type: Date,
-        default: Date.now
-    }
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review'
+    }],
+    reviewAverage: Number
 });
 
 const User = mongoose.model('User', userSchema);
