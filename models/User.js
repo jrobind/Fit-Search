@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ProfileSchema = require('./Profile');
+const Profile = require('./Profile');
 
 // User schema
 const userSchema = mongoose.Schema({
@@ -11,8 +11,11 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    userType: String,
-    profile: [ProfileSchema],
+    userType: {
+        type: String,
+        required: true
+    },
+    profile: [Profile.schema],
     created: {
         type: Date,
         default: Date.now

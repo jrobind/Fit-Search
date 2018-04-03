@@ -26,4 +26,6 @@ const ProfileSchema = new mongoose.Schema({
     reviewAverage: Number,  
 });
 
-module.exports = ProfileSchema;
+const Profile = mongoose.model('Profile', ProfileSchema);
+
+module.exports = Profile;
