@@ -10,12 +10,8 @@ const ReviewSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    authorName: {
-        type: String,
-    },
-    authorAvatar: {
-        type: String,
-    },
+    authorName: String,
+    authorAvatar: String,
     authorId: String
 });
 

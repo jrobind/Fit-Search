@@ -2,15 +2,16 @@ const db = require('../models');
 const middlewareObj = {};
 
 middlewareObj.checkForDuplicateEmail = (req, res, next) => {
-    db.UserModel.find({email: req.body.email}, (error, profile) => {
-        if (profile.length) {
-            console.log(profile)
-            res.json('duplicate');
-            return;
-        } else {
-            next();
-        }
-    });
+    db.UserModel.find({email: req.body.email})
+        .then((profile) => {
+            if (profile.length) {
+                res.json('duplicate');
+                return;
+            } else {
+                next();
+            }
+        })
+        .catch((error) => console.log(error));
 };
 
 middlewareObj.createInterest = (req, res, next) => {
@@ -24,12 +25,13 @@ middlewareObj.createInterest = (req, res, next) => {
                 trainerId: trainerId
             }); 
             // save new interest request
-            newInterest.save((error, interest) => {
-                res.locals.interest = interest;
-                next();
-            });
+            newInterest.save()
+                .then((interest) => {
+                    res.locals.interest = interest;
+                    next();
+                });
         });
-}
+};
 
 
 middlewareObj.createReview = (req, res, next) => {
@@ -47,15 +49,18 @@ middlewareObj.createReview = (req, res, next) => {
         
     // save review and then add review to trainer reviews array
     newReview.save((error, review) => {
-        db.UserModel.findById(trainerId).populate('reviews').exec((error, trainer) => {
+        db.UserModel.findById(trainerId)
+            .populate('reviews')
+            .then((trainer) => {
                 // push new review model and then save
                 trainer.reviews.push(review);
                 trainer.reviewAverage = calculateReviewAverage(trainer.reviews);
                 trainer.save();       
-        })
-                // pass review back to route
-                res.locals.review = review;
-                next();
+            })
+            .catch((error) => console.log(error));
+            // pass review back to route
+            res.locals.review = review;
+            next();
     });
 };
 
@@ -66,11 +71,11 @@ const formatQueryReturn = (result) => {
         profile: trainer.profile,
         reviewAverage: calculateReviewAverage(trainer.reviews)
     }));  
-}
+};
 
 const calculateReviewAverage = (reviews) => {
     return Math.round(reviews.reduce((accumulator, currentVal) => accumulator + currentVal.rating, 0) / reviews.length);
-}
+};
 
 
 middlewareObj.processSearchQuery = (req, res, next) => {
@@ -96,30 +101,40 @@ middlewareObj.processSearchQuery = (req, res, next) => {
     
     if (queryInRates) {
         db.UserModel.find(queryInRates)
-            .populate('reviews').exec((error, trainers) => {
+            .populate('reviews')
+            .then((trainers) => {
                 res.locals.queryResult = formatQueryReturn(trainers);
                 next();  
-            });
+            })
+            .catch((error) => console.log(error));
         
     } else if (queryInReviewRatings) {
         db.UserModel.find(queryInReviewRatings)
-            .populate('reviews').exec((error, trainers) => {
+            .populate('reviews')
+            .then((trainers) => {
                 res.locals.queryResult = formatQueryReturn(trainers);
                 next();
-            });
+            })
+            .catch((error) => console.log(error));
+        
     } else if (query === 'trainer') {
         db.UserModel.find({'userType': 'trainer'})
-            .populate('reviews').exec((error, trainers) => {
+            .populate('reviews')
+            .then((trainers) => {
                 res.locals.queryResult = formatQueryReturn(trainers);
                 next();  
-            });
+            })
+            .catch((error) => console.log(error));
+        
     } else {
         db.UserModel.find({'profile.region' : query})
-            .populate('reviews').exec((error, trainers) => {
+            .populate('reviews')
+            .then((trainers) => {
                 res.locals.queryResult = formatQueryReturn(trainers);
                 next();
-            });
+            })
+            .catch((error) => console.log(error));
     }
-}
+};
 
 module.exports = middlewareObj;
