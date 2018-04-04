@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import NavContainer from '../containers/NavContainer';
 import Home from './Home';
 import Register from './Register';
-import Login from './Login';
+import LoginContainer from '../containers/LoginContainer';
 import Search from './Search';
-import Profile from './Profile';
+import ProfileContainer from '../containers/ProfileContainer';
 import UpdateProfile from './UpdateProfile';
 import Trainer from './Trainer';
 import Interest from './Interest';
@@ -26,9 +26,9 @@ class App extends Component {
                         return !loggedIn ? <Register /> : <Redirect to='/' />;
                     }} />
                     <Route path='/login' render={() => {
-                        return !loggedIn ? <Login /> : <Redirect to='/' />;
+                        return !loggedIn ? <LoginContainer /> : <Redirect to='/' />;
                     }} />
-                    <Route exact path='/portal/' component={Profile} />
+                    <Route exact path='/portal/' component={ProfileContainer} />
                     <Route exact path='/portal/update' component={UpdateProfile} />
                     <Route exact path='/search' component={Search} />
                     <Route exact path='/interest' render={() => (
@@ -45,12 +45,13 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { userAuth, interestRequests } = state;
+    const { userAuth, interestRequests, userProfile } = state;
     const loggedIn = !userAuth ? false : userAuth.loggedIn;
     return {
         loggedIn,
         userAuth,
-        interestRequests
+        interestRequests,
+        userProfile
     }
 }
 

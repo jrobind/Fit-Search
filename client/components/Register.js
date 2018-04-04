@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { apiRegisterUser } from '../utils/api';
 
 
-class SignUp extends Component {
+class Register extends Component {
     constructor(props) {
         super(props);
         
@@ -31,10 +31,10 @@ class SignUp extends Component {
         apiRegisterUser(userData)
             .then(({ data }) => {
                 if (data && data !== 'duplicate') {
-                    alert('thanks for signing up! You should recieve a confirmation email soon')
+                    alert('Thanks for signing up!');
                     this.props.history.push('/login'); 
                 } else {
-                    alert('email address already taken!')
+                    alert('email address already taken!');
                 }
             })
             .catch((error) => alert('Error!'))
@@ -118,4 +118,4 @@ class SignUp extends Component {
     }
 }
 
-export default withRouter(SignUp);
+export default withRouter(Register);

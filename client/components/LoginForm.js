@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { handleLoginUser } from '../actions/userAuth';
-import { withRouter } from 'react-router-dom';
 
-class Login extends Component {
+class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -21,16 +18,9 @@ class Login extends Component {
     
     handleSubmission(e) {
         e.preventDefault();
-        e.target.reset();
-        
-        const userData = this.state;
-        
-        this.props.dispatch(handleLoginUser(userData))
-            .then(() => {
-                this.props.history.push('/')
-            });
-        
         this.setState(this.initialState);
+        const userData = this.state;
+        this.props.handleLoginSubmission(userData);
     }
     
     handleInput(e) {
@@ -43,14 +33,6 @@ class Login extends Component {
     }
     
     render() {
-        const { userAuth } = this.props.state;
-        
-        if (userAuth) {
-            if (userAuth.requestPending) {
-                return <p>CHECKING DETAILS</p>   
-            }
-        }
-            
         return(
             <div className="login-container">
                 <h1>Login</h1>
@@ -81,8 +63,5 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    state
-})
 
-export default withRouter(connect(mapStateToProps)(Login));
+export default (LoginForm);

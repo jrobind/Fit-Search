@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Nav = ({ userAuth, interestRequests, userProfile, handleLogout }) => (   
     <ul className="navbar">
@@ -10,7 +10,7 @@ const Nav = ({ userAuth, interestRequests, userProfile, handleLogout }) => (
 
         {userAuth.userType === 'client' && userProfile.profile !== undefined && <li><Link to='/search'>Search</Link></li>}
 
-        {userAuth.userType === 'trainer' && interestRequests.requests && <li><Link to='/interest'>Interest Requests<span className="request-notifications">{!isLoading ? interestRequests.requests.length : null}</span></Link></li>}
+        {userAuth.userType === 'trainer' && interestRequests.requests && <li><Link to='/interest'>Interest Requests<span className="request-notifications">{interestRequests.requests.length}</span></Link></li>}
 
         {!userAuth.loggedIn ? <li><Link to='/sign-up'>Sign up!</Link></li> : null}
 
@@ -27,4 +27,4 @@ Nav.propTypes = {
     handleLogout: PropTypes.func.isRequired
 }
 
-export default withRouter((Nav));
+export default Nav;

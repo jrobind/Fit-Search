@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { handleLogoutUser } from '../actions/userAuth';
 import Nav from '../components/Nav';
 
@@ -11,8 +12,8 @@ class NavContainer extends Component {
     }
     
     handleLogout() {
-        this.props.dispatch(handleLogoutUser())
-            .then(() => this.props.history.push('/'));
+        this.props.history.push('/');
+        this.props.dispatch(handleLogoutUser());
     }
     
     render() {
@@ -29,4 +30,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(NavContainer);
+export default withRouter(connect(mapStateToProps)(NavContainer));
