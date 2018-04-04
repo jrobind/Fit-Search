@@ -45,13 +45,14 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { userAuth, interestRequests, userProfile } = state;
+    const { userAuth, interestRequests, userProfile, searchResults } = state;
     const loggedIn = !userAuth ? false : userAuth.loggedIn;
     return {
         loggedIn,
         userAuth,
         interestRequests,
-        userProfile
+        userProfile,
+        searchResults
     }
 }
 

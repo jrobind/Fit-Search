@@ -34,11 +34,17 @@ class SearchContainer extends Component {
         }
     }
     
-    handleUpdateSearch(searchQuery) {
+    handleUpdateSearch(searchQuery, reset) {
         this.setState((prevState) => {
-            const val = !prevState.currentQuery ? '' : '&'; 
-            return {
-                currentQuery: prevState.currentQuery + val + searchQuery
+            if (reset) {
+                return {
+                    currentQuery: 'trainer'
+                }
+            } else {
+                const val = !prevState.currentQuery ? '' : '&'; 
+                return {
+                    currentQuery: prevState.currentQuery + val + searchQuery
+                }
             }
         }, () => {
             this.props.dispatch(handleGetSearchQuery(this.state.currentQuery))

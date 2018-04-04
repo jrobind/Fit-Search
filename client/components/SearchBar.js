@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import formatMessage from '../utils/formatMessage';
+
+
+const CurrentQuery = (props) => (
+    <div className="current-query-container">
+        <div>
+            <button onClick={() => props.resetSearch()}>Reset search</button>
+            <h3>Current search filter:</h3>
+            <h4>{formatMessage(props.currentQuery)}</h4>
+        </div>
+    </div>
+);
+
+CurrentQuery.propTypes = {
+    resetSearch: PropTypes.func.isRequired,
+    currentQuery: PropTypes.string.isRequired
+}
+
 
 class SearchBar extends Component {
     constructor(props) {
@@ -15,6 +33,18 @@ class SearchBar extends Component {
         this.handleSelect = this.handleSelect.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);
         this.handleSearchSelection = this.handleSearchSelection.bind(this);
+        this.resetSearch = this.resetSearch.bind(this);
+    }
+    
+    resetSearch() {
+        this.setState(() => ({
+            location: 'trainer',
+            starsClicked: false,
+            rateClicked: false,
+            locationSubmitted: false
+        }));
+        
+        this.props.handleUpdateSearch(null, true);
     }
     
     handleSearchSelection(type, query) { 
@@ -53,12 +83,10 @@ class SearchBar extends Component {
     render() {
         const { searchResults, currentQuery } = this.props;
         const { starsClicked, rateClicked, locationSubmitted } = this.state;
-        let filterMessage = !currentQuery ? 'All Trainers' : currentQuery;
         
         return(
             <div className="search-toggle-container">
-                <h3>Current search filter:{filterMessage}</h3>
-                <div></div>
+                <CurrentQuery currentQuery={currentQuery} resetSearch={this.resetSearch}/>
                 <div className="toggle-reviews">
                     <h5>Average Trainer Review</h5>
                     <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../../images/ratings-5.png')}/></a>

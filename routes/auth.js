@@ -42,5 +42,4 @@ router.post('/register', middleware.checkForDuplicateEmail, (req, res) => {
     });
 });
 
-
 module.exports = router;
