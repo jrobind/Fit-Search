@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { handleGetSelectedTrainer } from '../actions/selectedTrainer';
 import { apiCreateReview, apiCreateInterestRequest, apiGetInterestRequests } from '../utils/api';
 import ReviewForm from './ReviewForm';
-import MapContainer from './MapContainer';
+import MapContainer from '../containers/MapContainer';
 
 class Review extends Component {
     constructor(props) {
@@ -73,10 +73,11 @@ class Review extends Component {
         reviewData.authorName = profile.name;
         reviewData.authorAvatar = profile.avatar;
         reviewData.authorId = id;
-        
+        // need to implement promise.all!
         apiCreateReview(trainerId, reviewData)
             .then(({ data }) => {
                 if (data.authorAvatar && data.authorName) {
+                    alert('review added!')
                     this.props.dispatch(handleGetSelectedTrainer(trainerId))
                         .then(({ profile }) => {
                             this.setState(() => ({reviewSent: false}));

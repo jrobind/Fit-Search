@@ -20,11 +20,10 @@ class ReviewForm extends Component {
     
     handleSubmission(e) {
         e.preventDefault();
-        e.target.reset();
+        this.setState(this.initialState);
+        
         const reviewData = this.state;
         this.props.submitReview(reviewData);
-        
-        this.setState(this.initialState);
     }
     
     handleInput(e) {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/app.css';
 import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Nav from './Nav';
+import NavContainer from '../containers/NavContainer';
 import Home from './Home';
 import Register from './Register';
 import Login from './Login';
@@ -14,13 +14,12 @@ import Interest from './Interest';
 
 class App extends Component {
     render() {
-        const { userAuth, interestRequests } = this.props.state; 
-        const loggedIn = !userAuth ? false : userAuth.loggedIn;
-        console.log(this.props.state)
+        const { userAuth, interestRequests, loggedIn } = this.props; 
+        console.log(this.props)
         return(
             <Router>
                 <div>
-                    <Nav />
+                    <NavContainer />
             
                     <Route exact path='/' component={Home} />
                     <Route path='/sign-up'  render={() => {
@@ -45,8 +44,14 @@ class App extends Component {
     
 }
 
-const mapStateToProps = (state) => ({
-    state
-})
+const mapStateToProps = (state) => {
+    const { userAuth, interestRequests } = state;
+    const loggedIn = !userAuth ? false : userAuth.loggedIn;
+    return {
+        loggedIn,
+        userAuth,
+        interestRequests
+    }
+}
 
 export default connect(mapStateToProps)(App);

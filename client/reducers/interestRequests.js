@@ -25,7 +25,7 @@ const interestRequests = (state = initialState, action) => {
                 requests: null,
                 requestPending: false,
                 requestSuccess: false
-            };
+            }
         default :
             return state;
     }

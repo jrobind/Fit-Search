@@ -29,4 +29,4 @@ export const handleGetSearchQuery = (query) => {
             })
             .catch((error) => console.log(error))
     }
-}
+};

@@ -36,4 +36,4 @@ export const handleGetInterestRequests = (id) => {
             })
             .catch((error) => console.log(error))
     }
-}
+};

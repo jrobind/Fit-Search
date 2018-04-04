@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const apiUpdateProfile = (id, data) => {
     return axios.put('/api/profile', {id, data})
-        .then((data) => console.log(data))
+        .then((data) => data)
         .catch((error) => console.log(error)); 
 };
 
@@ -22,7 +22,7 @@ export const apiCreateReview = (trainerId, review) => {
     const reviewData = {
         trainerId,
         reviewData: review 
-    }
+    };
     return axios.post('/api/review', reviewData)
         .then((data) => data)
         .catch((error) => console.log(error));
