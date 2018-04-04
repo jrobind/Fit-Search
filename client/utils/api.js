@@ -41,6 +41,7 @@ export const apiLogoutUser = () => {
 };
 
 export const apiGetSeachQuery = (query) => {
+    console.log(query)
     return axios.get(`/api/profile/trainers/${query}`)
         .then((data) => data)
         .catch((error) => console.log(error));

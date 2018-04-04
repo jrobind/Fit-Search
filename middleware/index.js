@@ -80,6 +80,9 @@ const calculateReviewAverage = (reviews) => {
 
 middlewareObj.processSearchQuery = (req, res, next) => {
     const query = req.params.query;
+    // remove '&' from query if present, seperate queries and push to a query array
+    const queryArr = query.includes('&') ? query.replace(/&/g, ',').split(',') : [query];
+    
     const rates = {
         '<25': {'profile.rate': {$lt: 25}}, 
         '25-35': {'profile.rate': {$gte: 25, $lte: 35}}, 
@@ -95,46 +98,26 @@ middlewareObj.processSearchQuery = (req, res, next) => {
         '2' : {'reviewAverage': {$eq: 2}},
         '1' : {'reviewAverage': {$eq: 1}}
     }
+    // construct a query array for mongoose find()
+    const finalQuery = queryArr.map((query) => {
+        if (query === 'trainer') {
+            return {'userType': 'trainer'}
+        } else if (reviewRatings[query]) {
+            return reviewRatings[query];
+        } else if (rates[query]) {
+            return rates[query];         
+        } else {
+            return {'profile.region' : query};
+        }
+    });
     
-    const queryInReviewRatings = reviewRatings[query];
-    const queryInRates = rates[query];
-    
-    if (queryInRates) {
-        db.UserModel.find(queryInRates)
-            .populate('reviews')
-            .then((trainers) => {
-                res.locals.queryResult = formatQueryReturn(trainers);
-                next();  
-            })
-            .catch((error) => console.log(error));
-        
-    } else if (queryInReviewRatings) {
-        db.UserModel.find(queryInReviewRatings)
-            .populate('reviews')
-            .then((trainers) => {
-                res.locals.queryResult = formatQueryReturn(trainers);
-                next();
-            })
-            .catch((error) => console.log(error));
-        
-    } else if (query === 'trainer') {
-        db.UserModel.find({'userType': 'trainer'})
-            .populate('reviews')
-            .then((trainers) => {
-                res.locals.queryResult = formatQueryReturn(trainers);
-                next();  
-            })
-            .catch((error) => console.log(error));
-        
-    } else {
-        db.UserModel.find({'profile.region' : query})
-            .populate('reviews')
-            .then((trainers) => {
-                res.locals.queryResult = formatQueryReturn(trainers);
-                next();
-            })
-            .catch((error) => console.log(error));
-    }
+    db.UserModel.find({$and:[...finalQuery]})
+        .populate('reviews')
+        .then((trainers) => {
+            res.locals.queryResult = formatQueryReturn(trainers);
+            next();  
+        })
+        .catch((error) => console.log(error));
 };
 
 module.exports = middlewareObj;

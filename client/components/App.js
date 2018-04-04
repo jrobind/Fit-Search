@@ -6,7 +6,7 @@ import NavContainer from '../containers/NavContainer';
 import Home from './Home';
 import Register from './Register';
 import LoginContainer from '../containers/LoginContainer';
-import Search from './Search';
+import SearchContainer from '../containers/SearchContainer';
 import ProfileContainer from '../containers/ProfileContainer';
 import UpdateProfile from './UpdateProfile';
 import Trainer from './Trainer';
@@ -30,7 +30,7 @@ class App extends Component {
                     }} />
                     <Route exact path='/portal/' component={ProfileContainer} />
                     <Route exact path='/portal/update' component={UpdateProfile} />
-                    <Route exact path='/search' component={Search} />
+                    <Route exact path='/search' component={SearchContainer} />
                     <Route exact path='/interest' render={() => (
                         <Interest 
                             interestRequests={interestRequests.requests}
