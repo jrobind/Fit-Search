@@ -1,4 +1,4 @@
-import { LOGIN_USER, LOGOUT_USER, REQUEST_PENDING } from '../actions/userAuth';
+import { LOGIN_USER, LOGOUT_USER, REQUEST_PENDING, REQUEST_SUCCESS } from '../actions/userAuth';
 
 const initialState = {
     loggedIn: false,
@@ -20,7 +20,11 @@ const userAuth = (state = initialState, action) => {
                 ...state,
                 loggedIn: true,
                 userType: action.userType,
-                id: action.id,
+                id: action.id
+            }
+        case REQUEST_SUCCESS :
+            return {
+                ...state,
                 requestPending: false,
                 requestSuccess: true
             }

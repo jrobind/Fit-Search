@@ -9,12 +9,19 @@ import { handleGetInterestRequests, resetInterestRequests } from './interestRequ
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const REQUEST_PENDING = 'REQUEST_PENDING';
+export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
 
 export const requestPending = () => (
     {
         type: REQUEST_PENDING
     }
-);
+)
+
+export const requestSuccces = () => (
+    {
+        type: REQUEST_SUCCESS
+    }
+)
 
 const loginUser = (userType, id) => (
     {
@@ -22,13 +29,13 @@ const loginUser = (userType, id) => (
         userType,
         id,
     }
-);
+)
 
 const logoutUser = () => (
     {
         type: LOGOUT_USER
     }
-);
+)
 
 
 export const handleLoginUser = (userData) => {
@@ -39,12 +46,13 @@ export const handleLoginUser = (userData) => {
                     dispatch(requestPending());
                     dispatch(loginUser(data.userType, data.id));
                     dispatch(handleGetUserProfile(data.id));
-                    data.userType === 'trainer' ? dispatch(handleGetInterestRequests(data.id)) : null;   
+                    data.userType === 'trainer' ? dispatch(handleGetInterestRequests(data.id)) : null;
+                    dispatch(requestSuccces());
                 }
             })
             .catch((error) => alert('incorrect details, please try again'));
     }
-};
+}
 
 
 export const handleLogoutUser = () => {
@@ -62,4 +70,4 @@ export const handleLogoutUser = () => {
             })
             .catch((error) => console.log(error))
     }
-};
+}
