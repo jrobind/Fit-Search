@@ -10,11 +10,11 @@ import SearchContainer from '../containers/SearchContainer';
 import ProfileContainer from '../containers/ProfileContainer';
 import UpdateProfile from './UpdateProfile';
 import TrainerContainer from '../containers/TrainerContainer';
-import Interest from './Interest';
+import InterestContainer from '../containers/InterestContainer';
 
 class App extends Component {
     render() {
-        const { userAuth, interestRequests, loggedIn } = this.props; 
+        const { userAuth, userAuth: { userType }, interestRequests, loggedIn } = this.props; 
         console.log(this.props)
         return(
             <Router>
@@ -31,11 +31,9 @@ class App extends Component {
                     <Route exact path='/portal/' component={ProfileContainer} />
                     <Route exact path='/portal/update' component={UpdateProfile} />
                     <Route exact path='/search' component={SearchContainer} />
-                    <Route exact path='/interest' render={() => (
-                        <Interest 
-                            interestRequests={interestRequests.requests}
-                        />                                      
-                    )} />
+                    <Route exact path='/interest' render={() => {
+                        return userType === 'trainer' ? <InterestContainer /> : <Redirect to='/' />;                                  
+                    }} />
                     <Route exact path='/search/review' component={TrainerContainer} />
                 </div>
             </Router>
