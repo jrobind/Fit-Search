@@ -1,9 +1,8 @@
 export default (currentQuery) => {
     
-    const formatedQuery = currentQuery || currentQuery.includes('&') ? currentQuery.replace(/&/g, ',').split(',') : currentQuery;
+    const formatedQuery = currentQuery || currentQuery.includes('&') ? currentQuery.split('&') : currentQuery;
     
-    
-    if (!formatedQuery) {
+    if (!formatedQuery || formatedQuery[0] === null) {
         return 'All Trainers'
     } else {
         return formatedQuery.reduce((accumulator, currentVal) => {
@@ -11,7 +10,7 @@ export default (currentQuery) => {
                return accumulator += ' Average review: ' + currentVal;
             } else if (currentVal.match(/<|-|>/g)) {
                 return accumulator += ' hourly rate: ' + currentVal;
-            } else {
+            } else  {
                 return accumulator += ' Location: ' + currentVal; 
                 return accumulator;
             }

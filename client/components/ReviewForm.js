@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class ReviewForm extends Component {
     constructor(props) {
         super(props);
-        
         this.state = {
             rating: '',
             body: ''
@@ -50,6 +50,10 @@ class ReviewForm extends Component {
             </div>
         )   
     }
+}
+
+ReviewForm.propTypes = {
+    submitReview: PropTypes.func.isRequired
 }
 
 

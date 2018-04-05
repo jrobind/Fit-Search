@@ -9,7 +9,7 @@ import LoginContainer from '../containers/LoginContainer';
 import SearchContainer from '../containers/SearchContainer';
 import ProfileContainer from '../containers/ProfileContainer';
 import UpdateProfile from './UpdateProfile';
-import Trainer from './Trainer';
+import TrainerContainer from '../containers/TrainerContainer';
 import Interest from './Interest';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
                             interestRequests={interestRequests.requests}
                         />                                      
                     )} />
-                    <Route exact path='/search/review' component={Trainer} />
+                    <Route exact path='/search/review' component={TrainerContainer} />
                 </div>
             </Router>
         )
@@ -45,14 +45,15 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { userAuth, interestRequests, userProfile, searchResults } = state;
+    const { userAuth, interestRequests, userProfile, searchResults, selectedTrainer } = state;
     const loggedIn = !userAuth ? false : userAuth.loggedIn;
     return {
         loggedIn,
         userAuth,
         interestRequests,
         userProfile,
-        searchResults
+        searchResults,
+        selectedTrainer
     }
 }
 

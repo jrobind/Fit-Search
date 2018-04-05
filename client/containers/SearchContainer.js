@@ -13,9 +13,16 @@ class SearchContainer extends Component {
         }
         
         this.handleUpdateSearch = this.handleUpdateSearch.bind(this);
+        this.handleResetSearch = this.handleResetSearch.bind(this);
     }
     
     componentDidMount() {
+        this.props.dispatch(handleGetSearchQuery('trainer'));
+    }
+    
+    handleResetSearch() {
+        console.log(this.state)
+        this.setState(() => ({currentQuery: ''}));
         this.props.dispatch(handleGetSearchQuery('trainer'));
     }
     
@@ -35,26 +42,22 @@ class SearchContainer extends Component {
     }
     
     handleUpdateSearch(searchQuery, reset) {
+        if (reset) {
+            this.handleResetSearch();
+        }
+        
         this.setState((prevState) => {
-            if (reset) {
-                return {
-                    currentQuery: 'trainer'
-                }
-            } else {
-                const val = !prevState.currentQuery ? '' : '&'; 
-                return {
+            const val = !prevState.currentQuery ? '' : '&'; 
+            
+            return {
                     currentQuery: prevState.currentQuery + val + searchQuery
-                }
             }
         }, () => {
             this.props.dispatch(handleGetSearchQuery(this.state.currentQuery))
                 .then((data) => {
-                    if (!data.length) {
-                        this.setState(() => ({noResults: true}));
-                    } else {
-                        this.setState(() => ({noResults: false}));
-                    }
-                }); 
+                    !data.length ? this.setState(() => ({noResults: true})) : this.setState(() => ({noResults: false}));
+                })
+                .catch((error) => console.log(error));
         });
     }
         

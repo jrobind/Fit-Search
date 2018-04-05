@@ -11,7 +11,7 @@ const Search = ({
     message, 
     history, 
     currentQuery 
-    }) => (
+}) => (
     <div className="search-container">
         <SearchBar 
             handleUpdateSearch={handleUpdateSearch} 
