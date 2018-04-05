@@ -42,23 +42,23 @@ class SearchContainer extends Component {
     }
     
     handleUpdateSearch(searchQuery, reset) {
-        if (reset) {
-            this.handleResetSearch();
+        reset ? this.handleResetSearch() : null;
+
+        if (searchQuery) {
+            this.setState((prevState) => {
+                const val = !prevState.currentQuery ? '' : '&'; 
+
+                return {
+                        currentQuery: prevState.currentQuery + val + searchQuery
+                }
+            }, () => {
+                this.props.dispatch(handleGetSearchQuery(this.state.currentQuery))
+                    .then((data) => {
+                        !data.length ? this.setState(() => ({noResults: true})) : this.setState(() => ({noResults: false}));
+                    })
+                    .catch((error) => console.log(error));
+            });   
         }
-        
-        this.setState((prevState) => {
-            const val = !prevState.currentQuery ? '' : '&'; 
-            
-            return {
-                    currentQuery: prevState.currentQuery + val + searchQuery
-            }
-        }, () => {
-            this.props.dispatch(handleGetSearchQuery(this.state.currentQuery))
-                .then((data) => {
-                    !data.length ? this.setState(() => ({noResults: true})) : this.setState(() => ({noResults: false}));
-                })
-                .catch((error) => console.log(error));
-        });
     }
         
 

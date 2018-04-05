@@ -2,7 +2,7 @@ export default (currentQuery) => {
     
     const formatedQuery = currentQuery || currentQuery.includes('&') ? currentQuery.split('&') : currentQuery;
     
-    if (!formatedQuery || formatedQuery[0] === null) {
+    if (!formatedQuery) {
         return 'All Trainers'
     } else {
         return formatedQuery.reduce((accumulator, currentVal) => {

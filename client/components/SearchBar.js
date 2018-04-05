@@ -38,7 +38,7 @@ class SearchBar extends Component {
     
     resetSearch() {
         this.setState(() => ({
-            location: 'trainer',
+            location: '',
             starsClicked: false,
             rateClicked: false,
             locationSubmitted: false

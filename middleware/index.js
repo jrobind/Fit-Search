@@ -81,7 +81,7 @@ const calculateReviewAverage = (reviews) => {
 middlewareObj.processSearchQuery = (req, res, next) => {
     const query = req.params.query;
     // remove '&' from query if present, seperate queries and push to a query array
-    const queryArr = query.includes('&') ? query.replace(/&/g, ',').split(',') : [query];
+    const queryArr = query.includes('&') ? query.split('&') : [query];
     
     const rates = {
         '<25': {'profile.rate': {$lt: 25}}, 
