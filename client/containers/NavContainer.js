@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handleLogoutUser } from '../actions/userAuth';
-import Nav from '../components/Nav';
+import GuestNav from '../components/GuestNav';
 
 class NavContainer extends Component {
     constructor(props) {
@@ -17,16 +17,23 @@ class NavContainer extends Component {
     }
     
     render() {
-        return <Nav {...this.props} handleLogout={this.handleLogout} />;
+        return <GuestNav 
+                    {...this.props} 
+                    handleLogout={this.handleLogout}
+                />;
     }
 }
 
 const mapStateToProps = (state) => {
-    const { userAuth, interestRequests, userProfile } = state;
+    const { userAuth, interestRequests } = state;
+    const { requestSuccess } = state.userAuth;
+    const { requestSuccess: interestRequestSuccess } = state.interestRequests;
+    
     return {
         userAuth,
         interestRequests,
-        userProfile
+        requestSuccess,
+        interestRequestSuccess
     }
 }
 

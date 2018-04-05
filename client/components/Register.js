@@ -54,9 +54,7 @@ class Register extends Component {
         
         this.setState(() => ({
             [id]: val
-        }))
-        
-//        (?=.*[0-9])(?=.*[A-Za-z]).{6}
+        }));
     }
     
     render() {

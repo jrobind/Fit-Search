@@ -22,12 +22,8 @@ class App extends Component {
                     <NavContainer />
             
                     <Route exact path='/' component={Home} />
-                    <Route path='/sign-up'  render={() => {
-                        return !loggedIn ? <Register /> : <Redirect to='/' />;
-                    }} />
-                    <Route path='/login' render={() => {
-                        return !loggedIn ? <LoginContainer /> : <Redirect to='/' />;
-                    }} />
+                    <Route path='/sign-up' component={Register} />
+                    <Route path='/login' component={LoginContainer} />
                     <Route exact path='/portal/' component={ProfileContainer} />
                     <Route exact path='/portal/update' component={UpdateProfile} />
                     <Route exact path='/search' component={SearchContainer} />
@@ -54,5 +50,9 @@ const mapStateToProps = (state) => {
         selectedTrainer
     }
 }
+
+//                        return !loggedIn ? <Register /> : <Redirect to='/' />;
+
+//                        return !loggedIn ? <LoginContainer /> : <Redirect to='/' />;
 
 export default connect(mapStateToProps)(App);

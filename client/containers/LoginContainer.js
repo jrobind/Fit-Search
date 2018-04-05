@@ -17,23 +17,18 @@ class LoginContainer extends Component {
     }
     
     render() {
-        const { requestPending, requestSuccess} = this.props;
-        
-        return <LoginForm 
-                    {...this.props} 
-                    handleLoginSubmission={this.handleLoginSubmission}
-                    loading={requestPending}
-                    success={requestSuccess}
-                />;   
+        return <LoginForm {...this.props} handleLoginSubmission={this.handleLoginSubmission} />;   
     }
 }
 
 const mapStateToProps = (state) => {
-    const { requestPending, requestSuccess } = state.userAuth;
+    const { requestSuccess, userType } = state.userAuth;
+    const { requestSuccess: interestSuccess } = state.interestRequests;
 
     return {
-        requestPending,
-        requestSuccess
+        requestSuccess,
+        interestSuccess,
+        userType
     }   
 }
 

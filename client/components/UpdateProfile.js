@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { handleGetUserProfile } from '../actions/userProfile';
 import { apiUpdateProfile } from '../utils/api';
-import { withRouter } from 'react-router-dom';
+import Loading from './Loading';
+
+
 
 class UpdateProfile extends Component {
     constructor(props) {
         super(props);
-        
         this.state = {
             name: '',
             avatar: '',
@@ -25,7 +27,7 @@ class UpdateProfile extends Component {
     
     componentDidMount() {
         this.initialState = this.state;
-        const { id } = this.props.state.userAuth;
+        const { id } = this.props;
         
         this.props.dispatch(handleGetUserProfile(id))
             .then(({ profile }) => {
@@ -39,24 +41,24 @@ class UpdateProfile extends Component {
                     base,
                     radius,
                     notes
-                }))   
-            })
+                }));   
+            });
     }
     
     handleSubmission(e) {
-        const { id } = this.props.state.userAuth;
+        const { id } = this.props;
         const data  = this.state;
         e.preventDefault();
         e.target.reset();
         
         apiUpdateProfile(id, data)
             .then(() => {
-                alert('update successfull!')
                 this.props.history.push({
                     pathname: '/portal',
                     state: { profileUpdated: true}
                 });
-            });
+            })
+            .catch((error) => console.log(error));
     }
     
     handleInput(e) {
@@ -65,17 +67,15 @@ class UpdateProfile extends Component {
         
         this.setState(() => ({
             [id]: val
-        }))
+        }));
     }
     
     render() {
-        const { userType } = this.props.state.userAuth;
-        const { profile } = this.props.state.userProfile;
+        const { profile, userType } = this.props;
+        const { name } = this.state;
         
-        if (!profile || !this.state.name) {
-            return(
-                <div>LOADING PROFILE DATA</div>
-            )
+        if (!profile || !name) {
+            return <Loading text='Loading profile' />;
         } else {
             return(
                 <div>
@@ -123,8 +123,15 @@ class UpdateProfile extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    state
-})
+const mapStateToProps = (state) => {
+    const { userType, id } = state.userAuth;
+    const { profile } = state.userProfile;
+    
+    return {
+        id,
+        userType,
+        profile
+    }
+}
 
 export default connect(mapStateToProps)(UpdateProfile);
