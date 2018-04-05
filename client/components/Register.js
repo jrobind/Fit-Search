@@ -55,6 +55,8 @@ class Register extends Component {
         this.setState(() => ({
             [id]: val
         }))
+        
+//        (?=.*[0-9])(?=.*[A-Za-z]).{6}
     }
     
     render() {
@@ -70,6 +72,7 @@ class Register extends Component {
                         name="email" 
                         onChange={this.handleInput} 
                         value={this.state.email} 
+                        required
                     />
 
                     <label htmlFor="password">Password</label>
@@ -78,8 +81,11 @@ class Register extends Component {
                         type='password' 
                         name="password" 
                         onChange={this.handleInput} 
-                        value={this.state.password} 
+                        value={this.state.password}
+                        pattern="(?=.*\d)(?=.*[a-zA-Z]).{6,}"
+                        required
                     />
+                    <p>Password should contain at least <strong>1 number</strong> and should be <strong>6 characters</strong> in length</p>
             
                     <p>Who are you?</p>
             
@@ -92,6 +98,7 @@ class Register extends Component {
                             onChange={() => this.handleRadio('trainer')} 
                             checked={this.state.checked === 'trainer'} 
                             name="radAnswer"
+                            required
                         /> 
                         Trainer
                     </label>
