@@ -24,7 +24,7 @@ class CreateProfile extends Component {
         e.target.reset();
         
         const data  = this.state;
-        this.props.createProfile(this.props.userId, data);
+        this.props.createProfile(this.props.id, data);
     }
     
     handleInput(e) {
@@ -38,6 +38,7 @@ class CreateProfile extends Component {
     
     render() {
         const { userType } = this.props;
+        const { name, avatar, bio, rate, region, base, radius, notes } = this.state;
         
         return(
             <div className="setup-profile-container">
@@ -46,19 +47,19 @@ class CreateProfile extends Component {
             
                 <form className="portal-container" onSubmit={this.handleSubmission}>
                     <label>Full name</label>
-                    <input id='name' type='text' onChange={this.handleInput} placeholder=' fullname' value={this.state.name}/>
+                    <input id='name' type='text' onChange={this.handleInput} placeholder=' fullname' value={name}/>
 
                     <label>Avatar</label>
-                    <input id='avatar' type='text' onChange={this.handleInput} placeholder='avatar' value={this.state.avatar}/>
+                    <input id='avatar' type='text' onChange={this.handleInput} placeholder='avatar' value={avatar}/>
 
                     <label>Bio</label>
-                    <textarea id='bio' type='text' onChange={this.handleInput} placeholder=' type a short bio' value={this.state.bio}></textarea>
+                    <textarea id='bio' type='text' onChange={this.handleInput} placeholder=' type a short bio' value={bio}></textarea>
 
-                    {this.props.type === 'trainer' ? <div><label>Hourly rate</label>
-                    <input id='rate' type='number' onChange={this.handleInput} placeholder=' hourly rate' value={this.state.rate}/></div> : null}
+                    {userType === 'trainer' ? <div><label>Hourly rate</label>
+                    <input id='rate' type='number' onChange={this.handleInput} placeholder=' hourly rate' value={rate}/></div> : null}
 
-                    {this.props.type === 'trainer' ? <div><label>Region</label>
-                    <select id="region" value={this.state.region} onChange={this.handleInput}>
+                    {userType === 'trainer' ? <div><label>Region</label>
+                    <select id="region" value={region} onChange={this.handleInput}>
                         <option value="" disabled>Select your region</option>
                         <option>London</option>
                         <option>South West</option>
@@ -71,14 +72,14 @@ class CreateProfile extends Component {
                         <option>North East</option>
                     </select></div> : null}
 
-                    {this.props.type === 'trainer' ? <div><label>Base town/city</label>
-                    <input id='base' type='text' onChange={this.handleInput} placeholder=' Romford, Sheffield.. etc' value={this.state.base}/></div> : null}
+                    {userType === 'trainer' ? <div><label>Base town/city</label>
+                    <input id='base' type='text' onChange={this.handleInput} placeholder=' Romford, Sheffield.. etc' value={base}/></div> : null}
 
-                    {this.props.type === 'trainer' ? <div><label>Radius Covered (miles)</label>
-                    <input id='radius' type='number' onChange={this.handleInput} placeholder='15' value={this.state.radius}/></div> : null}
+                    {userType === 'trainer' ? <div><label>Radius Covered (miles)</label>
+                    <input id='radius' type='number' onChange={this.handleInput} placeholder='15' value={radius}/></div> : null}
 
-                    {this.props.type === 'trainer' ? <div><label>Location notes</label>
-                    <textarea id='notes' type='text' onChange={this.handleInput} value={this.state.notes}></textarea></div> : null}
+                    {userType === 'trainer' ? <div><label>Location notes</label>
+                    <textarea id='notes' type='text' onChange={this.handleInput} value={notes}></textarea></div> : null}
 
                     <input className="submit" type='submit'/>
                 </form>
@@ -89,8 +90,9 @@ class CreateProfile extends Component {
 
 CreateProfile.propTypes = {
     createProfile: PropTypes.func.isRequired,
-    type: PropTypes.string.isRequired,
-    userId: PropTypes.string.isRequired
+    userType: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    profile: PropTypes.object
 }
 
 export default CreateProfile;

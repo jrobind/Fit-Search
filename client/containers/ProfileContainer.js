@@ -30,22 +30,27 @@ class ProfileContainer extends Component {
     }
     
     render() {
-        const { id, userType, profile } = this.props;
+        const { profile } = this.props;
 
-        if (profile !== undefined) {
+        if (profile) {
             return <Profile profile={profile} />
-        } else if (profile === undefined) {
-            return <CreateProfile type={userType} createProfile={this.handleCreateProfile} userId={id}/>
+        } else if (!profile) {
+            return <CreateProfile {...this.props} createProfile={this.handleCreateProfile} />
         } else {
             return <Loading />
         }
     }
 }
 
-const mapStateToProps = (state) => ({
-    profile: state.userProfile.profile,
-    userType: state.userAuth.userType,
-    id: state.userAuth.id
-});
+const mapStateToProps = (state) => {
+    const { userType, id } = state.userAuth;
+    const { profile } = state.userProfile;
+    
+    return {
+        profile,
+        userType,
+        id
+    } 
+};
 
 export default connect(mapStateToProps)(ProfileContainer);
