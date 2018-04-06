@@ -6,6 +6,8 @@ import { apiUpdateProfile } from '../utils/api';
 import Loading from './Loading';
 import ProfileForm from './ProfileForm';
 
+
+
 class UpdateProfile extends Component {
     constructor(props) {
         super(props);
@@ -16,7 +18,7 @@ class UpdateProfile extends Component {
             rate: '',
             region: '',
             base: '',
-            radius: '',
+            radius: 0,
             notes: ''
         }
         
@@ -71,9 +73,9 @@ class UpdateProfile extends Component {
     
     render() {
         const { profile, userType } = this.props;
-        const { avatar } = this.state;
+        const { name, avatar, bio } = this.state;
         
-        if (!profile || !avatar) {
+        if (!profile || !name && !avatar && !bio) {
             return <Loading text='Loading profile' />;
         } else {
             return(

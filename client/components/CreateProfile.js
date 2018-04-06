@@ -12,7 +12,7 @@ class CreateProfile extends Component {
             rate: '',
             region: '',
             base: '',
-            radius: '',
+            radius: 0,
             notes: '',
         }
         

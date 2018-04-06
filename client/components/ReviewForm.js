@@ -40,10 +40,10 @@ class ReviewForm extends Component {
             <div>
                 <form className="review-form" onSubmit={this.handleSubmission}>
                     <label>Rating</label>
-                    <input id='rating' type='number' onChange={this.handleInput} placeholder='rating between 1/5' value={this.state.rating}/>
+                    <input id='rating' type='number' onChange={this.handleInput} placeholder='rating between 1/5' min='1' max='5' required value={this.state.rating}/>
 
-                    <label>Review</label>
-                    <textarea id='body' type='text' onChange={this.handleInput} placeholder=' type a review' value={this.state.body}></textarea>
+                    <label>Review message (maximum 750 characters)</label>
+                    <textarea id='body' type='text' onChange={this.handleInput} placeholder=' type a review' value={this.state.body} required maxLength='750'></textarea>
 
                     <input className="submit" type='submit' value='Submit review!'/>
                 </form>

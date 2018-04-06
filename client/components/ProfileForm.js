@@ -8,19 +8,19 @@ const ProfileForm = ({
     state
 }) => (
     <form className="portal-container" onSubmit={handleSubmission}>
-        <label>Full name</label>
-        <input id='name' type='text' onChange={handleInput} placeholder=' fullname' value={state.name}/>
+        <label>Full name </label>
+        <input id='name' type='text' onChange={handleInput} placeholder=' fullname' value={state.name} maxLength='30' required />
     
-        <label>Avatar</label>
-        <input id='avatar' type='text' onChange={handleInput} placeholder='avatar' value={state.avatar}/>
+        <label>Avatar URL </label>
+        <input id='avatar' type='text' onChange={handleInput} placeholder='avatar' value={state.avatar} required />
 
-        <label>Bio</label>
-        <textarea id='bio' type='text' onChange={handleInput} placeholder=' type a short bio' value={state.bio}></textarea>
+        <label>Bio (maximum 750 characters) </label>
+        <textarea id='bio' type='text' onChange={handleInput} placeholder=' type a short bio' value={state.bio} required maxLength='500' ></textarea>
 
-        {userType === 'trainer' ? <div><label>Hourly rate</label>
-        <input id='rate' type='number' onChange={handleInput} placeholder=' hourly rate' value={state.rate}/></div> : null}
+        {userType === 'trainer' ? <div><label>Hourly rate £ </label>
+        <input id='rate' type='number' onChange={handleInput} placeholder=' hourly rate' value={state.rate} required min='0' max='150' step='0.5' /></div> : null}
 
-        {userType === 'trainer' ? <div><label>Region</label>
+        {userType === 'trainer' ? <div><label>Region </label>
         <select id="region" value={state.region} onChange={handleInput}>
             <option value="" disabled>Select your region</option>
             <option>London</option>
@@ -34,14 +34,14 @@ const ProfileForm = ({
             <option>North East</option>
         </select></div> : null}
 
-        {userType === 'trainer' ? <div><label>Base town/city</label>
-        <input id='base' type='text' onChange={handleInput} placeholder=' Romford, Sheffield.. etc' value={state.base}/></div> : null}
+        {userType === 'trainer' ? <div><label>Base town/city </label>
+        <input id='base' type='text' onChange={handleInput} placeholder=' Romford, Sheffield.. etc' value={state.base} required /></div> : null}
 
-        {userType === 'trainer' ? <div><label>Radius Covered (miles)</label>
-        <input id='radius' type='number' onChange={handleInput} placeholder='15' value={state.radius}/></div> : null}
+        {userType === 'trainer' ? <div><label>Radius Covered (miles) </label>
+        <input id='radius' type='number' onChange={handleInput} placeholder='15' value={state.radius} min='1' max='100'/></div> : null}
 
-        {userType === 'trainer' ? <div><label>Location notes</label>
-        <textarea id='notes' type='text' onChange={handleInput} value={state.notes}></textarea></div> : null}
+        {userType === 'trainer' ? <div><label>Optionall location notes (maximum 250 characters)</label>
+        <textarea id='notes' type='text' onChange={handleInput} value={state.notes} maxLength='250' ></textarea></div> : null}
 
         <input className="submit" type='submit'/>
     </form>
