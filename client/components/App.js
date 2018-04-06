@@ -51,8 +51,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-//                        return !loggedIn ? <Register /> : <Redirect to='/' />;
-
-//                        return !loggedIn ? <LoginContainer /> : <Redirect to='/' />;
-
 export default connect(mapStateToProps)(App);

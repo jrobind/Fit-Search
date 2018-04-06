@@ -4,6 +4,16 @@ body {
     padding: 0;
 }
 
+.active {
+    font-weight: 800;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
 .portal-container {
     display: flex;
     flex-direction: column;
@@ -119,19 +129,27 @@ select {
 .page-numbers {
     display: flex;
     list-style: none;
+    padding: 3px;
+    justify-content: center; 
 }
 
 .page {
-    margin: 0 5px;
+    margin: 0 4px;
     font-weight: 400;
     font-size: 1.1em;
+    padding: 5px 7px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .current-page {
     text-decoration: underline;
+    padding: 5px 7px;
     font-weight: 900;
     margin: 0 4px;
     font-size: 1.1em;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .page-numbers:hover {
@@ -227,13 +245,6 @@ input {
 
 input[type="radio"] {
     margin-right: 5px;
-}
-
-.navbar li a {
-    color: white;
-    text-decoration: none;
-    font-weight: 300;
-    cursor: pointer;
 }
 
 .home-container {

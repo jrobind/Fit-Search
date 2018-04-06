@@ -46,9 +46,13 @@ class MapContainer extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    base: state.selectedTrainer.profile.base,
-    radius: state.selectedTrainer.profile.radius
-})
+const mapStateToProps = (state) => {
+    const { base, radius } = state.selectedTrainer.profile;
+    
+    return {
+        base,
+        radius
+    }
+};
 
 export default connect(mapStateToProps)(MapContainer);
