@@ -30,13 +30,13 @@ class ProfileContainer extends Component {
     }
     
     render() {
-        const { profile } = this.props;
+        const { profile, requestPending, requestSuccess } = this.props;
 
-        if (profile) {
+        if (profile && requestSuccess) {
             return <Profile profile={profile} />
         } else if (!profile) {
             return <CreateProfile {...this.props} createProfile={this.handleCreateProfile} />
-        } else {
+        } else if (requestPending) {
             return <Loading />
         }
     }
@@ -44,12 +44,14 @@ class ProfileContainer extends Component {
 
 const mapStateToProps = (state) => {
     const { userType, id } = state.userAuth;
-    const { profile } = state.userProfile;
+    const { profile, requestSuccess, requestPending } = state.userProfile;
     
     return {
         profile,
         userType,
-        id
+        id,
+        requestSuccess,
+        requestPending
     } 
 };
 

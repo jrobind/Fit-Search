@@ -4,8 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { handleGetUserProfile } from '../actions/userProfile';
 import { apiUpdateProfile } from '../utils/api';
 import Loading from './Loading';
-
-
+import ProfileForm from './ProfileForm';
 
 class UpdateProfile extends Component {
     constructor(props) {
@@ -72,51 +71,19 @@ class UpdateProfile extends Component {
     
     render() {
         const { profile, userType } = this.props;
-        const { name } = this.state;
+        const { avatar } = this.state;
         
-        if (!profile || !name) {
+        if (!profile || !avatar) {
             return <Loading text='Loading profile' />;
         } else {
             return(
                 <div>
-                    <form className="portal-container" onSubmit={this.handleSubmission}>
-                        <label>Full name</label>
-                        <input id='name' type='text' onChange={this.handleInput} placeholder=' fullname' value={this.state.name}/>
-
-                        <label>Avatar</label>
-                        <input id='avatar' type='text' onChange={this.handleInput} placeholder='avatar' value={this.state.avatar}/>
-
-                        <label>Bio</label>
-                        <textarea id='bio' type='text' onChange={this.handleInput} placeholder=' type a short bio' value={this.state.bio}></textarea>
-
-                        {userType === 'trainer' ? <div className="hourly"><label>Hourly rate</label>
-                        <input id='rate' type='number' onChange={this.handleInput} placeholder=' hourly rate' value={this.state.rate}/></div> : null}
-                
-                        {userType === 'trainer' ? <div><label>Region</label>
-                        <select id='region' value={this.state.region} onChange={this.handleInput}>
-                            <option value="" disabled>Select your region</option>
-                            <option>London</option>
-                            <option>South West</option>
-                            <option>South East</option>
-                            <option>East of England</option>
-                            <option>East Midlands</option>
-                            <option>West Midlands</option>
-                            <option>Yorkshire and the Humber</option>
-                            <option>North West</option>
-                            <option>North East</option>
-                        </select></div> : null}
-
-                        {userType === 'trainer' ? <div><label>Base town/city</label>
-                        <input id='base' type='text' onChange={this.handleInput} placeholder=' Romford, Sheffield.. etc' value={this.state.base}/></div> : null}
-
-                        {userType === 'trainer' ? <div><label>Radius Covered (miles)</label>
-                        <input id='radius' type='number' onChange={this.handleInput} placeholder='15' value={this.state.radius}/></div> : null}
-
-                        {userType === 'trainer' ? <div><label>Location notes</label>
-                        <textarea id='notes' type='text' onChange={this.handleInput} value={this.state.notes}></textarea></div> : null}
-
-                        <input className="submit" type='submit' value='Submit update!'/>
-                    </form>
+                    <ProfileForm 
+                        handleSubmission={this.handleSubmission}
+                        handleInput={this.handleInput}
+                        state={this.state}
+                        userType={userType}
+                    />
                 </div>
             )   
         }
