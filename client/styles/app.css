@@ -116,6 +116,28 @@ select {
     width: 70%;
 }
 
+.page-numbers {
+    display: flex;
+    list-style: none;
+}
+
+.page {
+    margin: 0 5px;
+    font-weight: 400;
+    font-size: 1.1em;
+}
+
+.current-page {
+    text-decoration: underline;
+    font-weight: 900;
+    margin: 0 4px;
+    font-size: 1.1em;
+}
+
+.page-numbers:hover {
+    cursor: pointer;
+}
+
 .trainer {
     display: flex;
     flex-direction: column;

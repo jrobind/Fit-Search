@@ -67,21 +67,29 @@ class SearchContainer extends Component {
             });   
         }
     }
-        
-
     
     render() {
-        const { noResults, currentQuery, resultsPerPage, currentPage } = this.state;
+        const { currentPage, resultsPerPage} = this.state;
+        const { searchResults } = this.props;
+        
+        const lastResultIndex = currentPage * resultsPerPage;
+        const firstResultIndex = lastResultIndex - resultsPerPage;
+        const currentSearchResults = searchResults.slice(firstResultIndex, lastResultIndex);
+
+        // total number of pages    
+        const pageNumbers = [];
+        for (let i = 1; i <= Math.ceil(searchResults.length / resultsPerPage); i++) {
+            pageNumbers.push(i);
+        }
         
         return <Search 
                     {...this.props} 
                     handleUpdateSearch={this.handleUpdateSearch} 
-                    handleReviewStars={this.handleReviewStars} 
-                    message={noResults} 
-                    currentQuery={currentQuery}
+                    handleReviewStars={this.handleReviewStars}  
                     handlePageClick={this.handlePageClick}
-                    resultsPerPage={resultsPerPage}
-                    currentPage={currentPage}
+                    state={this.state}
+                    currentSearchResults={currentSearchResults}
+                    pageNumbers={pageNumbers}
                 />;
     }
 }
