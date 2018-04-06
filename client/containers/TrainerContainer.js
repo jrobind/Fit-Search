@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { handleGetSelectedTrainer } from '../actions/selectedTrainer';
 import { apiCreateReview, apiCreateInterestRequest, apiGetInterestRequests } from '../utils/api';
 import Trainer from '../components/Trainer';
+import Loading from '../components/Loading';
 
 class TrainerContainer extends Component {
     constructor(props) {
@@ -10,12 +11,16 @@ class TrainerContainer extends Component {
         this.state = {
             coordinates: null,
             reviewSent: false,
-            interestRegistered: false
+            interestRegistered: false,
+            currentPage: 1,
+            resultsPerPage: 4,
+            reviews: null
         }
         
         this.handleReviewSubmission = this.handleReviewSubmission.bind(this);
         this.handleInterestSubmission = this.handleInterestSubmission.bind(this);
         this.setupGeocode = this.setupGeocode.bind(this);
+        this.handlePageClick = this.handlePageClick.bind(this);
     }
     
     componentDidMount() {
@@ -34,6 +39,11 @@ class TrainerContainer extends Component {
                     })
                     .catch((error) => console.log(error));
             });
+    }
+    
+    handlePageClick(e) {
+        const page = e.target.id;
+        this.setState(() => ({currentPage: Number(page)}));
     }
     
     setupGeocode({ base }) {
@@ -72,9 +82,7 @@ class TrainerContainer extends Component {
             .then(({ data: { authorAvatar, authorName }}) => {
                 if (authorAvatar && authorName) {
                     this.props.dispatch(handleGetSelectedTrainer(trainerId))
-                        .then(() => {
-                            this.setState(() => ({reviewSent: false}));
-                        })
+                        .then(() => this.setState(() => ({reviewSent: false})))
                         .catch((error) => console.log(error));
                 }
             })
@@ -82,16 +90,33 @@ class TrainerContainer extends Component {
     }
     
     render() {
-        const { coordinates, reviewSent, interestRegistered } = this.state;
-        
-        return <Trainer 
-                    handleReviewSubmission={this.handleReviewSubmission}
-                    handleInterestSubmission={this.handleInterestSubmission}
-                    coordinates={coordinates}
-                    reviewSent={reviewSent}
-                    interestRegistered={interestRegistered}
-                    {...this.props}
-                />
+        const { reviews } = this.props;
+
+        if (!reviews) {
+            return <Loading />
+        } else {
+            const { currentPage, resultsPerPage } = this.state;
+            
+            const lastResultIndex = currentPage * resultsPerPage;
+            const firstResultIndex = lastResultIndex - resultsPerPage;
+            const currentReviewResults = reviews.slice(firstResultIndex, lastResultIndex); 
+            
+            // total number of pages    
+            const pageNumbers = [];
+            for (let i = 1; i <= Math.ceil(reviews.length / resultsPerPage); i++) {
+                pageNumbers.push(i);
+            }
+
+            return <Trainer 
+                        handleReviewSubmission={this.handleReviewSubmission}
+                        handleInterestSubmission={this.handleInterestSubmission}
+                        handlePageClick={this.handlePageClick}
+                        componentState={this.state}
+                        currentReviewResults={currentReviewResults}
+                        pageNumbers={pageNumbers}
+                        {...this.props}
+                    />   
+        }
     }
 }
 

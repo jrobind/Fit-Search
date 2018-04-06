@@ -5,14 +5,14 @@ import MapContainer from '../containers/MapContainer';
 import ReviewForm from './ReviewForm';
 import Loading from './Loading';
 
-const Trainer = ({ 
-    coordinates, 
-    reviewSent, 
-    interestRegistered,
+const Trainer = ({
+    componentState: { coordinates, reviewSent, interestRegistered, currentPage },
     handleInterestSubmission,
     handleReviewSubmission,
-    reviews, 
-    profile, 
+    handlePageClick,
+    profile,
+    currentReviewResults,
+    pageNumbers
 }) => ( 
     <div className="review-container">
         {!profile ? <Loading /> : 
@@ -33,8 +33,9 @@ const Trainer = ({
                 {reviewSent ? <Loading text={'Processing review'}/> : null}
 
                 <ReviewForm submitReview={handleReviewSubmission} />
-                {!reviews ? null : <div className="review-list">
-                    {reviews.map((review) => 
+                
+                <div className="review-list">
+                    {currentReviewResults.map((review) => 
                         <div key={review._id} className="review-card">
                             <div>{review.authorName}</div>
                             <img src={review.authorAvatar}/>
@@ -42,15 +43,27 @@ const Trainer = ({
                             <div>{review.body}</div>
                         </div> 
                     )}
-                </div>}
+                </div>
+                <ul className="page-numbers">
+                    {pageNumbers.map((number) => (
+                        <li className={currentPage === number ? 'current-page' : 'page'}
+                            id={number} 
+                            key={number} 
+                            onClick={handlePageClick}
+                        >
+                            {number}
+                        </li>
+                    ))}
+                </ul>
             </div>
         }
     </div>
 )
 
-Trainer.propTypes = { 
-    reviewSent: PropTypes.bool.isRequired, 
-    interestRegistered: PropTypes.bool.isRequired,
+Trainer.propTypes = {
+    pageNumbers: PropTypes.array.isRequired,
+    state: PropTypes.object.isRequired,
+    currentReviewResults: PropTypes.array.isRequired,
     handleInterestSubmission: PropTypes.func.isRequired,
     handleReviewSubmission: PropTypes.func.isRequired, 
 }
