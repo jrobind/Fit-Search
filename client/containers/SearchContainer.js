@@ -87,7 +87,7 @@ class SearchContainer extends Component {
                     handleUpdateSearch={this.handleUpdateSearch} 
                     handleReviewStars={this.handleReviewStars}  
                     handlePageClick={this.handlePageClick}
-                    state={this.state}
+                    componentState={this.state}
                     currentSearchResults={currentSearchResults}
                     pageNumbers={pageNumbers}
                 />;

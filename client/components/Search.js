@@ -8,7 +8,7 @@ const Search = ({
     handleUpdateSearch, 
     handleReviewStars, 
     searchResults, 
-    state: { currentQuery, noResults, currentPage },
+    componentState: { currentQuery, noResults, currentPage },
     currentSearchResults,
     pageNumbers,
     history, 
@@ -78,7 +78,7 @@ Search.propTypes = {
     handleUpdateSearch: PropTypes.func.isRequired,
     handleReviewStars: PropTypes.func.isRequired,
     searchResults: PropTypes.array.isRequired,
-    state: PropTypes.object.isRequired,
+    componentState: PropTypes.object.isRequired,
     handlePageClick: PropTypes.func.isRequired,
     currentSearchResults: PropTypes.array.isRequired,
     pageNumbers: PropTypes.array.isRequired
