@@ -2,6 +2,20 @@ import { apiGetProfile } from '../utils/api';
 
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
 export const RESET_USER_PROFILE = 'RESET_USER_PROFILE';
+export const REQUEST_PENDING = 'REQUEST_PENDING';
+export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
+
+export const requestPending = () => (
+    {
+        type: REQUEST_PENDING
+    }
+)
+
+export const requestSuccces = () => (
+    {
+        type: REQUEST_SUCCESS
+    }
+)
 
 const getUserProfile = (profile, reviews) => (
     {
@@ -21,9 +35,11 @@ export const handleGetUserProfile = (id) => {
     return (dispatch) => {
        return apiGetProfile(id)
             .then(({ data }) => {
+                dispatch(requestPending());
                 dispatch(getUserProfile(data.profile, data.reviews))
+                dispatch(requestSuccces());
                 return data;
             })
-            .catch((error) => console.log(error))
+            .catch((error) => console.log(error));
     }
 };
