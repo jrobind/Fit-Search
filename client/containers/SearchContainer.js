@@ -9,11 +9,14 @@ class SearchContainer extends Component {
         super(props);
         this.state = {
             noResults: false,
-            currentQuery: ''
+            currentQuery: '',
+            currentPage: 1,
+            resultsPerPage: 2
         }
         
         this.handleUpdateSearch = this.handleUpdateSearch.bind(this);
         this.handleResetSearch = this.handleResetSearch.bind(this);
+        this.handlePageClick = this.handlePageClick.bind(this);
     }
     
     componentDidMount() {
@@ -21,9 +24,13 @@ class SearchContainer extends Component {
     }
     
     handleResetSearch() {
-        console.log(this.state)
         this.setState(() => ({currentQuery: ''}));
         this.props.dispatch(handleGetSearchQuery('trainer'));
+    }
+    
+    handlePageClick(e) {
+        const page = e.target.id;
+        this.setState(() => ({currentPage: Number(page)}));
     }
     
     handleReviewStars(rating) {
@@ -64,20 +71,27 @@ class SearchContainer extends Component {
 
     
     render() {
-        const { noResults, currentQuery } = this.state;
+        const { noResults, currentQuery, resultsPerPage, currentPage } = this.state;
         
         return <Search 
                     {...this.props} 
                     handleUpdateSearch={this.handleUpdateSearch} 
                     handleReviewStars={this.handleReviewStars} 
                     message={noResults} 
-                    currentQuery={currentQuery} 
+                    currentQuery={currentQuery}
+                    handlePageClick={this.handlePageClick}
+                    resultsPerPage={resultsPerPage}
+                    currentPage={currentPage}
                 />;
     }
 }
 
-const mapStateToProps = (state) => ({
-    searchResults: state.searchResults
-});
+const mapStateToProps = (state) => {
+    const { searchResults } = state; 
+
+    return {
+        searchResults   
+    }
+};
 
 export default connect(mapStateToProps)(SearchContainer);
