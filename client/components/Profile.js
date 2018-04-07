@@ -2,8 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Profile = ({ profile: { avatar, bio, name, rate, region, base, radius, notes }}) => (
+const Profile = ({ 
+    profile: { 
+        avatar, 
+        bio, 
+        name, 
+        rate, 
+        region, 
+        base, 
+        radius, 
+        notes 
+    },
+    locationState
+}) => (
     <div className="portal-container">
+    {locationState && locationState.profileUpdated ? <div className="profile-update">Profile updated!</div> : null}
         <ul>
             <li className="profile-title">{name}</li>
             <li><img src={avatar}/></li>
@@ -19,7 +32,8 @@ const Profile = ({ profile: { avatar, bio, name, rate, region, base, radius, not
 )
 
 Profile.propTypes = {
-    profile: PropTypes.object.isRequired 
+    profile: PropTypes.object.isRequired,
+    locationState: PropTypes.object
 }
 
 export default Profile;

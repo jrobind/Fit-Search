@@ -18,7 +18,7 @@ class ProfileContainer extends Component {
         const { state } = this.props.location;
         const { id } = this.props;
         if (state !== undefined && state.profileUpdated === true) {
-            this.props.dispatch(handleGetUserProfile(id))
+            this.props.dispatch(handleGetUserProfile(id));
         }
     }
     
@@ -31,9 +31,10 @@ class ProfileContainer extends Component {
     
     render() {
         const { profile, requestPending, requestSuccess } = this.props;
+        const { state: locationState } = this.props.location;
 
         if (profile && requestSuccess) {
-            return <Profile profile={profile} />
+            return <Profile profile={profile} locationState={locationState} />
         } else if (!profile) {
             return <CreateProfile {...this.props} createProfile={this.handleCreateProfile} />
         } else if (requestPending) {
