@@ -7,14 +7,15 @@ const Nav = ({
     interestRequestSuccess,
     handleLogout,
     interestRequests: { requests },
-    userAuth: { userType }        
+    userAuth: { userType },
+    userProfile
 }) => (
     <ul className="navbar">
         <li className="navbar-link"><NavLink activeClassName="active" exact to='/'>Fit Finder</NavLink></li>
     
         {loggedIn && userType === 'client' || loggedIn && interestRequestSuccess && userType === 'trainer' ? <li><NavLink activeClassName="active" to='/portal'>Profile Portal</NavLink></li> : null}
     
-        {loggedIn && userType === 'client' && <li><NavLink activeClassName="active" to='/search'>Search</NavLink></li>}
+        {loggedIn && userType === 'client' && userProfile.profile && <li><NavLink activeClassName="active" to='/search'>Search</NavLink></li>}
     
         {interestRequestSuccess && loggedIn && <li><NavLink activeClassName="active" to='/interest'>Interest Requests<span className="request-notifications">{requests.length}</span></NavLink></li>}
     
@@ -31,7 +32,8 @@ Nav.propTypes = {
     interestRequests: PropTypes.object.isRequired,
     interestRequestSuccess: PropTypes.bool.isRequired,
     userAuth: PropTypes.object.isRequired,
-    handleLogout: PropTypes.func.isRequired
+    handleLogout: PropTypes.func.isRequired,
+    userProfile: PropTypes.object.isRequired
 }
 
 export default Nav;

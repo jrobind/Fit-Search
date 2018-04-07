@@ -23,7 +23,7 @@ class LoginContainer extends Component {
 
 const mapStateToProps = (state) => {
     const { requestSuccess, userType, loggedIn } = state.userAuth;
-    const { profile } = state.userProfile;
+    const { userProfile } = state;
     const { requestSuccess: interestSuccess } = state.interestRequests;
 
     return {
@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
         interestSuccess,
         userType,
         loggedIn,
-        profile
+        userProfile
     }   
 }
 

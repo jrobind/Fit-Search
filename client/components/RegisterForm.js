@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { apiRegisterUser } from '../utils/api';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-
-class Register extends Component {
+class RegisterForm extends Component {
     constructor(props) {
         super(props);
-        
         this.state = {
             email: '',
             password: '',
             checked: ''
         }
         
-        this.handleSubmission = this.handleSubmission.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.handleRadio = this.handleRadio.bind(this);
+        this.handleSubmission = this.handleSubmission.bind(this);
     }
     
     componentDidMount() {
@@ -28,24 +26,12 @@ class Register extends Component {
         
         const userData  = this.state;
         
-        apiRegisterUser(userData)
-            .then(({ data }) => {
-                if (data && data !== 'duplicate') {
-                    alert('Thanks for signing up!');
-                    this.props.history.push('/login'); 
-                } else {
-                    alert('email address already taken!');
-                }
-            })
-            .catch((error) => alert('Error!'))
-        
+        this.props.handleRegister(userData);
         this.setState(this.initialState);
     }
     
     handleRadio(val) {
-        this.setState(() => ({
-            checked: val
-        }))
+        this.setState(() => ({checked: val}));
     }
     
     handleInput(e) {
@@ -58,8 +44,14 @@ class Register extends Component {
     }
     
     render() {
+        const { registerSuccess } = this.props;
+        
         return(
             <div className="signup-container">
+                {!registerSuccess ? null :  <div className="register-success">
+                    <span>Registration successful!</span>
+                    <Link to='/login'>login now</Link>
+                </div>}
                 <h1>Signup</h1>
                 <form className="signup-form" onSubmit={this.handleSubmission}>
 
@@ -122,5 +114,10 @@ class Register extends Component {
         )   
     }
 }
+                
+RegisterForm.propTypes = {
+    handleRegister: PropTypes.func.isRequired,
+    registerSuccess: PropTypes.bool.isRequired
+}
 
-export default withRouter(Register);
+export default RegisterForm;

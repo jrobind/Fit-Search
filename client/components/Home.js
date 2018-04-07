@@ -9,10 +9,11 @@ class Home extends Component {
     
     render() {
         const { profile, loggedIn } = this.props;
-        
+        const name = !profile ? 'Welcome - please setup your profile' : `Welcome ${profile.name}`;
+
         return(
                 <div className="home-container">
-                    {!loggedIn && !profile ? <p className="welcome-message please">Please sign in!</p> : <p className="welcome-message welcome">Welcome {profile.name}</p>}
+                    {!loggedIn && !profile ? <p className="welcome-message please">Please sign in!</p> : <p className="welcome-message welcome">{name}</p>}
                     <h1>Fit-Search</h1>
                     <p>The Hassle Free Personal Trainer Search</p>
                 </div>

@@ -26,14 +26,15 @@ class NavContainer extends Component {
 
 const mapStateToProps = (state) => {
     const { loggedIn } = state.userAuth;
-    const { userAuth, interestRequests } = state;
+    const { userAuth, interestRequests, userProfile } = state;
     const { requestSuccess: interestRequestSuccess } = state.interestRequests;
     
     return {
         loggedIn,
         userAuth,
         interestRequests,
-        interestRequestSuccess
+        interestRequestSuccess,
+        userProfile
     }
 }
 
