@@ -24,9 +24,11 @@ class ProfileContainer extends Component {
     }
     
     handleCreateProfile(id, data) {
+        const { getUserProfile } = this.props;
+        
         apiUpdateProfile(id, data)
             .then(() => {
-                this.props.dispatch(handleGetUserProfile(id))
+                getUserProfile(id);
             });
     }
     
