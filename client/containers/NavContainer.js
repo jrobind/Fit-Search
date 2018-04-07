@@ -12,8 +12,8 @@ class NavContainer extends Component {
     }
     
     handleLogout() {
-        this.props.history.push('/');
-        this.props.dispatch(handleLogoutUser());
+        this.props.dispatch(handleLogoutUser())
+            .then(() => this.props.history.push('/'));
     }
     
     render() {

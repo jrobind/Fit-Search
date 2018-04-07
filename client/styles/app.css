@@ -8,6 +8,23 @@ body {
     font-weight: 800;
 }
 
+.welcome-message {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    font-size: 0.95em;
+    padding: 7px;
+    border-radius: 5px;
+    align-self: flex-start;
+}
+
+.welcome {
+    color: green;
+}
+
+.please {
+    color: crimson;
+}
+
 .navbar a {
     text-decoration: none;
     color: white;

@@ -8,16 +8,26 @@ class Home extends Component {
     }
     
     render() {
-        const { userAuth } = this.props.state;
-        const loggedIn = !userAuth ? false : userAuth.loggedIn;
+        const { profile, loggedIn } = this.props;
+        
         return(
-            <div className="home-container">
-                <h1>Fit-Search</h1>
-                <p>The Hassle Free Personal Trainer Search</p>
-                {!loggedIn ? <p>YOU ARE NOT LOGGED IN</p> : <p>YOU ARE LOGGED IN!!</p>}
-            </div>
-        )
+                <div className="home-container">
+                    {!loggedIn && !profile ? <p className="welcome-message please">Please sign in!</p> : <p className="welcome-message welcome">Welcome {profile.name}</p>}
+                    <h1>Fit-Search</h1>
+                    <p>The Hassle Free Personal Trainer Search</p>
+                </div>
+            )   
     }
 }
 
-export default connect((state) => ({state}))(Home);
+const mapStateToProps = (state) => {
+    const { loggedIn } = state.userAuth;
+    const { profile } = state.userProfile;
+    
+    return {
+        loggedIn,
+        profile
+    }
+} 
+
+export default connect(mapStateToProps)(Home);

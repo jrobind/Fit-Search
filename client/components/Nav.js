@@ -16,7 +16,7 @@ const Nav = ({
     
         {loggedIn && userType === 'client' && <li><NavLink activeClassName="active" to='/search'>Search</NavLink></li>}
     
-        {interestRequestSuccess && <li><NavLink activeClassName="active" to='/interest'>Interest Requests<span className="request-notifications">{requests.length}</span></NavLink></li>}
+        {interestRequestSuccess && loggedIn && <li><NavLink activeClassName="active" to='/interest'>Interest Requests<span className="request-notifications">{requests.length}</span></NavLink></li>}
     
         {!loggedIn ? <li><NavLink activeClassName="active" to='/sign-up'>Sign up!</NavLink></li> : null}
     

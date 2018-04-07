@@ -37,9 +37,9 @@ class LoginForm extends Component {
     }
     
     render() {
-        const { requestSuccess, interestSuccess, userType } = this.props;
+        const { requestSuccess, interestSuccess, userType, loggedIn, profile } = this.props;
         
-        if (requestSuccess) {
+        if (requestSuccess && loggedIn && profile) {
             if (userType === 'trainer') {
                 return interestSuccess ? <Redirect to='/' /> : <Loading text='Just a minute'/>;
             }
@@ -80,7 +80,9 @@ LoginForm.propTypes = {
     handleLoginSubmission: PropTypes.func.isRequired,
     interestSuccess: PropTypes.bool.isRequired,
     requestSuccess: PropTypes.bool.isRequired, 
-    userType: PropTypes.string
+    userType: PropTypes.string,
+    loggedIn: PropTypes.bool,
+    profile: PropTypes.object
 }
 
 export default LoginForm;
