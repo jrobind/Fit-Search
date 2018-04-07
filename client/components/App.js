@@ -27,29 +27,33 @@ class App extends Component {
             <Router>
                 <div>
                     <NavContainer />
-                    <Route exact path='/' component={Home} />
-                    <Route path='/sign-up' component={RegisterContainer} />
-                    <Route path='/login' component={LoginContainer} />
-            
-                    <Route exact path='/portal' render={() => (
-                        loggedIn ? <ProfileContainer /> : <Redirect to='/' />  
-                    )} />
-            
-                    <Route exact path='/portal/update' render={() => (
-                        loggedIn ? <UpdateProfile /> : <Redirect to='/' />  
-                    )} />
-            
-                    <Route exact path='/search' render={() => (
-                        loggedIn && userType === 'client' && userProfile.profile ? <SearchContainer /> : <Redirect to='/' />
-                    )} />
+                    <Switch>
+                        <Route exact path='/' component={Home} />
+                        <Route path='/sign-up' component={RegisterContainer} />
+                        <Route path='/login' component={LoginContainer} />
+
+                        <Route exact path='/portal' render={() => (
+                            loggedIn ? <ProfileContainer /> : <Redirect to='/' />  
+                        )} />
+
+                        <Route exact path='/portal/update' render={() => (
+                            loggedIn ? <UpdateProfile /> : <Redirect to='/' />  
+                        )} />
+
+                        <Route exact path='/search' render={() => (
+                            loggedIn && userType === 'client' && userProfile.profile ? <SearchContainer /> : <Redirect to='/' />
+                        )} />
+
+                        <Route exact path='/interest' render={() => (
+                            loggedIn && userType === 'trainer' ? <InterestContainer /> : <Redirect to='/' />                                  
+                        )} />
+
+                        <Route exact path='/search/trainer' render={() => (
+                            loggedIn && userType === 'client' ? <TrainerContainer /> : <Redirect to='/' />  
+                        )} />
                         
-                    <Route exact path='/interest' render={() => (
-                        loggedIn && userType === 'trainer' ? <InterestContainer /> : <Redirect to='/' />                                  
-                    )} />
-                    
-                    <Route exact path='/search/trainer' render={() => (
-                        loggedIn && userType === 'client' ? <TrainerContainer /> : <Redirect to='/' />  
-                    )} />
+                        <Route render={() => (<p>Path Not Found!!</p>)} />
+                    </Switch>
                 </div>
             </Router>
         )
