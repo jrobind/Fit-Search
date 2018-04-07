@@ -36,7 +36,7 @@ router.post('/register', middleware.checkForDuplicateEmail, (req, res) => {
             newUser.password = hash;
             
             newUser.save()
-                .then((newUser) => res.send(newUser))
+                .then((newUser) => res.json(newUser))
                 .catch((error) => console.log(error))
         });
     });

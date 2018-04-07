@@ -1,12 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../models/');
-const middleware = require('../middleware');
-
 
 // create interest request 
-router.post('/', middleware.createInterest, (req, res) => {
-    res.json(res.locals.interest);
+router.post('/', (req, res) => {
+    const { requesteeId, trainerId } = req.body;
+    
+    // find user
+    db.UserModel.findById(requesteeId)
+        .then((user) => {
+            const newInterest = new db.InterestModel({
+                requestee: user._id,
+                trainerId: trainerId
+            }); 
+            // save new interest request
+            newInterest.save()
+                .then((interest) => res.json(interest))
+                .catch((error) => console.log(error));
+        });
 });
 
 // delete interest request
