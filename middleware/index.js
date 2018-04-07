@@ -55,12 +55,10 @@ middlewareObj.createReview = (req, res, next) => {
                 // push new review model and then save
                 trainer.reviews.push(review);
                 trainer.reviewAverage = calculateReviewAverage(trainer.reviews);
-                trainer.save();       
+                trainer.save();
+                next();
             })
             .catch((error) => console.log(error));
-            // pass review back to route
-            res.locals.review = review;
-            next();
     });
 };
 

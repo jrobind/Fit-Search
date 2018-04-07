@@ -5,7 +5,7 @@ const middleware = require('../middleware');
 
 // create review 
 router.post('/', middleware.createReview, (req, res) => {
-    res.json(res.locals.review);
+    res.json('review added');
 });
 
 
