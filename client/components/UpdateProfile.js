@@ -103,4 +103,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(UpdateProfile);
+export default withRouter(connect(mapStateToProps)(UpdateProfile));

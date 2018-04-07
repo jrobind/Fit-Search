@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import Loading from './Loading';
@@ -29,7 +29,7 @@ const Search = ({
                 {searchResults.length ? currentSearchResults.map(({ profile, _id, reviewAverage }) => (
                     <div className="trainer" key={_id} onClick={() => {
                         history.push({
-                            pathname: '/search/review',
+                            pathname: '/search/trainer',
                             state: {
                                 trainerId: _id
                             }
@@ -51,7 +51,7 @@ const Search = ({
 
                         <div className="trainer-reviews">Review average: {reviewAverage === null ? 'No reviews just yet!' : handleReviewStars(reviewAverage)}</div>
                             <Link className="review" to={{
-                                pathname: '/search/review', 
+                                pathname: '/search/trainer', 
                                 state: {
                                     trainerId: _id 
                                 }
@@ -84,4 +84,4 @@ Search.propTypes = {
     pageNumbers: PropTypes.array.isRequired
 }
 
-export default Search;
+export default withRouter(Search);

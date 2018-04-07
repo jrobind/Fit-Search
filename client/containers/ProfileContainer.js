@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { apiUpdateProfile } from '../utils/api';
 import { handleGetUserProfile } from '../actions/userProfile';
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => {
     } 
 };
 
-export default connect(mapStateToProps)(ProfileContainer);
+export default withRouter(connect(mapStateToProps)(ProfileContainer));

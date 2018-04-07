@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { handleGetSelectedTrainer } from '../actions/selectedTrainer';
 import { apiCreateReview, apiCreateInterestRequest, apiGetInterestRequests } from '../utils/api';
 import Trainer from '../components/Trainer';
@@ -79,10 +80,10 @@ class TrainerContainer extends Component {
         reviewData.authorId = userId;
    
         apiCreateReview(trainerId, reviewData)
-            .then(({ data: { authorAvatar, authorName }}) => {
-                if (authorAvatar && authorName) {
+            .then(({ data }) => {
+                if (data === 'review added') {
                     this.props.dispatch(handleGetSelectedTrainer(trainerId))
-                        .then(() => this.setState(() => ({reviewSent: false})))
+                        .then(() => (this.setState(() => ({reviewSent: false}))))
                         .catch((error) => console.log(error));
                 }
             })
@@ -135,4 +136,4 @@ const mapStateToProps = (state) => {
            }
 };
 
-export default connect(mapStateToProps)(TrainerContainer);
+export default withRouter(connect(mapStateToProps)(TrainerContainer));

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/app.css';
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavContainer from '../containers/NavContainer';
 import Home from './Home';
@@ -22,15 +22,30 @@ class App extends Component {
                     <NavContainer />
             
                     <Route exact path='/' component={Home} />
+            
                     <Route path='/sign-up' component={Register} />
+            
                     <Route path='/login' component={LoginContainer} />
-                    <Route exact path='/portal/' component={ProfileContainer} />
-                    <Route exact path='/portal/update' component={UpdateProfile} />
-                    <Route exact path='/search' component={SearchContainer} />
-                    <Route exact path='/interest' render={() => {
-                        return userType === 'trainer' ? <InterestContainer /> : <Redirect to='/' />;                                  
-                    }} />
-                    <Route exact path='/search/review' component={TrainerContainer} />
+            
+                    <Route exact path='/portal' render={() => (
+                        loggedIn ? <ProfileContainer /> : <Redirect to='/' />  
+                    )} />
+            
+                    <Route exact path='/portal/update' render={() => (
+                        loggedIn ? <UpdateProfile /> : <Redirect to='/' />  
+                    )} />
+            
+                    <Route exact path='/search' render={() => (
+                        loggedIn && userType === 'client' ? <SearchContainer /> : <Redirect to='/' />
+                    )} />
+                        
+                    <Route exact path='/interest' render={() => (
+                        loggedIn && userType === 'trainer' ? <InterestContainer /> : <Redirect to='/' />                                  
+                    )} />
+                    
+                    <Route exact path='/search/trainer' render={() => (
+                        loggedIn && userType === 'client' ? <TrainerContainer /> : <Redirect to='/' />  
+                    )} />
                 </div>
             </Router>
         )
