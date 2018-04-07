@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { handleGetSearchQuery } from '../actions/searchQuery';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Search from '../components/Search';
 
 class SearchContainer extends Component {
@@ -20,12 +19,16 @@ class SearchContainer extends Component {
     }
     
     componentDidMount() {
-        this.props.dispatch(handleGetSearchQuery('trainer'));
+        const { getSearchQuery } = this.props;
+        
+        getSearchQuery('trainer');
     }
     
     handleResetSearch() {
+        const { getSearchQuery } = this.props;
+        
         this.setState(() => ({currentQuery: ''}));
-        this.props.dispatch(handleGetSearchQuery('trainer'));
+        getSearchQuery('trainer');
     }
     
     handlePageClick(e) {
@@ -56,10 +59,13 @@ class SearchContainer extends Component {
                 const val = !prevState.currentQuery ? '' : '&'; 
 
                 return {
-                        currentQuery: prevState.currentQuery + val + searchQuery
+                    currentQuery: prevState.currentQuery + val + searchQuery
                 }
             }, () => {
-                this.props.dispatch(handleGetSearchQuery(this.state.currentQuery))
+                const { getSearchQuery } = this.props;
+                const { currentQuery } = this.state;
+                
+                getSearchQuery(currentQuery)
                     .then((data) => {
                         !data.length ? this.setState(() => ({noResults: true})) : this.setState(() => ({noResults: false}));
                     })
@@ -102,4 +108,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(SearchContainer);
+const mapDispatchToProps = (dispatch) => ({
+    getSearchQuery(query) {
+        return dispatch(handleGetSearchQuery(query));   
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer);

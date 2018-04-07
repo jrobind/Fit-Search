@@ -12,8 +12,10 @@ class InterestContainer extends Component {
     }
     
     handleRemoveInterest(requestId) {
+        const { getInterestRequests, trainerId } = this.props;
+        
         apiRemoveInterestRequest(requestId)
-            .then((data) => this.props.dispatch(handleGetInterestRequests(this.props.trainerId)))
+            .then((data) => getInterestRequests(trainerId))
             .catch((error) => console.log(error));
     }
     
@@ -32,4 +34,10 @@ const mapStateToProps = (state) => {
     }
 };
 
-export default connect(mapStateToProps)(InterestContainer);
+const mapDispatchToProps = (dispatch) => ({
+    getInterestRequests(trainerId) {
+        return dispatch(handleGetInterestRequests(trainerId));   
+    }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(InterestContainer);

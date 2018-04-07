@@ -6,8 +6,6 @@ import { apiUpdateProfile } from '../utils/api';
 import Loading from './Loading';
 import ProfileForm from './ProfileForm';
 
-
-
 class UpdateProfile extends Component {
     constructor(props) {
         super(props);
@@ -28,9 +26,9 @@ class UpdateProfile extends Component {
     
     componentDidMount() {
         this.initialState = this.state;
-        const { id } = this.props;
+        const { id, getUserProfile } = this.props;
         
-        this.props.dispatch(handleGetUserProfile(id))
+        getUserProfile(id)
             .then(({ profile }) => {
                 const { name, avatar, bio, rate, region, base, radius, notes } = profile;
                 this.setState(() => ({
@@ -103,4 +101,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(UpdateProfile));
+const mapDispatchToProps = (dispatch) => ({
+    getUserProfile(id) {
+        return dispatch(handleGetUserProfile(id));   
+    }
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UpdateProfile));

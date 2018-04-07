@@ -12,7 +12,9 @@ class LoginContainer extends Component {
     }
     
     handleLoginSubmission(userData) {
-        this.props.dispatch(handleLoginUser(userData))
+        const { loginUser } = this.props;
+        
+        loginUser(userData)
             .catch((error) => console.log(error));
     }
     
@@ -33,6 +35,12 @@ const mapStateToProps = (state) => {
         loggedIn,
         userProfile
     }   
-}
+};
 
-export default withRouter(connect(mapStateToProps)(LoginContainer));
+const mapDispatchToProps = (dispatch) => ({
+    loginUser(userData) {
+        return dispatch(handleLoginUser(userData));   
+    }
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginContainer));

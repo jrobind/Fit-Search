@@ -26,9 +26,9 @@ class TrainerContainer extends Component {
     
     componentDidMount() {
         let { trainerId } = this.props.location.state || this.props.history.location.state;
-        const { userId } = this.props;
+        const { userId, getSelectedTrainer } = this.props;
 
-        this.props.dispatch(handleGetSelectedTrainer(trainerId))
+        getSelectedTrainer(trainerId)
             .then(({ profile }) => {
                 this.setupGeocode(profile);
             
@@ -71,7 +71,7 @@ class TrainerContainer extends Component {
     }
     
     handleReviewSubmission(reviewData) {
-        const { userProfile: { name, avatar }, userId, trainerId } = this.props;
+        const { userProfile: { name, avatar }, userId, trainerId, getSelectedTrainer } = this.props;
         
         this.setState(() => ({reviewSent: true}));
         
@@ -82,7 +82,7 @@ class TrainerContainer extends Component {
         apiCreateReview(trainerId, reviewData)
             .then(({ data }) => {
                 if (data === 'review added') {
-                    this.props.dispatch(handleGetSelectedTrainer(trainerId))
+                    getSelectedTrainer(trainerId)
                         .then(() => (this.setState(() => ({reviewSent: false}))))
                         .catch((error) => console.log(error));
                 }
@@ -136,4 +136,10 @@ const mapStateToProps = (state) => {
            }
 };
 
-export default withRouter(connect(mapStateToProps)(TrainerContainer));
+const mapDispatchToProps = (dispatch) => ({
+    getSelectedTrainer(trainerId) {
+        return dispatch(handleGetSelectedTrainer(trainerId));   
+    }
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TrainerContainer));

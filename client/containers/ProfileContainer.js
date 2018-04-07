@@ -16,9 +16,10 @@ class ProfileContainer extends Component {
     
     componentDidMount() {
         const { state } = this.props.location;
-        const { id } = this.props;
+        const { id, getUserProfile } = this.props;
+        
         if (state !== undefined && state.profileUpdated === true) {
-            this.props.dispatch(handleGetUserProfile(id));
+            getUserProfile(id);
         }
     }
     
@@ -56,4 +57,10 @@ const mapStateToProps = (state) => {
     } 
 };
 
-export default withRouter(connect(mapStateToProps)(ProfileContainer));
+const mapDispatchToProps = (dispatch) => ({
+    getUserProfile(id) {
+        return dispatch(handleGetUserProfile(id));   
+    }
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfileContainer));

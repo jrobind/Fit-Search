@@ -12,7 +12,9 @@ class NavContainer extends Component {
     }
     
     handleLogout() {
-        this.props.dispatch(handleLogoutUser())
+        const { logoutUser } = this.props;
+        
+        logoutUser()
             .then(() => this.props.history.push('/'));
     }
     
@@ -38,4 +40,10 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps)(NavContainer));
+const mapDispatchToProps = (dispatch) => ({
+    logoutUser() {
+        return dispatch(handleLogoutUser());   
+    }
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavContainer));
