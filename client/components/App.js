@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { connect } from 'react-redux';
 import NavContainer from '../containers/NavContainer';
 import Home from './Home';
-import Register from './Register';
+import RegisterContainer from '../containers/RegisterContainer';
 import LoginContainer from '../containers/LoginContainer';
 import SearchContainer from '../containers/SearchContainer';
 import ProfileContainer from '../containers/ProfileContainer';
@@ -14,17 +14,21 @@ import InterestContainer from '../containers/InterestContainer';
 
 class App extends Component {
     render() {
-        const { userAuth, userAuth: { userType }, interestRequests, loggedIn } = this.props; 
-        console.log(this.props)
+        const { 
+            userAuth, 
+            userAuth: { userType }, 
+            interestRequests, 
+            loggedIn, 
+            userProfile 
+        } = this.props; 
+        console.log(this.props);
+        
         return(
             <Router>
                 <div>
                     <NavContainer />
-            
                     <Route exact path='/' component={Home} />
-            
-                    <Route path='/sign-up' component={Register} />
-            
+                    <Route path='/sign-up' component={RegisterContainer} />
                     <Route path='/login' component={LoginContainer} />
             
                     <Route exact path='/portal' render={() => (
@@ -36,7 +40,7 @@ class App extends Component {
                     )} />
             
                     <Route exact path='/search' render={() => (
-                        loggedIn && userType === 'client' ? <SearchContainer /> : <Redirect to='/' />
+                        loggedIn && userType === 'client' && userProfile.profile ? <SearchContainer /> : <Redirect to='/' />
                     )} />
                         
                     <Route exact path='/interest' render={() => (
@@ -56,13 +60,15 @@ class App extends Component {
 const mapStateToProps = (state) => {
     const { userAuth, interestRequests, userProfile, searchResults, selectedTrainer } = state;
     const loggedIn = !userAuth ? false : userAuth.loggedIn;
+
     return {
         loggedIn,
         userAuth,
         interestRequests,
         userProfile,
         searchResults,
-        selectedTrainer
+        selectedTrainer,
+        userProfile
     }
 }
 

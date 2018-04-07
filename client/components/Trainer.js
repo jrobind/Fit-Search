@@ -32,7 +32,7 @@ const Trainer = ({
 
                 {reviewSent ? <Loading text={'Processing review'}/> : null}
 
-                <ReviewForm submitReview={handleReviewSubmission} />
+                {!reviewSent ? <ReviewForm submitReview={handleReviewSubmission} /> : null}
                 
                 <div className="review-list">
                     {currentReviewResults.map((review) => 

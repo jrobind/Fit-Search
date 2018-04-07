@@ -26,7 +26,7 @@ class Loading extends React.Component {
             } else {
                 this.setState((prevState) => ({text: prevState.text + '.' }));
             }
-        }, speed)
+        }, speed);
     }
     
     componentWillUnmount() {
@@ -54,4 +54,4 @@ Loading.defaultProps = {
     speed: 300
 }
 
-module.exports = Loading;
+export default Loading;
