@@ -25,7 +25,7 @@ class App extends Component {
         
         return(
             <Router>
-                <div>
+                <div className="app-container">
                     <NavContainer />
                     <Switch>
                         <Route exact path='/' component={Home} />

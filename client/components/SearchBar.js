@@ -89,15 +89,15 @@ class SearchBar extends Component {
                 <CurrentQuery currentQuery={currentQuery} resetSearch={this.resetSearch}/>
                 <div className="toggle-reviews">
                     <h5>Average Trainer Review</h5>
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../../images/ratings-5.png')}/></a>
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../images/ratings-5.png')}/></a>
                                                                                       
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '4') : null}><img src={require('../../images/ratings-4.png')}/></a>
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '4') : null}><img src={require('../images/ratings-4.png')}/></a>
                                                                                       
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '3') : null}><img src={require('../../images/ratings-3.png')}/></a>
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '3') : null}><img src={require('../images/ratings-3.png')}/></a>
                                                                                       
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '2') : null}><img src={require('../../images/ratings-2.png')}/></a>
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '2') : null}><img src={require('../images/ratings-2.png')}/></a>
                                                                                       
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '1') : null}><img src={require('../../images/ratings-1.png')}/></a>          
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '1') : null}><img src={require('../images/ratings-1.png')}/></a>          
                 </div>
                 <div className="hourly">
                     <h5>Trainer hourly rate</h5>

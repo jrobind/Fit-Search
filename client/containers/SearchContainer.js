@@ -39,15 +39,15 @@ class SearchContainer extends Component {
     handleReviewStars(rating) {
         switch(rating) {
             case 1 :
-                return <img src={require('../../images/ratings-1.png')} />
+                return <img src={require('../images/ratings-1.png')} />
             case 2 :
-                return <img src={require('../../images/ratings-2.png')} />
+                return <img src={require('../images/ratings-2.png')} />
             case 3 : 
-                return <img src={require('../../images/ratings-3.png')} />
+                return <img src={require('../images/ratings-3.png')} />
             case 4 : 
-                return <img src={require('../../images/ratings-4.png')} />
+                return <img src={require('../images/ratings-4.png')} />
             case 5 :
-                return <img src={require('../../images/ratings-5.png')} />
+                return <img src={require('../images/ratings-5.png')} />
         }
     }
     

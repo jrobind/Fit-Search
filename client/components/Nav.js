@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import '../styles/components/nav.css';
 
 const Nav = ({ 
     loggedIn, 
@@ -11,7 +12,7 @@ const Nav = ({
     userProfile
 }) => (
     <ul className="navbar">
-        <li className="navbar-link"><NavLink activeClassName="active" exact to='/'>Fit Finder</NavLink></li>
+        <li><NavLink activeClassName="active" exact to='/'>Fit Finder</NavLink></li>
     
         {loggedIn && userType === 'client' || loggedIn && interestRequestSuccess && userType === 'trainer' ? <li><NavLink activeClassName="active" to='/portal'>Profile Portal</NavLink></li> : null}
     
