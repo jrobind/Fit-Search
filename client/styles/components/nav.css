@@ -1,17 +1,24 @@
 .navbar {
     display: flex;
     list-style-type: none;
+    flex-wrap: wrap;
     padding: 0;
     justify-content: space-around;
-    background-color: rgba(102, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     margin: 0;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 
 .navbar a {
     text-decoration: none;
-    color: whitesmoke;
+    letter-spacing: 1px;
+    color: white;
     cursor: pointer;
+}
+
+.logo {
+    flex: 0 1 100%;
+    text-align: center;
 }
 
 .request-notifications {
@@ -23,5 +30,5 @@
 }
 
 .active {
-    font-weight: 800;
+    border-bottom: 1px solid white
 }
