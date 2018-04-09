@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Loading  from '../components/Loading';
 import LoginForm from '../components/LoginForm';
 import { handleLoginUser } from '../actions/userAuth';
 
 class LoginContainer extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            loggingIn: false
+        }
 
         this.handleLoginSubmission = this.handleLoginSubmission.bind(this);
     }
@@ -14,12 +18,16 @@ class LoginContainer extends Component {
     handleLoginSubmission(userData) {
         const { loginUser } = this.props;
         
+        this.setState(() => ({loggingIn: true}));
+        
         loginUser(userData)
             .catch((error) => console.log(error));
     }
     
     render() {
-        return <LoginForm {...this.props} handleLoginSubmission={this.handleLoginSubmission} />;   
+        const { loggingIn } = this.state;
+    
+        return <LoginForm {...this.props} handleLoginSubmission={this.handleLoginSubmission} loggingIn={loggingIn} />; 
     }
 }
 

@@ -37,7 +37,14 @@ class LoginForm extends Component {
     }
     
     render() {
-        const { requestSuccess, interestSuccess, userType, loggedIn, userProfile } = this.props;
+        const { 
+                requestSuccess,
+                interestSuccess,
+                userType, 
+                loggedIn, 
+                userProfile,
+                loggingIn
+              } = this.props;
         
         if (requestSuccess && loggedIn && userProfile) {
             if (userType === 'trainer') {
@@ -68,7 +75,7 @@ class LoginForm extends Component {
                             value={this.state.password} 
                         />
 
-                        <input className="submit" type='submit'/>
+                        {!loggingIn ? <input className="submit" type='submit'/> : <Loading text='logging in...'/> }
                     </form>
                 </div>
             )      
@@ -82,7 +89,8 @@ LoginForm.propTypes = {
     requestSuccess: PropTypes.bool.isRequired, 
     userType: PropTypes.string,
     loggedIn: PropTypes.bool,
-    userProfile: PropTypes.object
+    userProfile: PropTypes.object,
+    loggingIn: PropTypes.bool.isRequired
 }
 
 export default LoginForm;
