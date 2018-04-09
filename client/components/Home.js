@@ -25,7 +25,7 @@ class Home extends Component {
                         </div>
                     </div>
             
-                    <section className="process">
+                    <section className="process-container">
                         <h1>Finding your perfect personal trainer couldn't be easier.</h1>
                         <p className="process-explained">
                             Search our huge selection of user verified personal trainers from across England. Simply sign up and create your own unique user profile, then use our sofisticated search functionality to find the perfect personal trainer for you. Once you find a trainer you like, register your interest. 
@@ -34,7 +34,30 @@ class Home extends Component {
                             Trainers will contact you by email to organise a <strong>FREE</strong> taster session. All thats left, is for you to get in the best shape of your life. 
                         </p>
                         <Link className="home-sign-up" to='/sign-up'>Sign me up now!</Link>
-
+                    </section>
+                    
+                    <section className="review-container">
+                        <h1>Not convinced? See what our users have to say.</h1>
+                        <div className="review-one">
+                            <div className="review-img-container-one">
+                                <img src={require('../images/review-one.jpg')}/>
+                            </div>
+                            <p>
+                                <i className="fas fa-quote-left"></i>
+                                    I have been training with Michael Doe for over three months now. In one word Michael has been AMAZING! I've lost over 10kg and put on over 3kg in muscle mass. I feel incredible, i'm able to do so much more with my life. Michael's sessions are hard work but at the same time really fun. I am so glad I found Fit-Search.
+                                <i className="fas fa-quote-right"></i>
+                            </p>
+                        </div>
+                        <div className="review-two">
+                            <div className="review-img-container-two">
+                                <img src={require('../images/review-two.jpg')}/>
+                            </div>
+                            <p>
+                                <i className="fas fa-quote-left"></i>
+                                    I stumbled upon Fit-Search around six months ago. Within a few days I found a trainer who lived locally. The process was painless and very professional. Shelly, my trainer, contacted me after I registered my interest in her and organised my first free taster session. All I can say is that I'm hooked. I've lost over 15kg and I feel fitter than ever. What a life-changing six months it's been! And its all thanks to Fit-Search and Shelly. 
+                                <i className="fas fa-quote-right"></i>
+                            </p>
+                        </div>
                     </section>
                 </div>
             )   
@@ -52,3 +75,12 @@ const mapStateToProps = (state) => {
 } 
 
 export default connect(mapStateToProps)(Home);
+
+//                    <footer>
+//                        <ul>
+//                            <li>Made by <a href="https://github.com/jrobind">James Robinson</a></li>
+//                            <li><i className="fab fa-facebook"></i></li>
+//                            <li><i className="fab fa-twitter-square"></i></li>
+//                            <li><i className="fab fa-instagram"></i></li>
+//                        </ul>
+//                    </footer>
