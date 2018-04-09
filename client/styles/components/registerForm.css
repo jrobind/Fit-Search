@@ -1,0 +1,74 @@
+.register-container {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 30%;
+}
+
+.register-container a {
+    text-decoration: underline;
+    color: rgb(0, 0, 0);
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register-form h1 {
+    font-size: 2.1em;
+}
+
+.register-submit {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    border-radius: 5px;
+    font-size: 0.95em;
+    border: 2px solid rgba(0, 0, 0, 0.95);
+    padding: 8px;
+    margin: auto;
+    width: 60%;
+    margin-top: 15px; 
+}
+
+.register-submit:hover{
+    background-color: white;
+    color: rgba(0, 0, 0, 0.95);
+}
+
+.radio-label {
+    font-weight: 600;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.register-hr {
+    margin-top: 30px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 1px;
+    width: 100%;
+}
+
+.register-success {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 1);
+    font-weight: 700;
+    font-size: 1em;
+    padding: 7px;
+    border-radius: 5px;
+    align-self: flex-start;
+    color: green;
+    text-align: center;
+}
+
+@media screen and (max-width: 850px) {
+    
+    .register-container {
+        margin: 5% 20%;
+
+    }
+}

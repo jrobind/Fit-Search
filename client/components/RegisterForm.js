@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import '../styles/components/registerForm.css';
 
 class RegisterForm extends Component {
     constructor(props) {
@@ -47,13 +48,13 @@ class RegisterForm extends Component {
         const { registerSuccess } = this.props;
         
         return(
-            <div className="signup-container">
+            <div className="register-container">
                 {!registerSuccess ? null :  <div className="register-success">
                     <span>Registration successful!</span>
                     <Link to='/login'>login now</Link>
                 </div>}
                 <h1>Signup</h1>
-                <form className="signup-form" onSubmit={this.handleSubmission}>
+                <form className="register-form" onSubmit={this.handleSubmission}>
 
                     <label htmlFor="email">Email</label>
                     <input 
@@ -77,7 +78,20 @@ class RegisterForm extends Component {
                     />
                     <p>Password should contain at least <strong>1 number</strong> and should be <strong>6 characters</strong> in length</p>
             
-                    <p>Who are you?</p>
+                    <p><strong>Who are you?</strong></p>
+            
+                    <label className="radio-label" 
+                        htmlFor="client"
+                    >
+                        <input 
+                            type="radio" 
+                            id="client" 
+                            onChange={() => this.handleRadio('client')} 
+                            checked={this.state.checked === 'client'} 
+                            name="radAnswer"
+                        /> 
+                        I'm looking for a trainer
+                    </label>
             
                     <label className="radio-label" 
                         htmlFor="trainer"
@@ -90,25 +104,12 @@ class RegisterForm extends Component {
                             name="radAnswer"
                             required
                         /> 
-                        Trainer
+                        I am a trainer
                     </label>
             
-                    <label className="radio-label" 
-                        htmlFor="client"
-                    >
-                        <input 
-                            type="radio" 
-                            id="client" 
-                            onChange={() => this.handleRadio('client')} 
-                            checked={this.state.checked === 'client'} 
-                            name="radAnswer"
-                        /> 
-                        Client
-                    </label>
-            
-                    <input className="submit" type='submit'/>
+                    <input className="register-submit" type='submit'/>
                 </form>
-                <hr/>
+                <hr className="register-hr"/>
                 <p>Already have an account? <Link to='/login'>Login</Link></p>
             </div>
         )   
