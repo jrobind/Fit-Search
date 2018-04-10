@@ -1,0 +1,171 @@
+.profileContainer {
+    margin: auto;
+    margin: 0 10%;
+    padding: 40px 0;
+}
+
+/*profile card styles*/
+
+.card {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.5);
+    background-color: rgb(0, 0, 0, 0.9);
+    color: white;
+    padding: 15px;
+    max-width: 1000px;
+}
+
+.titleAvatar {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 55%;
+}
+
+.imgContainer {
+    width: 275px;
+    height: 255px;
+    border: 7px solid rgba(211, 211, 211, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.imgContainer img {
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+
+.infoMain {
+    display: flex;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 1.5em;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 0;
+}
+
+.info {
+    flex-basis: 45%;
+}
+
+.info div:nth-child(-n+4) {
+    padding: 4px 0;
+}
+
+.infoBold {
+    font-weight: bold;
+}
+
+.areaNotes {
+    background-color: white;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.9);
+    padding: 0 10px;
+    margin-top: 8px;
+    width: 80%;
+    min-height: 192px;
+}
+
+.areaNotes h4 {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+    padding-bottom: 1px;
+    width: 90px;
+    margin: auto;
+    margin-bottom: 5px;
+}
+
+.updateSucccess {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+    font-size: 0.95em;
+    padding: 7px;
+    border-radius: 5px;
+    align-self: flex-start;
+    color: green;
+    text-align: center;   
+}
+
+.bio {
+    margin: 15px 35px 0 35px;
+}
+
+.update {
+    background-color: rgba(92, 184, 92, 1);
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    width: 120px;
+    margin: auto;
+    margin-top: 15px;
+}
+
+.update:hover {
+    color: rgba(92, 184, 92, 1);
+    background-color: white;
+    transition: 0.3s;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 800px) {
+    .profileContainer {
+        margin: 0 7%;
+    }
+    
+    .infoMain {
+        flex-direction: column;
+    }
+    
+    .info {
+        text-align: center;
+    }
+    
+    .areaNotes {
+        margin: auto;
+        margin-top: 15px;
+        width: 70%
+    }
+    
+    .info div:nth-child(-n+4) {
+        text-align: center;
+    }
+    
+    .titleAvatar {
+        margin-bottom: 4px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .bio, .info, .update {
+        font-size: 0.9em;
+    }
+    
+    .bio {
+        text-align: center;
+    }
+    
+    .info {
+        margin-top: 10px;
+    }
+    
+    .imgContainer {
+        width: 200px;
+        height: 220px;
+    }
+}
