@@ -29,6 +29,8 @@ h1 {
 .submit:hover{
     background-color: white;
     color: rgba(0, 0, 0, 0.95);
+    transition: 0.3s;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
