@@ -21,7 +21,12 @@ class LoginContainer extends Component {
         this.setState(() => ({loggingIn: true}));
         
         loginUser(userData)
-            .catch((error) => console.log(error));
+            .then((result) => {
+                if (result === 'failed') {
+                    this.setState(() => ({loggingIn: false}));
+                    alert('incorrect login details');  
+                } 
+            });
     }
     
     render() {

@@ -10,6 +10,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const REQUEST_PENDING = 'REQUEST_PENDING';
 export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
 
 export const requestPending = () => (
     {
@@ -20,6 +21,12 @@ export const requestPending = () => (
 export const requestSuccces = () => (
     {
         type: REQUEST_SUCCESS
+    }
+)
+
+export const loginFailed = () => (
+    {
+        type: LOGIN_FAILED
     }
 )
 
@@ -48,9 +55,11 @@ export const handleLoginUser = (userData) => {
                     dispatch(handleGetUserProfile(data.id));
                     data.userType === 'trainer' ? dispatch(handleGetInterestRequests(data.id)) : null;
                     dispatch(requestSuccces());
+                } else {
+                    dispatch(loginFailed());
+                    return 'failed';
                 }
-            })
-            .catch((error) => alert('incorrect details, please try again'));
+            });
     }
 }
 

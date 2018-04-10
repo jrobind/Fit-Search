@@ -31,7 +31,7 @@ export const apiCreateReview = (trainerId, review) => {
 export const apiLoginUser = (data) => {
     return axios.post('/api/login', data)
         .then((data) => data)
-        .catch((error) => console.log(error));
+        .catch((error) => error);
 }
 
 export const apiLogoutUser = () => {
