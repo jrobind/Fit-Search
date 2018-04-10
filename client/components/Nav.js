@@ -23,9 +23,11 @@ const Nav = ({
 
             {!loggedIn ? <li><NavLink activeClassName={styles.active} to='/sign-up'>Sign up</NavLink></li> : null}
 
-            {!loggedIn || !loggedIn && !interestRequestsSuccess ? <li><NavLink activeClassName={styles.active} to='/login'>login</NavLink></li> : <li><a onClick={() => {
+            {!loggedIn && <li><NavLink activeClassName={styles.active} to='/login'>login</NavLink></li>}
+            
+            {loggedIn && userType === 'client' || loggedIn && interestRequestSuccess && userType === 'trainer' ? <li><a onClick={() => {
                 handleLogout();
-            }}>logout</a></li>}
+            }}>logout</a></li> : null}
         </ul>
     </nav>
 );
