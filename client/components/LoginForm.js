@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
+import styles from '../styles/components/loginForm.css';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -53,9 +54,9 @@ class LoginForm extends Component {
             return <Redirect to='/' />;
         } else {
             return(
-                <div className="login-container">
+                <div className={styles.loginContainer}>
                     <h1>Login</h1>
-                    <form className="signup-form" onSubmit={this.handleSubmission}>
+                    <form className={styles.form} onSubmit={this.handleSubmission}>
 
                         <label htmlFor="email">Email</label>
                         <input 
@@ -75,7 +76,7 @@ class LoginForm extends Component {
                             value={this.state.password} 
                         />
 
-                        {!loggingIn ? <input className="submit" type='submit'/> : <Loading text='logging in...'/> }
+                        {!loggingIn ? <input className={styles.submit} type='submit'/> : <Loading text='logging in...'/> }
                     </form>
                 </div>
             )      

@@ -12,7 +12,21 @@ module.exports = {
     module: {
         rules: [
             {test: /\.(js)$/, use: 'babel-loader', exclude: /node_modules/},
-            {test: /\.css$/, use: ['style-loader', 'css-loader']},
+            {
+                test: /\.css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            localIdentName: '[hash:base64:5]__[local]'
+                        }
+                    }
+                ]
+            },
             {test: /\.(png|jpg)$/, loader: 'url-loader?linit=8192'}
         ]
     },

@@ -1,4 +1,4 @@
-.home-container {
+.homeContainer {
     height: 100%;
     width: 100%;
 }
@@ -14,7 +14,7 @@
     height: calc(100% - 75px);
 }
 
-.welcome-message {
+.welcome {
     font-weight: 700;
     margin-left: 5px;
     font-size: 0.95em;
@@ -23,23 +23,23 @@
     color: white;
 }
 
-.title-container {
+.titleContainer {
     margin-top: 16%;
 }
 
-.title-container h1, .title-container p {
+.titleContainer h1, .titleContainer p {
     text-align: center;
     color: rgb(250, 250, 250);
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    text-shadow: 3px 5px 6px rgba(0, 0, 0, 0.3);
 }
 
-.title-container h1 {
+.titleContainer h1 {
     font-size: 3.5em;
     font-weight: 700;
     margin-bottom: 5px;
 }
 
-.title-container p {
+.titleContainer p {
     font-size: 1.25em;
     letter-spacing: 2px;
     font-weight: 500;
@@ -47,14 +47,14 @@
     margin: 0;
 }
 
-.scroll-container {
+.scrollContainer {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
 }
 
-.scroll-circle {
+.scrollCircle {
     color: white;
     font-size: 1.5em;
     background-color: rgba(0, 0, 0, 0.6);
@@ -66,7 +66,7 @@
 
 /*process and review section*/
 
-.process-container, .review-container {
+.processContainer, .reviewContainer {
     display: flex;
     flex-direction: column;
     padding: 40px 20% 80px 20%;
@@ -74,26 +74,26 @@
     text-align: center;
 }
 
-.process-container {
+.processContainer {
     background-color: whitesmoke;
 }
 
-.review-container {
+.reviewContainer {
     background-color: rgba(0, 0, 0, 0.95);
 }
 
-.process-container h1 {
+.processContainer h1 {
     flex: 0 1 100%;
     font-size: 2.3em;
     margin-bottom: 15px;
 }
 
-.process-explained {
+.processExplained {
     font-size: 1.1em;
     margin-bottom: 3px;
 }
 
-.home-sign-up {
+.signup {
     background-color: rgba(0, 0, 0, 0.8);
     padding: 15px;
     font-size: 0.95em;
@@ -105,86 +105,87 @@
     text-align: center;
 }
 
-.home-sign-up:hover {
+.signup:hover {
     background-color: rgba(0, 0, 0, 0.9);
     transition: 0.3s;
 }
 
 
-.review-one, .review-two {
+.reviewOne, .reviewTwo {
     color: white;
-    font-size: 1.1em;
+    font-size: 1em;
     text-align: left
 }
 
-.review-one p, .review-two p {
+.reviewOne p, .reviewTwo p {
     max-width: 600px;
-    letter-spacing: 1px;
+    font-weight: 300;
     margin: 0;
 }
 
-.review-container h1 {
+.reviewContainer h1 {
     font-size: 2.3em;
     margin-bottom: 55px;
     color: white;
 }
 
-.review-one img {
+.reviewOne img {
     max-width: 100%;
     max-height: 100%;
     width: 100%;
 }
 
-.review-two img {
+.reviewTwo img {
     max-width: 100%;
     max-height: 100%;
     width: 100%;
 }
 
-.review-img-container-one, .review-img-container-two {
+.reviewImgContainerOne, .reviewImgContainerTwo {
     width: 230px;
     max-height: 240px;
     border: 7px solid rgba(250, 250, 250, 0.65);
     overflow: hidden;
     border-radius: 20px;
-    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 1);
 }
 
-.review-two {
+.reviewTwo {
     display: flex;
     flex-direction: column;
 }
 
-.review-img-container-one {
+.reviewImgContainerOne {
     margin-bottom: 20px;
 }
 
-.review-img-container-two {
+.reviewImgContainerTwo {
     align-self: flex-end;
     margin: 40px 0 20px 0;
 }
 
-.fa-quote-left {
+:global(.fa-quote-left) {
     margin-right: 8px;
 }
 
-.fa-quote-right {
+:global(.fa-quote-right) {
     margin-left: 8px;
 }
 
+/*media queries*/
 
 @media screen and (max-width: 1100px) {
-    .process-container {
+    .processContainer {
         align-items: flex-start;
         padding: 40px 30px 80px 30px;
         text-align: left;
     }
-    .process-container h1 {
+    .processContainer h1 {
         width: 65%;
         max-width: 500px;
     }
 
-    .process-explained {
+    .processExplained {
         max-width: 800px;
         width: 85%;
     }

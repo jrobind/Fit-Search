@@ -1,19 +1,19 @@
-.login-container {
+.loginContainer {
     display: flex;
     flex-direction: column;
     margin: 5% 30%;
 }
 
-.login-form {
+.form {
     display: flex;
     flex-direction: column;
 }
 
-.login-form h1 {
+h1 {
     font-size: 2.1em;
 }
 
-.login-submit {
+.submit {
     border: none;
     background-color: rgba(0, 0, 0, 0.95);
     color: white;
@@ -26,14 +26,14 @@
     margin-top: 15px; 
 }
 
-.login-submit:hover{
+.submit:hover{
     background-color: white;
     color: rgba(0, 0, 0, 0.95);
 }
 
 @media screen and (max-width: 800px) {
     
-    .login-container {
+    .loginContainer {
         margin: 5% 20%;
 
     }

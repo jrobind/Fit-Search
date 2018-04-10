@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../styles/components/home.css';
+import styles from '../styles/components/home.css';
 
 class Home extends Component {
     constructor(props) {
@@ -13,33 +13,33 @@ class Home extends Component {
         const name = !profile ? 'Welcome - please setup your profile' : `Welcome ${profile.name}`;
 
         return(
-                <div className="home-container">
-                    <div className="hero">
-                        {!loggedIn && !profile ? null : <p className="welcome-message">{name}</p>}
-                        <div className="title-container">
+                <div className={styles.homeContainer}>
+                    <div className={styles.hero}>
+                        {!loggedIn && !profile ? null : <p className={styles.welcome}>{name}</p>}
+                        <div className={styles.titleContainer}>
                             <h1>FIND YOUR FITNESS GURU</h1>
                             <p>The hassle-free personal trainer search</p>
                         </div>
-                        <div className="scroll-container">
-                            <div className="scroll-circle">&#8595;</div>
+                        <div className={styles.scrollContainer}>
+                            <div className={styles.scrollCircle}>&#8595;</div>
                         </div>
                     </div>
             
-                    <section className="process-container">
+                    <section className={styles.processContainer}>
                         <h1>Finding your perfect personal trainer couldn't be easier.</h1>
-                        <p className="process-explained">
+                        <p className={styles.processExplained}>
                             Search our huge selection of user verified personal trainers from across England. Simply sign up and create your own unique user profile, then use our sofisticated search functionality to find the perfect personal trainer for you. Once you find a trainer you like, register your interest. 
                         </p>
-                        <p className="process-explained">
+                        <p className={styles.processExplained}>
                             Trainers will contact you by email to organise a <strong>FREE</strong> taster session. All thats left, is for you to get in the best shape of your life. 
                         </p>
-                        <Link className="home-sign-up" to='/sign-up'>Sign me up now!</Link>
+                        <Link className={styles.signup} to='/sign-up'>Sign me up now!</Link>
                     </section>
                     
-                    <section className="review-container">
+                    <section className={styles.reviewContainer}>
                         <h1>Not convinced? See what our users have to say.</h1>
-                        <div className="review-one">
-                            <div className="review-img-container-one">
+                        <div className={styles.reviewOne}>
+                            <div className={styles.reviewImgContainerOne}>
                                 <img src={require('../images/review-one.jpg')}/>
                             </div>
                             <p>
@@ -48,13 +48,13 @@ class Home extends Component {
                                 <i className="fas fa-quote-right"></i>
                             </p>
                         </div>
-                        <div className="review-two">
-                            <div className="review-img-container-two">
+                        <div className={styles.reviewTwo}>
+                            <div className={styles.reviewImgContainerTwo}>
                                 <img src={require('../images/review-two.jpg')}/>
                             </div>
                             <p>
                                 <i className="fas fa-quote-left"></i>
-                                    I stumbled upon Fit-Search around six months ago. Within a few days I found a trainer who lived locally. The process was painless and very professional. Shelly, my trainer, contacted me after I registered my interest in her and organised my first free taster session. All I can say is that I'm hooked. I've lost over 15kg and I feel fitter than ever. What a life-changing six months it's been! And its all thanks to Fit-Search and Shelly. 
+                                    I stumbled upon Fit-Search around six months ago. Within a few days I found a trainer who lived locally. The process was painless and very professional. Shelly, my trainer, contacted me after I registered my interest with her and organised my first free taster session. All I can say is that I'm hooked. I've lost over 15kg and I feel fitter than ever. What a life-changing six months it's been! And its all thanks to Fit-Search and Shelly. 
                                 <i className="fas fa-quote-right"></i>
                             </p>
                         </div>

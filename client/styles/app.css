@@ -1,8 +1,8 @@
-html {
+:global(html) {
     height: 100%;
 }
 
-body {
+:global(body) {
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     margin: 0;
     padding: 0;
@@ -10,12 +10,12 @@ body {
     width: 100%;
 }
 
-.app-container, #app {
+:global(.app-container), :global(#app) {
     height: 100%;
     width: 100%;
 }
 
-.register-success, .profile-update {
+:global(.register-success), :global(.profile-update) {
     display: flex;
     flex-direction: column;
     border: 1px solid rgba(0, 0, 0, 0.2);
@@ -28,7 +28,7 @@ body {
     text-align: center;
 }
 
-.portal-container {
+:global(.portal-container) {
     display: flex;
     flex-direction: column;
     width: 500px;
@@ -55,30 +55,6 @@ body {
     font-weight: 700;
     font-size: 1.5em;
     text-decoration: underline;
-}
-
-.interest-container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    margin: auto;
-    margin: 30px 25%;
-    border: 1px solid rgba(0, 0, 0, 0.2)
-}
-
-.interest-container img {
-    width: 200px;
-    border-radius: 50%;
-}
-
-.interest-container div {
-    padding: 10px;
-}
-
-.interest-card {
-    margin: 30px 50px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 .interest-disable {
@@ -233,21 +209,6 @@ input {
 .hourly {
     display: flex;
     flex-direction: column;
-}
-
-.radio-label {
-    font-weight: 600;
-}
-
-input[type="radio"] {
-    margin-right: 5px;
-}
-
-hr {
-    margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0.4);
-    height: 1px;
-    width: 100%;
 }
 
 .home-profiles {

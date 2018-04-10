@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import '../styles/components/registerForm.css';
+import styles from '../styles/components/registerForm.css';
 
 class RegisterForm extends Component {
     constructor(props) {
@@ -48,13 +48,13 @@ class RegisterForm extends Component {
         const { registerSuccess } = this.props;
         
         return(
-            <div className="register-container">
-                {!registerSuccess ? null :  <div className="register-success">
+            <div className={styles.registerContainer}>
+                {!registerSuccess ? null :  <div className={styles.success}>
                     <span>Registration successful!</span>
                     <Link to='/login'>login now</Link>
                 </div>}
                 <h1>Signup</h1>
-                <form className="register-form" onSubmit={this.handleSubmission}>
+                <form className={styles.form} onSubmit={this.handleSubmission}>
 
                     <label htmlFor="email">Email</label>
                     <input 
@@ -80,7 +80,7 @@ class RegisterForm extends Component {
             
                     <p><strong>Who are you?</strong></p>
             
-                    <label className="radio-label" 
+                    <label className={styles.radioLabel} 
                         htmlFor="client"
                     >
                         <input 
@@ -93,7 +93,7 @@ class RegisterForm extends Component {
                         I'm looking for a trainer
                     </label>
             
-                    <label className="radio-label" 
+                    <label className={styles.radioLabel} 
                         htmlFor="trainer"
                     >
                         <input 
@@ -107,9 +107,9 @@ class RegisterForm extends Component {
                         I am a trainer
                     </label>
             
-                    <input className="register-submit" type='submit'/>
+                    <input className={styles.submit} type='submit'/>
                 </form>
-                <hr className="register-hr"/>
+                <hr className={styles.hr}/>
                 <p>Already have an account? <Link to='/login'>Login</Link></p>
             </div>
         )   
