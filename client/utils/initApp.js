@@ -3,9 +3,9 @@ import reducer from '../reducers';
 import middleware from '../middleware';
 
 const initialState = {
-    userAuth: JSON.parse(localStorage.getItem('userAuth')),
-    userProfile: JSON.parse(localStorage.getItem('userProfile')),
-    interestRequests: JSON.parse(localStorage.getItem('interestRequests')),
+    userAuth: !JSON.parse(localStorage.getItem('userAuth')) ? {} : JSON.parse(localStorage.getItem('userAuth')),
+    userProfile: !JSON.parse(localStorage.getItem('userProfile')) ? {} : JSON.parse(localStorage.getItem('userProfile')),
+    interestRequests: !JSON.parse(localStorage.getItem('interestRequests')) ? {} : JSON.parse(localStorage.getItem('interestRequests')),
     selectedTrainer: {},
     searchResults: []
 };
