@@ -3,10 +3,10 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import Loading from './Loading';
+import handleReviewStars from '../utils/reviewStars';
 
 const Search = ({ 
     handleUpdateSearch, 
-    handleReviewStars, 
     searchResults, 
     componentState: { currentQuery, noResults, currentPage },
     currentSearchResults,
@@ -76,7 +76,6 @@ const Search = ({
 
 Search.propTypes = {
     handleUpdateSearch: PropTypes.func.isRequired,
-    handleReviewStars: PropTypes.func.isRequired,
     searchResults: PropTypes.array.isRequired,
     componentState: PropTypes.object.isRequired,
     handlePageClick: PropTypes.func.isRequired,

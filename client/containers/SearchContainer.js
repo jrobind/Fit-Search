@@ -36,21 +36,6 @@ class SearchContainer extends Component {
         this.setState(() => ({currentPage: Number(page)}));
     }
     
-    handleReviewStars(rating) {
-        switch(rating) {
-            case 1 :
-                return <img src={require('../images/ratings-1.png')} />
-            case 2 :
-                return <img src={require('../images/ratings-2.png')} />
-            case 3 : 
-                return <img src={require('../images/ratings-3.png')} />
-            case 4 : 
-                return <img src={require('../images/ratings-4.png')} />
-            case 5 :
-                return <img src={require('../images/ratings-5.png')} />
-        }
-    }
-    
     handleUpdateSearch(searchQuery, reset) {
         reset ? this.handleResetSearch() : null;
 
@@ -90,8 +75,7 @@ class SearchContainer extends Component {
         
         return <Search 
                     {...this.props} 
-                    handleUpdateSearch={this.handleUpdateSearch} 
-                    handleReviewStars={this.handleReviewStars}  
+                    handleUpdateSearch={this.handleUpdateSearch}   
                     handlePageClick={this.handlePageClick}
                     componentState={this.state}
                     currentSearchResults={currentSearchResults}

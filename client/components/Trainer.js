@@ -4,6 +4,7 @@ import MapContainer from '../containers/MapContainer';
 import ReviewForm from './ReviewForm';
 import Profile from './Profile';
 import Loading from './Loading';
+import handleReviewStars from '../utils/reviewStars';
 import styles from '../styles/components/trainer.css';
 
 const Trainer = ({
@@ -11,7 +12,6 @@ const Trainer = ({
     handleInterestSubmission,
     handleReviewSubmission,
     handlePageClick,
-    handleReviewStars,
     profile,
     currentReviewResults,
     pageNumbers
@@ -70,8 +70,7 @@ Trainer.propTypes = {
     state: PropTypes.object.isRequired,
     currentReviewResults: PropTypes.array.isRequired,
     handleInterestSubmission: PropTypes.func.isRequired,
-    handleReviewSubmission: PropTypes.func.isRequired,
-    handleReviewStars: PropTypes.func.isRequired
+    handleReviewSubmission: PropTypes.func.isRequired
 }
 
 export default Trainer;
