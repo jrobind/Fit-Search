@@ -11,10 +11,9 @@
 
 .navbar a {
     text-decoration: none;
-    letter-spacing: 1px;
     color: white;
     cursor: pointer;
-    padding-bottom: 2px;
+    padding: 0 6px 2px 6px;
 }
 
 .logo {
@@ -24,9 +23,9 @@
 
 .requestNotifications {
     margin-left: 5px;
-    padding: 2px 7px;
+    padding: 0 6px;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: crimson;
     color: white;
 }
 

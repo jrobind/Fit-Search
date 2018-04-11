@@ -84,17 +84,12 @@
     margin-bottom: 5px;
 }
 
-.updateSucccess {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+.updateSuccess {
     font-weight: 600;
-    font-size: 0.95em;
-    padding: 7px;
-    border-radius: 5px;
-    align-self: flex-start;
-    color: green;
-    text-align: center;   
+    font-size: 1.2em;
+    color: green; 
+    margin-bottom: 15px;
+    text-align: center;
 }
 
 .bio {

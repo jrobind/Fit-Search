@@ -183,6 +183,7 @@
         padding: 40px 30px 80px 30px;
         text-align: left;
     }
+    
     .processContainer h1 {
         width: 65%;
         max-width: 500px;
@@ -191,5 +192,21 @@
     .processExplained {
         max-width: 800px;
         width: 85%;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .processContainer h1 {
+        width: 80%;
+        font-size: 2em;
+        max-width: 700px;
+    }
+    
+    .reviewContainer h1 {
+        font-size: 2em;
+    }
+    
+    .titleContainer h1 {
+        font-size: 3em;
     }
 }

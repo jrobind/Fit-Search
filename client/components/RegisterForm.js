@@ -56,7 +56,7 @@ class RegisterForm extends Component {
                 <h1>Signup</h1>
                 <form className={styles.form} onSubmit={this.handleSubmission}>
 
-                    <label htmlFor="email">Email</label>
+                    <label htmlFor="email"><span>* </span>Email</label>
                     <input 
                         id='email' 
                         type='email' 
@@ -66,7 +66,7 @@ class RegisterForm extends Component {
                         required
                     />
 
-                    <label htmlFor="password">Password</label>
+                    <label htmlFor="password"><span>* </span>Password</label>
                     <input 
                         id='password' 
                         type='password' 
@@ -78,7 +78,7 @@ class RegisterForm extends Component {
                     />
                     <p>Password should contain at least <strong>1 number</strong> and should be <strong>6 characters</strong> in length</p>
             
-                    <p><strong>Who are you?</strong></p>
+                    <p><strong><span>* </span>Who are you?</strong></p>
             
                     <label className={styles.radioLabel} 
                         htmlFor="client"

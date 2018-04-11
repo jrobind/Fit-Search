@@ -43,7 +43,7 @@ class CreateProfile extends Component {
         return(
             <div className="createProfileContainer">
                 <h4>Welcome! You dont have a {userType} profile setup just yet. Not to worry, fill in the form below and we'll get right to it.</h4>
-                <hr/>
+                <hr className="create-hr"/>
             
                 <ProfileForm 
                     handleSubmission={this.handleSubmission}
