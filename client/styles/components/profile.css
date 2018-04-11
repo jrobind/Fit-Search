@@ -1,6 +1,4 @@
 .profileContainer {
-    margin: auto;
-    margin: 0 10%;
     padding: 40px 0;
 }
 
@@ -15,8 +13,9 @@
     box-shadow: 2px 4px 3px rgba(0, 0, 0, 0.5);
     background-color: rgb(0, 0, 0, 0.9);
     color: white;
-    padding: 15px;
-    max-width: 1000px;
+    padding: 15px 10px;
+    width: 75%;
+    max-width: 600px;
 }
 
 .titleAvatar {
@@ -28,7 +27,8 @@
 .imgContainer {
     width: 275px;
     height: 255px;
-    border: 7px solid rgba(211, 211, 211, 0.3);
+    border: 7px solid rgba(211, 211, 211, 0.6);
+    box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     overflow: hidden;
     margin: auto;
@@ -41,10 +41,6 @@
     display: block;
 }
 
-.infoMain {
-    display: flex;
-}
-
 .title {
     font-weight: 700;
     font-size: 1.5em;
@@ -54,7 +50,7 @@
 }
 
 .info {
-    flex-basis: 45%;
+    margin: 10px auto;
 }
 
 .info div:nth-child(-n+4) {
@@ -66,13 +62,12 @@
 }
 
 .areaNotes {
-    background-color: white;
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.9);
     padding: 0 10px;
-    margin-top: 8px;
-    width: 80%;
-    min-height: 192px;
+    min-height: 140px;
+    margin: 0 11% 0 11%;
+    background-color: whitesmoke;
 }
 
 .areaNotes h4 {
@@ -88,12 +83,12 @@
     font-weight: 600;
     font-size: 1.2em;
     color: green; 
-    margin-bottom: 15px;
+    margin: -20px 0 20px 0;
     text-align: center;
 }
 
 .bio {
-    margin: 15px 35px 0 35px;
+    margin: 15px 15px 0 15px;
 }
 
 .update {
@@ -118,35 +113,7 @@
 
 /*media queries*/
 
-@media screen and (max-width: 800px) {
-    .profileContainer {
-        margin: 0 7%;
-    }
-    
-    .infoMain {
-        flex-direction: column;
-    }
-    
-    .info {
-        text-align: center;
-    }
-    
-    .areaNotes {
-        margin: auto;
-        margin-top: 15px;
-        width: 70%
-    }
-    
-    .info div:nth-child(-n+4) {
-        text-align: center;
-    }
-    
-    .titleAvatar {
-        margin-bottom: 4px;
-    }
-}
-
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 550px) {
     .bio, .info, .update {
         font-size: 0.9em;
     }
@@ -155,12 +122,14 @@
         text-align: center;
     }
     
-    .info {
-        margin-top: 10px;
-    }
-    
     .imgContainer {
-        width: 200px;
-        height: 220px;
+        width: 230px;
+        height: 210px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .card {
+        width: 85%;
     }
 }
