@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import Loading from './Loading';
 import handleReviewStars from '../utils/reviewStars';
+import styles from '../styles/components/search.css';
 
 const Search = ({ 
     handleUpdateSearch, 
@@ -14,20 +15,16 @@ const Search = ({
     history, 
     handlePageClick,
 }) => (
-    <div className="search-container">
+    <div className={styles.searchContainer}>
         <SearchBar 
             handleUpdateSearch={handleUpdateSearch} 
             searchResults={searchResults}
             currentQuery={currentQuery}
         />
-        <div className="search-results">
-            <div className="search-banner">
-                <h1>Trainer results</h1>
-                <p>When you find a trainer you like, why not drop them a message to book in your first session?</p>
-            </div>
-            <div className="trainer-card-container">
+        <div className={styles.results}>
+            <div className={styles.trainerCardContainer}>
                 {searchResults.length ? currentSearchResults.map(({ profile, _id, reviewAverage }) => (
-                    <div className="trainer" key={_id} onClick={() => {
+                    <div className={styles.card} key={_id} onClick={() => {
                         history.push({
                             pathname: '/search/trainer',
                             state: {
@@ -35,33 +32,27 @@ const Search = ({
                             }
                         });
                     }}>
-                        <h3>Trainer Name</h3>
-                        <div>{profile.name}</div>
-                        <img src={profile.avatar}/>
-                        <h3>Trainer Bio</h3>
-                        <div>{profile.bio}</div>
-                        <h3>Hourly rate</h3>
-                        <div>£ {profile.rate}</div>
-                        <h6>Region</h6>
-                        <div>{profile.region}</div>
-                        <h6>Based out of:</h6>
-                        <div>{profile.base}</div>
-                        <h6>areas covered notes:</h6>
-                        <div>{profile.notes}</div>
-
-                        <div className="trainer-reviews">Review average: {reviewAverage === null ? 'No reviews just yet!' : handleReviewStars(reviewAverage)}</div>
-                            <Link className="review" to={{
-                                pathname: '/search/trainer', 
-                                state: {
-                                    trainerId: _id 
-                                }
-                            }}>Leave a review!</Link>
+                        <div className={styles.rate}><strong>£{profile.rate}</strong></div>
+                        <h4>{profile.name}</h4>
+                        
+                        <div className={styles.imgContainer}>
+                            <img src={profile.avatar}/>
                         </div>
+                                                        
+                        <div className={styles.trainerReviews}>
+                            {reviewAverage === null ? 'No reviews just yet!' : handleReviewStars(reviewAverage)}
+                        </div>
+                            
+                        <div><strong>{profile.base}</strong>, <strong>{profile.region}</strong></div>
+                        
+                        {profile.bio ? <div className={styles.bio}>{profile.bio.slice(0, 130)}... <span className={styles.readmore}> Find out more!</span></div> : <span>No bio just yet!</span>}
+                    </div>
+
                 )) : <div>{noResults ? 'NO RESULTS FOUND...' : <Loading />} </div>} 
             </div>
-                <ul className="page-numbers">
+                <ul className="pageNumbers">
                     {pageNumbers.map((number) => (
-                        <li className={currentPage === number ? 'current-page' : 'page'}
+                        <li className={currentPage === number ? 'currentPage' : 'page'}
                             id={number} 
                             key={number} 
                             onClick={handlePageClick}

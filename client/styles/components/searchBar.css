@@ -1,0 +1,31 @@
+/* search bar styles */
+
+.searchBarContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.9);
+    margin-top: 10px;
+    width: 200px;
+    padding: 0 10px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    height: 100vh;
+    color: white;
+}
+
+.searchBarContainer h5, h3 {
+    margin: 18px 0;
+    font-weight: 500;
+}
+
+.searchBarContainer a:hover {
+    cursor: pointer;
+}
+
+.hourly {
+    display: flex;
+    flex-direction: column;
+}
+
+.searchBarContainer input {
+    background-color: white;
+}

@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import formatMessage from '../utils/formatMessage';
+import styles from '../styles/components/searchBar.css';
+import queryStyles from '../styles/components/currentQuery.css';
 
 
 const CurrentQuery = (props) => (
-    <div className="current-query-container">
-        <div>
-            <button onClick={() => props.resetSearch()}>Reset search</button>
-            <h3>Current search filter:</h3>
-            <h4>{formatMessage(props.currentQuery)}</h4>
-        </div>
+    <div className={queryStyles.queryContainer}>
+        <button className={queryStyles.button} onClick={() => props.resetSearch()}>Reset search</button>
+        <h3>Current search filter:</h3>
+        <div>{formatMessage(props.currentQuery).map((query, index) => (
+            <div className={queryStyles.query} key={index}>{query}</div>      
+        ))}</div>
     </div>
 );
 
@@ -18,7 +20,6 @@ CurrentQuery.propTypes = {
     resetSearch: PropTypes.func.isRequired,
     currentQuery: PropTypes.string.isRequired
 }
-
 
 class SearchBar extends Component {
     constructor(props) {
@@ -85,9 +86,9 @@ class SearchBar extends Component {
         const { starsClicked, rateClicked, locationSubmitted } = this.state;
         
         return(
-            <div className="search-toggle-container">
+            <div className={styles.searchBarContainer}>
                 <CurrentQuery currentQuery={currentQuery} resetSearch={this.resetSearch}/>
-                <div className="toggle-reviews">
+                <div className={styles.reviews}>
                     <h5>Average Trainer Review</h5>
                     <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../images/ratings-5.png')}/></a>
                                                                                       
@@ -99,7 +100,7 @@ class SearchBar extends Component {
                                                                                       
                     <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '1') : null}><img src={require('../images/ratings-1.png')}/></a>          
                 </div>
-                <div className="hourly">
+                <div className={styles.hourly}>
                     <h5>Trainer hourly rate</h5>
                     <a onClick={() => !rateClicked ? this.handleSearchSelection('rate', '<25') : null}>under £25</a>
                     <a onClick={() => !rateClicked ? this.handleSearchSelection('rate', '25-35') : null}>£25-35</a>
