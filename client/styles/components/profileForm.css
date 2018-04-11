@@ -1,0 +1,75 @@
+/*create profile container styles*/
+
+:global(.createProfileContainer) h4 {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 0px 20% 20px 20%;
+    padding-top: 40px;
+}
+
+:global(.createProfileContainer) hr {
+    width: 75%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+}
+
+/*profile form styles*/
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin: 0 25%;
+    padding: 25px 0;
+}
+
+.form span {
+    color: crimson;
+    font-weight: bold;
+}
+
+.submit {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    border-radius: 5px;
+    font-size: 0.95em;
+    border: 2px solid rgba(0, 0, 0, 0.95);
+    padding: 8px;
+    margin: auto;
+    width: 60%;
+    margin-top: 15px; 
+}
+
+.submit:hover{
+    background-color: white;
+    color: rgba(0, 0, 0, 0.95);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.trainer, .default {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+}
+
+.form textarea {
+    height: 150px;
+    background-color: whitesmoke;
+}
+
+/*media queries*/
+
+@media screen and (max-width: 1000px) {
+    .form {
+        margin: 0 15%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :global(.createProfileContainer) h4 {
+        font-size: 1.3em;
+
+    }
+}

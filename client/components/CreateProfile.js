@@ -41,9 +41,10 @@ class CreateProfile extends Component {
         const { userType } = this.props;
         
         return(
-            <div className="setup-profile-container">
-                <h1>Welcome to Fit-Search</h1>
-                <h4>You dont have a {userType} profile setup just yet. Not to worry, fill in the form below and well get right to it.</h4>
+            <div className="createProfileContainer">
+                <h4>Welcome! You dont have a {userType} profile setup just yet. Not to worry, fill in the form below and we'll get right to it.</h4>
+                <hr/>
+            
                 <ProfileForm 
                     handleSubmission={this.handleSubmission}
                     handleInput={this.handleInput}
