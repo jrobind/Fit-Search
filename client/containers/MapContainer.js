@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GoogleMapReact from 'google-map-react';
+import styles from '../styles/components/map.css';
 
-const Map = () => <div></div>;
+const Map = () => <div className={styles.map}></div>;
 
 class MapContainer extends Component {
     constructor(props) {
@@ -31,11 +32,11 @@ class MapContainer extends Component {
     
     render() {
         return (
-            <div className="map-container">
+            <div className={styles.mapContainer}>
                 <GoogleMapReact
                     bootstrapURLKeys={{ key: 'AIzaSyDDDI1kAqzyvj4haRm4i4Tl25n33fU82k8' }}
                     center={this.props.coordinates}
-                    zoom={10}
+                    zoom={9}
                     onGoogleApiLoaded={this.setupMapMarker}
                     yesIWantToUseGoogleMapApiInternals={true}
                 >

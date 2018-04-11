@@ -1,0 +1,143 @@
+.trainerContainer {
+    background-color: whitesmoke;
+}
+
+/* trainer card styles*/
+
+.trainerCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+
+/* map and interest button styles */
+
+.middleContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.interest, .interestDisable {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    border: none;
+    font-size: 1em;
+    padding: 15px;
+    border-radius: 5px;
+    width: 60%;
+    max-width: 400px;
+    margin: auto;
+}
+
+.interestDisable {
+    opacity: 0.8; 
+    cursor: not-allowed;
+}
+
+.interest:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* reviews and review form styles */
+
+.bottomContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    margin: 5px 5px 0 5px;
+}
+
+.avatar span {
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.avatarImgContainer {
+    width: 85px;
+    height: 85px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.avatar img {
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.reviews {
+    max-width: 1000px;
+    width: 85%;
+    align-self: center;
+}
+
+.reviewCard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin: 5px 10px;
+    background-color: white;
+}
+
+.reviewCard div:nth-of-type(2) img {
+    width: 80px;
+    margin-left: 5px;
+}
+
+.reviewMessage {
+    margin: 0 0 5px 5px;
+    font-size: 0.85em;
+}
+
+/* global page number styles */
+
+:global(.pageNumbers) {
+    display: flex;
+    list-style: none;
+    padding: 5px;
+    justify-content: center; 
+}
+
+:global(.pageNumbers):hover {
+    cursor: pointer;
+}
+
+:global(.page), :global(.current-page) {
+    margin: 0 4px;
+    font-weight: 400;
+    font-size: 1.1em;
+    padding: 5px 7px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9)
+}
+
+:global(.current-page) {
+    text-decoration: underline;
+}
+
+/* media queries*/
+
+@media screen and (max-width: 700px) {
+    .avatarImgContainer {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .reviews {
+        width: 96%;
+    }
+}

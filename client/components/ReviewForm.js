@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import styles from '../styles/components/reviewForm.css';
 
 class ReviewForm extends Component {
     constructor(props) {
@@ -37,15 +38,16 @@ class ReviewForm extends Component {
     
     render() {
         return(
-            <div>
-                <form className="review-form" onSubmit={this.handleSubmission}>
-                    <label>Rating</label>
+            <div className={styles.reviewContainer}>
+                <h3>Leave a review</h3>
+                <form className={styles.form} onSubmit={this.handleSubmission}>
+                    <label><span>* </span>Rating</label>
                     <input id='rating' type='number' onChange={this.handleInput} placeholder='rating between 1/5' min='1' max='5' required value={this.state.rating}/>
 
-                    <label>Review message (maximum 750 characters)</label>
+                    <label><span>* </span>Review message <strong>(maximum 750 characters)</strong></label>
                     <textarea id='body' type='text' onChange={this.handleInput} placeholder=' type a review' value={this.state.body} required maxLength='750'></textarea>
 
-                    <input className="submit" type='submit' value='Submit review!'/>
+                    <input className={styles.submit} type='submit' value='Submit review!'/>
                 </form>
             </div>
         )   

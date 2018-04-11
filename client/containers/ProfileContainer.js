@@ -37,7 +37,10 @@ class ProfileContainer extends Component {
         const { state: locationState } = this.props.location;
 
         if (profile && requestSuccess) {
-            return <Profile profile={profile} locationState={locationState} />
+            return <Profile 
+                        profile={profile} 
+                        locationState={locationState} 
+                        updateLink={true}/>
         } else if (!profile) {
             return <CreateProfile {...this.props} createProfile={this.handleCreateProfile} />
         } else if (requestPending) {

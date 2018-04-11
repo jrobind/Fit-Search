@@ -1,0 +1,49 @@
+.reviewContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewContainer h3 {
+    margin: auto;
+    font-size: 1.35em;
+    margin-bottom: 8px;
+}
+
+.form {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    max-width: 550px;
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+.form span {
+    font-weight: bold;
+    color: crimson;
+}
+
+.form textarea {
+    height: 130px;
+}
+
+.submit {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    border-radius: 5px;
+    font-size: 0.95em;
+    border: 2px solid rgba(0, 0, 0, 0.95);
+    padding: 8px;
+    margin: auto;
+    width: 60%;
+    margin-top: 15px; 
+}
+
+.submit:hover{
+    background-color: white;
+    color: rgba(0, 0, 0, 0.95);
+    transition: 0.3s;
+    cursor: pointer;
+}

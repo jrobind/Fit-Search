@@ -14,7 +14,8 @@ const Profile = ({
         radius, 
         notes 
     },
-    locationState
+    locationState,
+    updateLink
 }) => (
     <div className={styles.profileContainer}>
     {locationState && locationState.profileUpdated ? <div className={styles.updateSuccess}>Profile updated!</div> : null}
@@ -35,14 +36,15 @@ const Profile = ({
                 </div>
             </div>
             <div className={styles.bio}>{bio}</div>
-            <Link className={styles.update} to='/portal/update'>Update profile</Link>
+            {updateLink ? <Link className={styles.update} to='/portal/update'>Update profile</Link> : null}
         </div>
     </div>
 )
 
 Profile.propTypes = {
     profile: PropTypes.object.isRequired,
-    locationState: PropTypes.object
+    locationState: PropTypes.object,
+    updateLink: PropTypes.bool.isRequired
 }
 
 export default Profile;
