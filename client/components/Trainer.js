@@ -13,6 +13,7 @@ const Trainer = ({
     handleReviewSubmission,
     handlePageClick,
     profile,
+    reviews,
     reviewAverage,
     currentReviewResults,
     pageNumbers
@@ -24,6 +25,8 @@ const Trainer = ({
                 <Profile 
                     profile={profile} 
                     updateLink={false}
+                    reviewAverage={reviewAverage}
+                    reviews={reviews}
                 />
                 
                 <div className={styles.middleContainer}>
@@ -47,7 +50,10 @@ const Trainer = ({
                                     </div>
                                     <span>{review.authorName}</span>
                                 </div>
-                                <div>{handleReviewStars(review.rating)} <span>{review.dateCreated}</span></div>
+                                <div className={styles.reviewInfo}>
+                                    {handleReviewStars(review.rating)}
+                                    <div className={styles.date}>{review.dateCreated}</div>
+                                </div>
                                 <div className={styles.reviewMessage}>{review.body}</div>
                             </div> 
                         )}

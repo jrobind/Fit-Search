@@ -17,11 +17,12 @@ export const requestSuccces = () => (
     }
 )
 
-const getUserProfile = (profile, reviews) => (
+const getUserProfile = (profile, reviews, reviewAverage) => (
     {
         type: GET_USER_PROFILE,
         profile,
-        reviews
+        reviews,
+        reviewAverage
     }
 );
 
@@ -36,7 +37,7 @@ export const handleGetUserProfile = (id) => {
        return apiGetProfile(id)
             .then(({ data }) => {
                 dispatch(requestPending());
-                dispatch(getUserProfile(data.profile, data.reviews))
+                dispatch(getUserProfile(data.profile, data.reviews, data.reviewAverage));
                 dispatch(requestSuccces());
                 return data;
             })

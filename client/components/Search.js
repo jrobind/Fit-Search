@@ -23,7 +23,7 @@ const Search = ({
         />
         <div className={styles.results}>
             <div className={styles.trainerCardContainer}>
-                {searchResults.length ? currentSearchResults.map(({ profile, _id, reviewAverage }) => (
+                {searchResults.length ? currentSearchResults.map(({ profile, _id, reviewAverage, numberOfReviews }) => (
                     <div className={styles.card} key={_id} onClick={() => {
                         history.push({
                             pathname: '/search/trainer',
@@ -40,8 +40,9 @@ const Search = ({
                         </div>
                                                         
                         <div className={styles.trainerReviews}>
-                            {reviewAverage === null ? 'No reviews just yet!' : handleReviewStars(reviewAverage)}
-                        </div>
+                            {reviewAverage === null ? 'No reviews' : handleReviewStars(reviewAverage)}
+                            {numberOfReviews ? numberOfReviews : null}
+                        </div> 
                             
                         <div><strong>{profile.base}</strong>, <strong>{profile.region}</strong></div>
                         

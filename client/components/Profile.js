@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import handleReviewStars from '../utils/reviewStars';
 import styles from '../styles/components/profile.css';
 
 const Profile = ({ 
@@ -14,6 +15,8 @@ const Profile = ({
         radius, 
         notes 
     },
+    reviews,
+    reviewAverage,
     locationState,
     updateLink
 }) => (
@@ -26,6 +29,14 @@ const Profile = ({
                 <img src={avatar}/>
             </div>
         </div>
+    
+        {reviews.length ? <div className={styles.reviewInfo}>
+            <div className={styles.rating}>
+                {handleReviewStars(reviewAverage)}
+                <div>{reviews.length}</div>
+            </div>
+        </div> : null}
+        
         <div className={styles.info}>
             {rate ? <div><span className={styles.infoBold}>Hourly rate: </span> £{rate}</div> : null}
             {region ? <div><span className={styles.infoBold}>Region:</span> {region}</div> : null}
@@ -41,6 +52,8 @@ const Profile = ({
 
 Profile.propTypes = {
     profile: PropTypes.object.isRequired,
+    reviews: PropTypes.array,
+    reviewAverage: PropTypes.number,
     locationState: PropTypes.object,
     updateLink: PropTypes.bool.isRequired
 }

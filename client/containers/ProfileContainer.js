@@ -38,7 +38,7 @@ class ProfileContainer extends Component {
 
         if (profile && requestSuccess) {
             return <Profile 
-                        profile={profile} 
+                        {...this.props}
                         locationState={locationState} 
                         updateLink={true}/>
         } else if (!profile) {
@@ -51,14 +51,16 @@ class ProfileContainer extends Component {
 
 const mapStateToProps = (state) => {
     const { userType, id } = state.userAuth;
-    const { profile, requestSuccess, requestPending } = state.userProfile;
+    const { profile, requestSuccess, requestPending, reviews, reviewAverage } = state.userProfile;
     
     return {
         profile,
         userType,
         id,
         requestSuccess,
-        requestPending
+        requestPending,
+        reviews,
+        reviewAverage
     } 
 };
 

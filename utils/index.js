@@ -2,7 +2,8 @@ const formatQueryReturn = (result) => {
     return result.map((trainer) => ({ 
         _id: trainer._id,
         profile: trainer.profile,
-        reviewAverage: calculateReviewAverage(trainer.reviews)
+        reviewAverage: calculateReviewAverage(trainer.reviews),
+        numberOfReviews: trainer.reviews.length
     }));  
 };
 

@@ -3,6 +3,7 @@ import { GET_USER_PROFILE, RESET_USER_PROFILE, REQUEST_PENDING, REQUEST_SUCCESS 
 const initialState = {
     profile: null,
     reviews: null,
+    reviewAverage: null,
     requestPending: false,
     requestSuccess: false
 }
@@ -18,7 +19,8 @@ const userProfile = (state = initialState, action) => {
             return {
                 ...state,
                 profile: action.profile,
-                reviews: action.reviews
+                reviews: action.reviews,
+                reviewAverage: action.reviewAverage
             }
         case REQUEST_SUCCESS :
             return {
@@ -31,6 +33,7 @@ const userProfile = (state = initialState, action) => {
                 ...state,
                 profile: null,
                 reviews: null,
+                reviewAverage: null,
                 requestPending: false,
                 requestSuccess: false
             }

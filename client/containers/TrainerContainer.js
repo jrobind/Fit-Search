@@ -122,7 +122,7 @@ class TrainerContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { profile, reviews, id: trainerId } = state.selectedTrainer;
+    const { profile, reviews, id: trainerId, reviewAverage } = state.selectedTrainer;
     const { id: userId,  } = state.userAuth;
     const { profile: userProfile } = state.userProfile;
     
@@ -132,6 +132,7 @@ const mapStateToProps = (state) => {
             reviews,
             userId,
             trainerId,
+            reviewAverage,
             state
            }
 };
