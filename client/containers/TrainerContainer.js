@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { handleGetSelectedTrainer } from '../actions/selectedTrainer';
+import { handleGetSelectedTrainer, resetSelectedTrainer } from '../actions/selectedTrainer';
 import { apiCreateReview, apiCreateInterestRequest, apiGetInterestRequests } from '../utils/api';
 import Trainer from '../components/Trainer';
 import Loading from '../components/Loading';
@@ -26,7 +26,9 @@ class TrainerContainer extends Component {
     
     componentDidMount() {
         let { trainerId } = this.props.location.state || this.props.history.location.state;
-        const { userId, getSelectedTrainer } = this.props;
+        const { userId, getSelectedTrainer, resetSelectedTrainer } = this.props;
+        
+        resetSelectedTrainer();
 
         getSelectedTrainer(trainerId)
             .then(({ profile }) => {
@@ -140,6 +142,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     getSelectedTrainer(trainerId) {
         return dispatch(handleGetSelectedTrainer(trainerId));   
+    },
+    resetSelectedTrainer() {
+        return dispatch(resetSelectedTrainer());
     }
 });
 
