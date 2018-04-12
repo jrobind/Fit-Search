@@ -1,13 +1,17 @@
 .profileContainer {
     padding: 40px 0;
+    background: url('../../images/trainer-image.jpg') center center / cover;
+    height: 100vh;
 }
 
 .updateSuccess {
-    font-weight: 600;
-    font-size: 1.2em;
-    color: green; 
+    font-weight: 700;
+    font-size: 1.3em;
+    letter-spacing: 1px;
+    color: white; 
     margin: -20px 0 20px 0;
     text-align: center;
+    text-shadow: 5px 7px 7px rgba(0, 0, 0, 0.3);
 }
 
 .name {

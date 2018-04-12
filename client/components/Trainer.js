@@ -18,22 +18,23 @@ const Trainer = ({
     currentReviewResults,
     pageNumbers
 }) => ( 
-    <div className={styles.trainerContainer}>
+    <div>
         {!profile ? <Loading /> : 
-            <div className={styles.trainerCard}>
-    
-                <Profile 
-                    profile={profile} 
-                    updateLink={handleInterestSubmission}
-                    interestRegistered={interestRegistered}
-                    reviewAverage={reviewAverage}
-                    reviews={reviews}
-                />
+            <div className={styles.trainerContainer}>
+                <div className={styles.topContainer}>
+                    <Profile 
+                        profile={profile} 
+                        updateLink={handleInterestSubmission}
+                        interestRegistered={interestRegistered}
+                        reviewAverage={reviewAverage}
+                        reviews={reviews}
+                    />
+                </div>
                 
                 <div className={styles.middleContainer}>
-                    <h3>Like what you see? Register interest in a trainer today for your FREE taster session! </h3>
-
-                    {!coordinates ? <Loading /> : <MapContainer base={profile.base} radius={profile.radius} coordinates={coordinates}/>}
+                    <h3><i className="fas fa-chevron-circle-up"></i> Like what you see? Check the area covered by the trainer below. If you're happy, register your interest with them today! </h3>
+    
+                    {!coordinates ? <Loading color='white'/> : <MapContainer base={profile.base} radius={profile.radius} coordinates={coordinates}/>}
                 </div>
                 
                 <div className={styles.bottomContainer}>

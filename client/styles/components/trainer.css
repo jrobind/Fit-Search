@@ -2,16 +2,13 @@
     background-color: whitesmoke;
 }
 
-/* trainer card styles*/
+/* top container styles*/
 
-.trainerCard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
+.topContainer {
+    background: url('../../images/trainer-image.jpg') center center / cover;
 }
 
-/* map and interest button styles */
+/* map styles */
 
 .middleContainer {
     padding: 40px 0;
@@ -126,6 +123,11 @@
     border: 1px solid rgba(0, 0, 0, 0.2);
     color: white;
     background-color: rgba(0, 0, 0, 0.9)
+}
+
+:global(.fa-chevron-circle-up) {
+    font-size: 1.5em;
+    transform: rotate(20deg);
 }
 
 :global(.currentPage) {

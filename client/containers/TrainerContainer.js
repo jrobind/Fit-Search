@@ -14,7 +14,7 @@ class TrainerContainer extends Component {
             reviewSent: false,
             interestRegistered: false,
             currentPage: 1,
-            resultsPerPage: 4,
+            reviewsPerPage: 6,
             reviews: null
         }
         
@@ -96,15 +96,15 @@ class TrainerContainer extends Component {
         if (!reviews) {
             return <Loading />
         } else {
-            const { currentPage, resultsPerPage } = this.state;
+            const { currentPage, reviewsPerPage } = this.state;
             
-            const lastResultIndex = currentPage * resultsPerPage;
-            const firstResultIndex = lastResultIndex - resultsPerPage;
+            const lastResultIndex = currentPage * reviewsPerPage;
+            const firstResultIndex = lastResultIndex - reviewsPerPage;
             const currentReviewResults = reviews.slice(firstResultIndex, lastResultIndex); 
             
             // total number of pages    
             const pageNumbers = [];
-            for (let i = 1; i <= Math.ceil(reviews.length / resultsPerPage); i++) {
+            for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i++) {
                 pageNumbers.push(i);
             }
 
