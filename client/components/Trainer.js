@@ -13,6 +13,7 @@ const Trainer = ({
     handleReviewSubmission,
     handlePageClick,
     profile,
+    reviewAverage,
     currentReviewResults,
     pageNumbers
 }) => ( 
@@ -20,9 +21,13 @@ const Trainer = ({
         {!profile ? <Loading /> : 
             <div className={styles.trainerCard}>
     
-                <Profile profile={profile} updateLink={false}/>
+                <Profile 
+                    profile={profile} 
+                    updateLink={false}
+                />
                 
                 <div className={styles.middleContainer}>
+                    <h3>Like what you see? Register interest in a trainer today for your FREE taster session! </h3>
                     {!interestRegistered ? <button onClick={() => handleInterestSubmission()} className={styles.interest}>Register interest!</button> : <button className={styles.interestDisable} disabled >Interest registered!</button>}
 
                     {!coordinates ? <Loading /> : <MapContainer base={profile.base} radius={profile.radius} coordinates={coordinates}/>}
@@ -42,14 +47,14 @@ const Trainer = ({
                                     </div>
                                     <span>{review.authorName}</span>
                                 </div>
-                                <div>{handleReviewStars(review.rating)}</div>
+                                <div>{handleReviewStars(review.rating)} <span>{review.dateCreated}</span></div>
                                 <div className={styles.reviewMessage}>{review.body}</div>
                             </div> 
                         )}
                     </div>
                     <ul className="pageNumbers">
                         {pageNumbers.map((number) => (
-                            <li className={currentPage === number ? 'current-page' : 'page'}
+                            <li className={currentPage === number ? 'currentPage' : 'page'}
                                 id={number} 
                                 key={number} 
                                 onClick={handlePageClick}

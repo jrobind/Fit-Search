@@ -21,6 +21,12 @@ export const handleGetSelectedTrainer = (id) => {
     return (dispatch) => {
        return apiGetProfile(id)
             .then(({ data }) => {
+           
+                // format review date
+                data.reviews.forEach((review, index) => {
+                    review.dateCreated = new Date(review.dateCreated).toLocaleDateString('en-GB');
+                });
+                
                 dispatch(getSelectedTrainer(data));
                 return data;
             })

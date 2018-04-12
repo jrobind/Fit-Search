@@ -12,7 +12,11 @@ const ReviewSchema = mongoose.Schema({
     },
     authorName: String,
     authorAvatar: String,
-    authorId: String
+    authorId: String,
+    dateCreated: {
+        type: Date,
+        default: Date.now()
+    }
 });
 
 const Review = mongoose.model('Review', ReviewSchema);
