@@ -9,7 +9,7 @@ import queryStyles from '../styles/components/currentQuery.css';
 const CurrentQuery = (props) => (
     <div className={queryStyles.queryContainer}>
         <button className={queryStyles.button} onClick={() => props.resetSearch()}>Reset search</button>
-        <h3 className={styles.h3}>Current search filter:</h3>
+        <h3 className={styles.h3}>Current search filter</h3>
         <div>{formatMessage(props.currentQuery).map((query, index) => (
             <div className={queryStyles.query} key={index}>{query}</div>      
         ))}</div>
@@ -88,7 +88,7 @@ class SearchBar extends Component {
         return(
             <div className={styles.searchBarContainer}>
                 <CurrentQuery currentQuery={currentQuery} resetSearch={this.resetSearch}/>
-                <div className={styles.reviews}>
+                <div className={styles.ratings}>
                     <h5 className={styles.h5}>Average Trainer Review</h5>
                     <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../images/ratings-5.png')}/></a>
                                                                                       
@@ -101,15 +101,15 @@ class SearchBar extends Component {
                     <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '1') : null}><img src={require('../images/ratings-1.png')}/></a>          
                 </div>
                 <div className={styles.hourly}>
-                    <h5>Trainer hourly rate</h5>
+                    <h5 className={styles.h5}>Trainer hourly rate</h5>
                     <a onClick={() => !rateClicked ? this.handleSearchSelection('rate', '<25') : null}>under £25</a>
                     <a onClick={() => !rateClicked ? this.handleSearchSelection('rate', '25-35') : null}>£25-35</a>
                     <a onClick={() => !rateClicked ? this.handleSearchSelection('rate', '35-45') : null}>£35-45</a>
                     <a onClick={() => !rateClicked ? this.handleSearchSelection('rate', '45-55') : null}>£45-55</a>
                     <a onClick={() => !rateClicked ? this.handleSearchSelection('rate', '55>') : null}>over £55</a>
                 </div>
-                <h5>Trainer location</h5>
-                <form onSubmit={this.handleSubmission}>
+                <h5 className={styles.h5}>Trainer location</h5>
+                <form className={styles.region} onSubmit={this.handleSubmission}>
                     <select value={this.state.location} onChange={this.handleSelect}>
                         <option value="" disabled>Select your region</option>
                         <option>London</option>
@@ -122,7 +122,7 @@ class SearchBar extends Component {
                         <option>North West</option>
                         <option>North East</option>
                     </select>
-                    <input type="submit" disabled={(this.state.locationSubmitted) ? 'disabled' : ''} value="Go" />
+                    <input className={styles.submit} type="submit" disabled={(this.state.locationSubmitted) ? 'disabled' : ''} value="Go" />
                 </form>
             </div>
         )

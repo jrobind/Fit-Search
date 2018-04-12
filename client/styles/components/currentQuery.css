@@ -1,8 +1,12 @@
-/* query feedback styles */
-
 .queryContainer {
     display: flex;
     flex-direction: column;
+    padding-bottom: 15px;
+    border-bottom: 1px solid white;
+}
+
+.queryContainer div {
+    font-size: 0.9em;
 }
 
 .button {
@@ -10,7 +14,7 @@
     padding: 6px;
     border-radius: 5px;
     color: black;
-    margin-top: 8px;
+    margin-top: 15px;
     align-self: flex-start;
 }
 
@@ -21,10 +25,16 @@
 }
 
 .queryContainer h3 {
-    margin: 8px 0;
+    margin: 10px 0 5px 0;
 }
 
 .query {
     margin: 0 15px 0 5px;
     font-size: 0.9em;
+}
+
+@media screen and (max-width: 870px) {
+    .queryContainer {
+        border-bottom: none;
+    }
 }

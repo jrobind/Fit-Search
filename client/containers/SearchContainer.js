@@ -10,7 +10,7 @@ class SearchContainer extends Component {
             noResults: false,
             currentQuery: '',
             currentPage: 1,
-            resultsPerPage: 5
+            resultsPerPage: 6
         }
         
         this.handleUpdateSearch = this.handleUpdateSearch.bind(this);
