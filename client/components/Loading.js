@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const styles = {
-    content: {
-        textAlign: 'center',
-        fontSize: '35px'
-    }
-}
-
 class Loading extends React.Component {
     constructor(props) {
         super(props);
@@ -35,9 +28,10 @@ class Loading extends React.Component {
     
     render() {
         const { text } = this.state;
-        const { content } = styles;
+        const { color } = this.props;
+        
         return (
-            <p style={content}>
+            <p style={{textAlign: 'center', fontSize: '35px', color}}>
                 {text}
             </p>
         )
@@ -46,12 +40,14 @@ class Loading extends React.Component {
 
 Loading.propTypes = {
     text: PropTypes.string.isRequired,
-    speed: PropTypes.number.isRequired
+    speed: PropTypes.number.isRequired,
+    color: PropTypes.string.isRequired
 }
 
 Loading.defaultProps = {
     text: 'loading',
-    speed: 300
+    speed: 300,
+    color: 'black'
 }
 
 export default Loading;

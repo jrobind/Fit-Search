@@ -41,7 +41,7 @@ const Search = ({
                                                         
                         <div className={styles.trainerReviews}>
                             {reviewAverage === null ? 'No reviews' : handleReviewStars(reviewAverage)}
-                            {numberOfReviews ? numberOfReviews : null}
+                            {numberOfReviews ? <span>({numberOfReviews})</span> : null}
                         </div> 
                             
                         <div><strong>{profile.base}</strong>, <strong>{profile.region}</strong></div>

@@ -8,9 +8,7 @@
 .hero {
     display: flex;
     flex-direction: column;
-    background-image: url('../../images/home-photo.jpg');
-    background-position: center;
-    background-size: cover;
+    background: url('../../images/home-photo.jpg') center center / cover;
     height: calc(100% - 75px);
 }
 

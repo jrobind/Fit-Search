@@ -9,7 +9,7 @@ import queryStyles from '../styles/components/currentQuery.css';
 const CurrentQuery = (props) => (
     <div className={queryStyles.queryContainer}>
         <button className={queryStyles.button} onClick={() => props.resetSearch()}>Reset search</button>
-        <h3>Current search filter:</h3>
+        <h3 className={styles.h3}>Current search filter:</h3>
         <div>{formatMessage(props.currentQuery).map((query, index) => (
             <div className={queryStyles.query} key={index}>{query}</div>      
         ))}</div>
@@ -89,7 +89,7 @@ class SearchBar extends Component {
             <div className={styles.searchBarContainer}>
                 <CurrentQuery currentQuery={currentQuery} resetSearch={this.resetSearch}/>
                 <div className={styles.reviews}>
-                    <h5>Average Trainer Review</h5>
+                    <h5 className={styles.h5}>Average Trainer Review</h5>
                     <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../images/ratings-5.png')}/></a>
                                                                                       
                     <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '4') : null}><img src={require('../images/ratings-4.png')}/></a>

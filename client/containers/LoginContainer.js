@@ -32,7 +32,11 @@ class LoginContainer extends Component {
     render() {
         const { loggingIn } = this.state;
     
-        return <LoginForm {...this.props} handleLoginSubmission={this.handleLoginSubmission} loggingIn={loggingIn} />; 
+        return <LoginForm 
+                    {...this.props} 
+                    handleLoginSubmission={this.handleLoginSubmission} 
+                    loggingIn={loggingIn} 
+                />; 
     }
 }
 

@@ -39,7 +39,7 @@ class ReviewForm extends Component {
     render() {
         return(
             <div className={styles.reviewContainer}>
-                <h3>Leave a review</h3>
+                <h3>Leaving trainer reviews encourages accountability - tell us about your exprerience below.</h3>
                 <form className={styles.form} onSubmit={this.handleSubmission}>
                     <label><span>* </span>Rating</label>
                     <input id='rating' type='number' onChange={this.handleInput} placeholder='rating between 1/5' min='1' max='5' required value={this.state.rating}/>
