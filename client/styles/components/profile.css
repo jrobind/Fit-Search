@@ -1,7 +1,6 @@
 .profileContainer {
-    padding: 40px 0;
     background: url('../../images/trainer-image.jpg') center center / cover;
-    height: 100vh;
+    height: calc(100% - 75px);
 }
 
 .updateSuccess {
@@ -16,6 +15,10 @@
 
 .name {
     margin-bottom: 50px;
+}
+
+.cardContainer {
+    padding: 40px 0;
 }
 
 /*profile card styles*/
