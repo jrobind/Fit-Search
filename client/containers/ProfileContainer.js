@@ -40,7 +40,7 @@ class ProfileContainer extends Component {
             return <Profile 
                         {...this.props}
                         locationState={locationState} 
-                        updateLink={true}/>
+                    />
         } else if (!profile) {
             return <CreateProfile {...this.props} createProfile={this.handleCreateProfile} />
         } else if (requestPending) {

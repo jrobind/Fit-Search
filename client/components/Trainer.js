@@ -24,14 +24,14 @@ const Trainer = ({
     
                 <Profile 
                     profile={profile} 
-                    updateLink={false}
+                    updateLink={handleInterestSubmission}
+                    interestRegistered={interestRegistered}
                     reviewAverage={reviewAverage}
                     reviews={reviews}
                 />
                 
                 <div className={styles.middleContainer}>
                     <h3>Like what you see? Register interest in a trainer today for your FREE taster session! </h3>
-                    {!interestRegistered ? <button onClick={() => handleInterestSubmission()} className={styles.interest}>Register interest!</button> : <button className={styles.interestDisable} disabled >Interest registered!</button>}
 
                     {!coordinates ? <Loading /> : <MapContainer base={profile.base} radius={profile.radius} coordinates={coordinates}/>}
                 </div>
@@ -81,7 +81,8 @@ Trainer.propTypes = {
     state: PropTypes.object.isRequired,
     currentReviewResults: PropTypes.array.isRequired,
     handleInterestSubmission: PropTypes.func.isRequired,
-    handleReviewSubmission: PropTypes.func.isRequired
+    handleReviewSubmission: PropTypes.func.isRequired,
+    componentState: PropTypes.object.isRequired
 }
 
 export default Trainer;

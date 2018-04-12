@@ -14,32 +14,19 @@
 /* map and interest button styles */
 
 .middleContainer {
+    padding: 40px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.interest, .interestDisable {
     background-color: rgba(0, 0, 0, 0.9);
+}
+
+.middleContainer h3 {
+    font-size: 2.1em;
     color: white;
-    border: none;
-    font-size: 1em;
-    padding: 15px;
-    border-radius: 5px;
-    width: 60%;
-    max-width: 400px;
-    margin: auto;
-}
-
-.interestDisable {
-    opacity: 0.8; 
-    cursor: not-allowed;
-}
-
-.interest:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    cursor: pointer;
-    transition: 0.3s;
+    width: 65%;
+    max-width: 500px;
+    margin: 0 10% 30px 10%;
 }
 
 /* reviews and review form styles */
@@ -47,6 +34,7 @@
 .bottomContainer {
     display: flex;
     flex-direction: column;
+    padding: 40px 0 15px 0;
 }
 
 .avatar {
@@ -80,6 +68,23 @@
     align-self: center;
 }
 
+.reviewInfo {
+    display: flex; 
+}
+
+.date {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 0.7em;
+    margin-top: 5px;
+}
+
+.reviewInfo img {
+    margin-top: 3px;
+    width: 100px;
+    height: 18px;
+}
+
 .reviewCard {
     display: flex;
     flex-direction: column;
@@ -95,7 +100,7 @@
 }
 
 .reviewMessage {
-    margin: 0 0 5px 5px;
+    margin: 5px 0 5px 5px;
     font-size: 0.85em;
 }
 
@@ -112,7 +117,7 @@
     cursor: pointer;
 }
 
-:global(.page), :global(.current-page) {
+:global(.page), :global(.currentPage) {
     margin: 0 4px;
     font-weight: 400;
     font-size: 1.1em;
@@ -123,7 +128,7 @@
     background-color: rgba(0, 0, 0, 0.9)
 }
 
-:global(.current-page) {
+:global(.currentPage) {
     text-decoration: underline;
 }
 
@@ -139,5 +144,10 @@
 @media screen and (max-width: 500px) {
     .reviews {
         width: 96%;
+    }
+    
+    .middleContainer h3 {
+        font-size: 1.9em;
+        width: 75%;
     }
 }
