@@ -25,7 +25,7 @@ class App extends Component {
         
         return(
             <Router>
-                <div className="app-container">
+                <div style={{minWidth: '325px'}} className="app-container">
                     <NavContainer />
                     <Switch>
                         <Route exact path='/' component={Home} />

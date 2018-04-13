@@ -33,8 +33,38 @@
     font-size: 0.9em;
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 740px) {
     .queryContainer {
         border-bottom: none;
+        max-width: 150px;
+        min-width: 150px;
+        padding-bottom: 0;
+        font-size: 0.85em;
+    }
+    
+    .query {
+        margin: 0;
+    }
+    
+    .button {
+        margin: 0 0 5px 0;
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .queryContainer {
+        max-width: 85px;
+        min-width: 85px;
+    }
+    
+    .button {
+        font-size: 0.8em;
+        padding: 3px 5px;;
+        margin-bottom: 2px;
+    }
+    
+    .queryContainer, .button {
+        font-size: 0.75em;
     }
 }

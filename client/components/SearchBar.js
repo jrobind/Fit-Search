@@ -9,7 +9,7 @@ import queryStyles from '../styles/components/currentQuery.css';
 const CurrentQuery = (props) => (
     <div className={queryStyles.queryContainer}>
         <button className={queryStyles.button} onClick={() => props.resetSearch()}>Reset search</button>
-        <h3 className={styles.h3}>Current search filter</h3>
+        <h3 className={styles.h3}>Current filter</h3>
         <div>{formatMessage(props.currentQuery).map((query, index) => (
             <div className={queryStyles.query} key={index}>{query}</div>      
         ))}</div>
@@ -28,13 +28,29 @@ class SearchBar extends Component {
             location: '',
             starsClicked: false,
             rateClicked: false,
-            locationSubmitted: false
+            locationSubmitted: false,
+            smallScreen: false
         }
         
         this.handleSelect = this.handleSelect.bind(this);
         this.handleSubmission = this.handleSubmission.bind(this);
         this.handleSearchSelection = this.handleSearchSelection.bind(this);
         this.resetSearch = this.resetSearch.bind(this);
+        this.handleScreenSize = this.handleScreenSize.bind(this);
+    }
+    
+    componentDidMount() {
+        window.addEventListener('resize', this.handleScreenSize);
+    }
+    
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleScreenSize);
+    }
+    
+    handleScreenSize() {
+        if (window.innerWidth < 740) {
+            this.setState(() => ({smallScreen: true}));
+        }
     }
     
     resetSearch() {
@@ -118,7 +134,7 @@ class SearchBar extends Component {
                         <option>East of England</option>
                         <option>East Midlands</option>
                         <option>West Midlands</option>
-                        <option>Yorkshire and the Humber</option>
+                        <option>Yorkshire and Humber</option>
                         <option>North West</option>
                         <option>North East</option>
                     </select>

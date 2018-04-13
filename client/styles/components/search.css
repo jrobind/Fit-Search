@@ -40,6 +40,7 @@
     margin: 10px 5px;
     width: 300px;
     max-width: 300px;
+    cursor: pointer;
 }
 
 .card strong {
@@ -106,9 +107,53 @@
     cursor: pointer;
 }
 
+/* media queries */
+
 @media screen and (max-width: 870px) {
+    .card {
+        width: 260px;
+        height: 280px;
+        max-height: 280px;
+        max-width: 260px;
+    }
+    
+    .imgContainer {
+        width: 125px;
+        height: 105px;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .bio {
+        font-size: 0.75em;
+    }
+}
+
+@media screen and (max-width: 740px) {
     .searchContainer {
         flex-direction: column;
-        flex-wrap: nowrap;
+    } 
+}
+
+@media screen and (max-width: 570px) {
+    .card {
+        max-width: none;
+        width: 80%;
+        height: 305px;
+        max-height: 305px;
+    }
+
+    .bio {
+        padding: 5px 8%;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .card {
+        width: 90%;
+    }
+    
+    .bio {
+        padding: 5px 4%;
     }
 }
