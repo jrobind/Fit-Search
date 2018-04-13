@@ -8,18 +8,20 @@ const Interest = ({ requests, trainerId, handleRemoveInterest }) => (
             <div className={styles.interestContainer}>  
                 {requests.map(({ requestee, _id }) => (
                     <div key={_id} className={styles.card}>
+    
                         <div className={styles.imgContainer}>
                             <img className={styles.avatar} src={requestee.profile.avatar}/>
                         </div>
+    
                         <div className={styles.info}>
                             <div><span className={styles.email}>User email: </span>{requestee.email}</div> 
                             <div><span className={styles.username}>Username: </span>{requestee.profile.name}</div> 
-                            <div className={styles.buttonContainer}>
-                                <button className={styles.button} onClick={() => {
-                                    handleRemoveInterest(_id);
-                                }}>Remove request</button>
-                            </div>
                         </div>
+
+                        <button className={styles.button} onClick={() => {
+                            handleRemoveInterest(_id);
+                        }}>Delete request</button>
+                                
                         <div className={styles.bioContainer}>
                             <h4 className={styles.bio}>User bio</h4>
                             <div>{requestee.profile.bio}</div>

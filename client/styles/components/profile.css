@@ -1,6 +1,7 @@
 .profileContainer {
     background: url('../../images/trainer-image.jpg') center center / cover;
-    height: calc(100% - 75px);
+    height: 100%;
+    padding: 120px 0 40px 0;
 }
 
 .updateSuccess {
@@ -15,10 +16,6 @@
 
 .name {
     margin-bottom: 50px;
-}
-
-.cardContainer {
-    padding: 40px 0;
 }
 
 /*profile card styles*/
@@ -194,7 +191,6 @@
     font-size: 0.95em;
     color: rgba(0, 0, 0, 0.85);
 }
-
 
 /*media queries*/
 

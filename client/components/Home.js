@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from '../styles/components/home.css';
 
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -75,12 +76,3 @@ const mapStateToProps = (state) => {
 } 
 
 export default connect(mapStateToProps)(Home);
-
-//                    <footer>
-//                        <ul>
-//                            <li>Made by <a href="https://github.com/jrobind">James Robinson</a></li>
-//                            <li><i className="fab fa-facebook"></i></li>
-//                            <li><i className="fab fa-twitter-square"></i></li>
-//                            <li><i className="fab fa-instagram"></i></li>
-//                        </ul>
-//                    </footer>
