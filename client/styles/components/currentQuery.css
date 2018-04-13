@@ -33,7 +33,7 @@
     font-size: 0.9em;
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 720px) {
     .queryContainer {
         border-bottom: none;
         max-width: 150px;

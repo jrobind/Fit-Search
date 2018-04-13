@@ -5,21 +5,21 @@
     flex-wrap: wrap;
 }
 
-.results {
+.results, .banner, .card {
     display: flex;
     flex-direction: column;
+}
+
+.results {
     flex: 1;
 }
 
+.results p, .banner {
+    text-align: center;
+} 
+
 .results p {
     margin: 0 100px;
-    text-align: center;
-}
-
-.banner {
-    display: flex;
-    flex-direction: column;
-    text-align: center
 }
 
 /* individual trainer card styles */
@@ -31,8 +31,6 @@
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
     background-color: whitesmoke;
     align-items: center;
     border: 1px solid rgba(0, 0, 0, 0.3);
@@ -109,7 +107,7 @@
 
 /* media queries */
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 800px) {
     .card {
         width: 260px;
         height: 280px;
@@ -129,7 +127,7 @@
     }
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 720px) {
     .searchContainer {
         flex-direction: column;
     } 
@@ -138,7 +136,7 @@
 @media screen and (max-width: 570px) {
     .card {
         max-width: none;
-        width: 80%;
+        width: 85%;
         height: 305px;
         max-height: 305px;
     }

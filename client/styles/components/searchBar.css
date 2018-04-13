@@ -1,7 +1,10 @@
-.searchBarContainer {
+.searchBarContainer, .hourly {
     display: flex;
-    box-sizing: border-box;
     flex-direction: column;
+}
+
+.searchBarContainer {
+    box-sizing: border-box;
     background-color: rgba(0, 0, 0, 0.9);
     margin: 10px 0;
     width: 200px;
@@ -25,11 +28,6 @@
 
 .region select {
     margin-right: 5px;
-}
-
-.hourly {
-    display: flex;
-    flex-direction: column;
 }
 
 .submit {
@@ -66,7 +64,7 @@
     }
 }
 
-@media screen and (max-width: 740px) {
+@media screen and (max-width: 720px) {
     .searchBarContainer {
         flex-direction: row;
         padding: 5px 5px;
