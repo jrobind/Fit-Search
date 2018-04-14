@@ -20,7 +20,10 @@ class InterestContainer extends Component {
     }
     
     render() {
-        return <Interest {...this.props} handleRemoveInterest={this.handleRemoveInterest} />;
+        return <Interest 
+                    {...this.props} 
+                    handleRemoveInterest={this.handleRemoveInterest} 
+                />;
     }
 }
 

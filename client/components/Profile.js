@@ -82,7 +82,11 @@ Profile.propTypes = {
     reviewAverage: PropTypes.number,
     locationState: PropTypes.object,
     updateLink: PropTypes.func,
-    interestRegistered: PropTypes.bool
+    interestRegistered: PropTypes.bool,
+    userType: PropTypes.string,
+    requestSuccess: PropTypes.bool,
+    requestPending: PropTypes.bool,
+    id: PropTypes.string
 }
 
 export default Profile;

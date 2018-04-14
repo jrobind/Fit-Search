@@ -62,7 +62,9 @@ CreateProfile.propTypes = {
     id: PropTypes.string.isRequired,
     profile: PropTypes.object,
     requestPending: PropTypes.bool,
-    requestSuccess: PropTypes.bool
+    requestSuccess: PropTypes.bool,
+    reviews: PropTypes.array,
+    reviewAverage: PropTypes.number
 }
 
 export default CreateProfile;

@@ -47,7 +47,10 @@ Trainer.propTypes = {
     reviews: PropTypes.array.isRequired,
     reviewAverage: PropTypes.number.isRequired,
     handleInterestSubmission: PropTypes.func.isRequired,
-    componentState: PropTypes.object.isRequired
+    componentState: PropTypes.object.isRequired,
+    userId: PropTypes.string,
+    trainerId: PropTypes.string,
+    state: PropTypes.object
 }
 
 export default Trainer;

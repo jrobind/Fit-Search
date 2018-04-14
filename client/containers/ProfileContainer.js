@@ -42,7 +42,10 @@ class ProfileContainer extends Component {
                         locationState={locationState} 
                     />
         } else if (!profile) {
-            return <CreateProfile {...this.props} createProfile={this.handleCreateProfile} />
+            return <CreateProfile 
+                        {...this.props} 
+                        createProfile={this.handleCreateProfile}
+                    />
         } else if (requestPending) {
             return <Loading />
         }

@@ -71,6 +71,7 @@ Search.propTypes = {
     searchResults: PropTypes.array.isRequired,
     componentState: PropTypes.object.isRequired,
     handlePageClick: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
     currentSearchResults: PropTypes.array.isRequired,
     pageNumbers: PropTypes.array.isRequired
 }
