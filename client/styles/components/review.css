@@ -1,0 +1,86 @@
+.reviewCard, .reviewContainer {
+    display: flex;
+    flex-direction: column; 
+}
+
+.reviewContainer {
+    padding: 0px 0 15px 0;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    margin: 5px 5px 0 5px;
+}
+
+.avatar span {
+    margin-left: 5px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.avatarImgContainer {
+    width: 85px;
+    height: 85px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.avatar img {
+    max-width: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+.reviews {
+    max-width: 1000px;
+    width: 85%;
+    align-self: center;
+}
+
+.reviewInfo {
+    display: flex; 
+}
+
+.date {
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 0.7em;
+    margin-top: 5px;
+}
+
+.reviewInfo img {
+    margin-top: 3px;
+    width: 100px;
+    height: 18px;
+}
+
+.reviewCard {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    margin: 5px 10px;
+    background-color: white;
+}
+
+.reviewCard div:nth-of-type(2) img {
+    width: 80px;
+    margin-left: 5px;
+}
+
+.reviewMessage {
+    margin: 5px 0 5px 5px;
+    font-size: 0.85em;
+}
+
+@media screen and (max-width: 700px) {
+    .avatarImgContainer {
+        width: 65px;
+        height: 65px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .reviews {
+        width: 96%;
+    }
+}

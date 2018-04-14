@@ -31,7 +31,7 @@ class Loading extends React.Component {
         const { color } = this.props;
         
         return (
-            <p style={{textAlign: 'center', fontSize: '35px', color}}>
+            <p style={{textAlign: 'center', flexBasis: '100%', fontSize: '35px', color}}>
                 {text}
             </p>
         )

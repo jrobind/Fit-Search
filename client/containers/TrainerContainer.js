@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handleGetSelectedTrainer, resetSelectedTrainer } from '../actions/selectedTrainer';
-import { apiCreateReview, apiCreateInterestRequest, apiGetInterestRequests } from '../utils/api';
+import { apiCreateInterestRequest, apiGetInterestRequests } from '../utils/api';
 import Trainer from '../components/Trainer';
 import Loading from '../components/Loading';
 
@@ -11,17 +11,11 @@ class TrainerContainer extends Component {
         super(props);
         this.state = {
             coordinates: null,
-            reviewSent: false,
-            interestRegistered: false,
-            currentPage: 1,
-            reviewsPerPage: 6,
-            reviews: null
+            interestRegistered: false
         }
-        
-        this.handleReviewSubmission = this.handleReviewSubmission.bind(this);
+    
         this.handleInterestSubmission = this.handleInterestSubmission.bind(this);
         this.setupGeocode = this.setupGeocode.bind(this);
-        this.handlePageClick = this.handlePageClick.bind(this);
     }
     
     componentDidMount() {
@@ -42,11 +36,6 @@ class TrainerContainer extends Component {
                     })
                     .catch((error) => console.log(error));
             });
-    }
-    
-    handlePageClick(e) {
-        const page = e.target.id;
-        this.setState(() => ({currentPage: Number(page)}));
     }
     
     setupGeocode({ base }) {
@@ -72,51 +61,15 @@ class TrainerContainer extends Component {
             .catch((error) => console.log(error));
     }
     
-    handleReviewSubmission(reviewData) {
-        const { userProfile: { name, avatar }, userId, trainerId, getSelectedTrainer } = this.props;
-        
-        this.setState(() => ({reviewSent: true}));
-        
-        reviewData.authorName = name;
-        reviewData.authorAvatar = avatar;
-        reviewData.authorId = userId;
-   
-        apiCreateReview(trainerId, reviewData)
-            .then(({ data }) => {
-                if (data === 'review added') {
-                    getSelectedTrainer(trainerId)
-                        .then(() => (this.setState(() => ({reviewSent: false}))))
-                        .catch((error) => console.log(error));
-                }
-            })
-            .catch((error) => console.log(error));
-    }
-    
     render() {
         const { reviews } = this.props;
 
         if (!reviews) {
             return <Loading />
         } else {
-            const { currentPage, reviewsPerPage } = this.state;
-            
-            const lastResultIndex = currentPage * reviewsPerPage;
-            const firstResultIndex = lastResultIndex - reviewsPerPage;
-            const currentReviewResults = reviews.slice(firstResultIndex, lastResultIndex); 
-            
-            // total number of pages    
-            const pageNumbers = [];
-            for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i++) {
-                pageNumbers.push(i);
-            }
-
             return <Trainer 
-                        handleReviewSubmission={this.handleReviewSubmission}
                         handleInterestSubmission={this.handleInterestSubmission}
-                        handlePageClick={this.handlePageClick}
                         componentState={this.state}
-                        currentReviewResults={currentReviewResults}
-                        pageNumbers={pageNumbers}
                         {...this.props}
                     />   
         }
@@ -126,11 +79,9 @@ class TrainerContainer extends Component {
 const mapStateToProps = (state) => {
     const { profile, reviews, id: trainerId, reviewAverage } = state.selectedTrainer;
     const { id: userId,  } = state.userAuth;
-    const { profile: userProfile } = state.userProfile;
     
     return {
             profile,
-            userProfile,
             reviews,
             userId,
             trainerId,
