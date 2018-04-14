@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import formatMessage from '../utils/formatMessage';
+import formatFilter from '../utils/formatFilter';
 import styles from '../styles/components/searchBar.css';
 import queryStyles from '../styles/components/currentQuery.css';
 
@@ -10,7 +10,7 @@ const CurrentQuery = (props) => (
     <div className={queryStyles.queryContainer}>
         <button className={queryStyles.button} onClick={() => props.resetSearch()}>Reset search</button>
         <h3 className={styles.h3}>Current filter</h3>
-        <div>{formatMessage(props.currentQuery).map((query, index) => (
+        <div>{formatFilter(props.currentQuery).map((query, index) => (
             <div className={queryStyles.query} key={index}>{query}</div>      
         ))}</div>
     </div>
