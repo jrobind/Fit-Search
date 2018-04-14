@@ -13,13 +13,13 @@ const initialState = {
 export const initApp = () => {
     const store = createStore(reducer, initialState, middleware);
     // save state only when page is closed/refreshed
-    window.onbeforeunload = () => {
+    store.subscribe(() => {
         const { userAuth, userProfile, interestRequests } = store.getState();
 
         localStorage.setItem('userAuth', JSON.stringify(userAuth));
         localStorage.setItem('userProfile', JSON.stringify(userProfile));
         localStorage.setItem('interestRequests', JSON.stringify(interestRequests));
-    };
+    });
     
     return store;
 };
