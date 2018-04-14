@@ -1,6 +1,5 @@
 .registerContainer {
-    display: flex;
-    flex-direction: column;
+    flex-basis: 100%;
     margin: 0 30%;
 }
 
@@ -17,6 +16,7 @@
 .registerContainer h1 {
     margin: 170px 0 15px 0;
     font-size: 2.1em;
+    margin: 100px 0 15px 0;
 }
 
 .form input[type='email'], form input[type='password'] {
@@ -58,11 +58,10 @@
 }
 
 .hr {
-    margin-top: 30px;
     border: none;
     background-color: rgba(0, 0, 0, 0.8);
     height: 1px;
-    width: 100%;
+    margin: 15px 0;
 }
 
 .success {
@@ -80,7 +79,6 @@
 
 @media screen and (max-width: 850px) {
     .registerContainer {
-        margin: 0 20%;
-
+        margin: 0 16%;   
     }
 }

@@ -1,12 +1,11 @@
 .loginContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 0 30%;
+    flex-basis: 100%;
 }
 
 .form {
     display: flex;
     flex-direction: column;
+    margin: 0 30%;
 }
 
 .form input[type='email'], form input[type='password'] {
@@ -15,7 +14,7 @@
 }
 
 .loginContainer h1 {
-    margin: 170px 0 15px 0;
+    margin: 100px 30% 15px 30%;
     font-size: 2.1em;
 }
 
