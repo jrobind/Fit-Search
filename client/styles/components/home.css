@@ -1,20 +1,15 @@
-.homeContainer {
-    height: 100%;
-    width: 100%;
-}
-
 /*hero section*/
 
 .hero {
     display: flex;
     flex-direction: column;
     background: url('../../images/home-photo.jpg') center center / cover;
-    height: 100vh;
+    height: calc(100vh - 70px);
 }
 
 .welcome {
     font-weight: 700;
-    margin: 85px 0 0 5px;
+    margin: 10px 0 0 5px;
     font-size: 0.95em;
     padding: 7px;
     align-self: flex-start;
@@ -22,13 +17,13 @@
 }
 
 .titleContainer {
-    margin-top: 16%;
+    margin-top: 120px;
 }
 
 .titleContainer h1, .titleContainer p {
     text-align: center;
     color: rgb(250, 250, 250);
-    text-shadow: 3px 5px 6px rgba(0, 0, 0, 0.3);
+    text-shadow: 5px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
 .titleContainer h1 {

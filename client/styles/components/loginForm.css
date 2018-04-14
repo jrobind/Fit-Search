@@ -1,7 +1,7 @@
 .loginContainer {
     display: flex;
     flex-direction: column;
-    margin: 5% 30%;
+    margin: 0 30%;
 }
 
 .form {
@@ -9,7 +9,13 @@
     flex-direction: column;
 }
 
+.form input[type='email'], form input[type='password'] {
+    margin: 5px 0;
+    padding: 3px;
+}
+
 .loginContainer h1 {
+    margin: 170px 0 15px 0;
     font-size: 2.1em;
 }
 
@@ -21,9 +27,9 @@
     font-size: 0.95em;
     border: 2px solid rgba(0, 0, 0, 0.95);
     padding: 8px;
-    margin: auto;
+    align-self: center;
     width: 60%;
-    margin-top: 15px; 
+    margin-top: 20px; 
 }
 
 .submit:hover{
@@ -34,9 +40,8 @@
 }
 
 @media screen and (max-width: 800px) {
-    
     .loginContainer {
-        margin: 5% 20%;
+        margin: 0 20%;
 
     }
 }

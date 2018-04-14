@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-d
 import { connect } from 'react-redux';
 import NavContainer from '../containers/NavContainer';
 import Home from './Home';
-import Footer from './Footer';
 import RegisterContainer from '../containers/RegisterContainer';
 import LoginContainer from '../containers/LoginContainer';
 import SearchContainer from '../containers/SearchContainer';
@@ -26,7 +25,7 @@ class App extends Component {
         
         return(
             <Router>
-                <div style={{minWidth: '325px'}} className="app-container">
+                <div className='app-container'>
                     <NavContainer />
                     <Switch>
                         <Route exact path='/' component={Home} />
@@ -54,8 +53,7 @@ class App extends Component {
                         )} />
                         
                         <Route render={() => (<p>Path Not Found!!</p>)} />
-                    </Switch>
-                    <Footer />                   
+                    </Switch> 
                 </div>
             </Router>
         )

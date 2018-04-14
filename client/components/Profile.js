@@ -21,10 +21,10 @@ const Profile = ({
     updateLink,
     interestRegistered
 }) => (
-    <div className={styles.profileContainer}>
+    <div className={styles.background}>
         {locationState && locationState.profileUpdated ? <div className={styles.updateSuccess}>Profile updated!</div> : null}
     
-        <div className={styles.cardContainer}>
+        <div className={styles.profileContainer}>
             <div className={styles.card}>
                 <div className={!rate ? styles.clientTop : styles.top}>
                     <div className={styles.avatar}>

@@ -8,9 +8,7 @@ const store = initApp();
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
-            <App />
-        </div>
+        <App />
     </Provider>,
     document.getElementById('app')
 );

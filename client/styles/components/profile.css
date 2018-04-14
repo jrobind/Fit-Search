@@ -1,7 +1,10 @@
-.profileContainer {
+.background {
     background: url('../../images/trainer-image.jpg') center center / cover;
-    height: 100%;
-    padding: 120px 0 40px 0;
+    flex-basis: 100%;
+}
+
+.profileContainer {
+    padding: 40px 0;
 }
 
 .updateSuccess {

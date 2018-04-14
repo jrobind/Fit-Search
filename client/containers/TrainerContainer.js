@@ -37,7 +37,7 @@ class TrainerContainer extends Component {
                 apiGetInterestRequests(trainerId)
                     .then(({ data }) => {
                         if (data.filter(({ requestee }) => requestee._id === userId).length) {
-                            this.setState(() => ({interestRegistered: true}))
+                            this.setState(() => ({interestRegistered: true}));
                         }
                     })
                     .catch((error) => console.log(error));

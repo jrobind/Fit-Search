@@ -1,7 +1,7 @@
 .registerContainer {
     display: flex;
     flex-direction: column;
-    margin: 5% 30%;
+    margin: 0 30%;
 }
 
 .registerContainer a {
@@ -14,8 +14,14 @@
     flex-direction: column;
 }
 
-.form h1 {
+.registerContainer h1 {
+    margin: 170px 0 15px 0;
     font-size: 2.1em;
+}
+
+.form input[type='email'], form input[type='password'] {
+    margin: 5px 0;
+    padding: 3px;
 }
 
 .form span {
@@ -73,9 +79,8 @@
 }
 
 @media screen and (max-width: 850px) {
-    
     .registerContainer {
-        margin: 5% 20%;
+        margin: 0 20%;
 
     }
 }
