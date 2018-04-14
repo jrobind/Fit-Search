@@ -37,7 +37,7 @@ class ReviewForm extends Component {
     }
     
     render() {
-        const { reviewSent } = this.props;
+        const { reviewSuccess } = this.props;
         
         return(
             <div className={styles.reviewContainer}>
@@ -49,7 +49,7 @@ class ReviewForm extends Component {
                     <label><span>* </span>Review message <strong>(maximum 750 characters)</strong></label>
                     <textarea id='body' type='text' onChange={this.handleInput} placeholder=' type a review' value={this.state.body} required maxLength='750'></textarea>
 
-                    {!reviewSent ? <input className={styles.submit} type='submit' value='Submit review!'/> : <div className={styles.sent}>Review sent <i className="fas fa-check-circle"></i></div>}
+                    {!reviewSuccess ? <input className={styles.submit} type='submit' value='Submit review!'/> : <div className={styles.sent}>Review sent <i className="fas fa-check-circle"></i></div>}
             
                 </form>
             </div>
@@ -59,7 +59,7 @@ class ReviewForm extends Component {
 
 ReviewForm.propTypes = {
     submitReview: PropTypes.func.isRequired,
-    reviewSent: PropTypes.bool.isRequired
+    reviewSuccess: PropTypes.bool.isRequired
 }
 
 export default ReviewForm;

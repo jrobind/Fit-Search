@@ -10,7 +10,7 @@ const Search = ({
     handleUpdateSearch, 
     searchResults, 
     componentState: { currentQuery, noResults, currentPage },
-    currentSearchResults,
+    currentResults,
     pageNumbers,
     history, 
     handlePageClick,
@@ -23,7 +23,7 @@ const Search = ({
         />
         <div className={styles.results}>
             <div className={styles.trainerCardContainer}>
-                {searchResults.length ? currentSearchResults.map(({ profile, _id, reviewAverage, numberOfReviews }) => (
+                {searchResults.length ? currentResults.map(({ profile, _id, reviewAverage, numberOfReviews }) => (
                     <div className={styles.card} key={_id} onClick={() => {
                         history.push({
                             pathname: '/search/trainer',
@@ -72,7 +72,7 @@ Search.propTypes = {
     componentState: PropTypes.object.isRequired,
     handlePageClick: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
-    currentSearchResults: PropTypes.array.isRequired,
+    currentResults: PropTypes.array.isRequired,
     pageNumbers: PropTypes.array.isRequired
 }
 

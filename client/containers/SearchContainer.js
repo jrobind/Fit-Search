@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { handleGetSearchQuery } from '../actions/searchQuery';
 import { connect } from 'react-redux';
+import { handleGetSearchQuery } from '../actions/searchQuery';
+import formatPagination from '../utils/formatPagination';
 import Search from '../components/Search';
 
 class SearchContainer extends Component {
@@ -10,7 +11,7 @@ class SearchContainer extends Component {
             noResults: false,
             currentQuery: '',
             currentPage: 1,
-            resultsPerPage: 6
+            numberPerPage: 6
         }
         
         this.handleUpdateSearch = this.handleUpdateSearch.bind(this);
@@ -60,25 +61,16 @@ class SearchContainer extends Component {
     }
     
     render() {
-        const { currentPage, resultsPerPage} = this.state;
+        const { currentPage, numberPerPage} = this.state;
         const { searchResults } = this.props;
-        
-        const lastResultIndex = currentPage * resultsPerPage;
-        const firstResultIndex = lastResultIndex - resultsPerPage;
-        const currentSearchResults = searchResults.slice(firstResultIndex, lastResultIndex);
-
-        // total number of pages    
-        const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(searchResults.length / resultsPerPage); i++) {
-            pageNumbers.push(i);
-        }
+        const { pageNumbers, currentResults } = formatPagination({currentPage, numberPerPage, searchResults});
         
         return <Search 
                     {...this.props} 
                     handleUpdateSearch={this.handleUpdateSearch}   
                     handlePageClick={this.handlePageClick}
                     componentState={this.state}
-                    currentSearchResults={currentSearchResults}
+                    currentResults={currentResults}
                     pageNumbers={pageNumbers}
                 />;
     }

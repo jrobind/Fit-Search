@@ -3,17 +3,19 @@ import { connect } from 'react-redux';
 import { apiCreateReview } from '../utils/api';
 import { handleGetSelectedTrainer } from '../actions/selectedTrainer';
 import handleReviewStars from '../utils/reviewStars';
+import formatPagination from '../utils/formatPagination';
 import ReviewForm from './ReviewForm';
+import Loading from './Loading';
 import styles from '../styles/components/review.css';
 
 class Review extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            reviewSent: false,
+            reviewPending: false,
+            reviewSuccess: false,
             currentPage: 1,
-            reviewsPerPage: 6,
-            reviews: null
+            numberPerPage: 6
         }
         
         this.handleReviewSubmission = this.handleReviewSubmission.bind(this);
@@ -27,6 +29,8 @@ class Review extends Component {
     
     handleReviewSubmission(reviewData) {
         const { userProfile: { name, avatar }, userId, trainerId, getSelectedTrainer } = this.props;
+        
+        this.setState(() => ({reviewPending: true}));
 
         reviewData.authorName = name;
         reviewData.authorAvatar = avatar;
@@ -36,7 +40,7 @@ class Review extends Component {
             .then(({ data }) => {
                 if (data === 'review added') {
                     getSelectedTrainer(trainerId)
-                        .then(() => (this.setState(() => ({reviewSent: true}))))
+                        .then(() => (this.setState(() => ({reviewSuccess: true, reviewPending: false}))))
                         .catch((error) => console.log(error));
                 }
             })
@@ -44,26 +48,21 @@ class Review extends Component {
     }
     
     render() {
-        const { currentPage, reviewsPerPage, reviewSent } = this.state;
         const { reviews } = this.props;
-
-        const lastResultIndex = currentPage * reviewsPerPage;
-        const firstResultIndex = lastResultIndex - reviewsPerPage;
-        const currentReviewResults = reviews.slice(firstResultIndex, lastResultIndex); 
-
-        // total number of pages    
-        const pageNumbers = [];
-        for (let i = 1; i <= Math.ceil(reviews.length / reviewsPerPage); i++) {
-            pageNumbers.push(i);
-        }
+        const { currentPage, numberPerPage, reviewSuccess, reviewPending } = this.state;
+        const { pageNumbers, currentResults } = formatPagination({currentPage, numberPerPage, reviews});
         
-        return (
+        if (reviewPending) {
+            return <Loading text='Sending review' />
+        }
+    
+        return ( 
             <div className={styles.reviewContainer}>
-            
-                <ReviewForm submitReview={this.handleReviewSubmission} reviewSent={reviewSent}/>
-            
+
+                <ReviewForm submitReview={this.handleReviewSubmission} reviewSuccess={reviewSuccess}/>
+
                 <div className={styles.reviews}>
-                    {currentReviewResults.map((review) => 
+                    {currentResults.map((review) => 
                         <div key={review._id} className={styles.reviewCard}>
                             <div className={styles.avatar}>
                                 <div className={styles.avatarImgContainer}>
