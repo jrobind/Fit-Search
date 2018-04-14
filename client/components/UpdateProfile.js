@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { handleGetUserProfile } from '../actions/userProfile';
 import { apiUpdateProfile } from '../utils/api';
+import styles from '../styles/components/profileForm.css'
 import Loading from './Loading';
 import ProfileForm from './ProfileForm';
 
@@ -77,7 +78,7 @@ class UpdateProfile extends Component {
             return <Loading text='Loading profile' />;
         } else {
             return(
-                <div>
+                <div className={styles.formContainer}>
                     <ProfileForm 
                         handleSubmission={this.handleSubmission}
                         handleInput={this.handleInput}
