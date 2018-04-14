@@ -48,3 +48,38 @@ html, body {
 :global(.fa-quote-right) {
     margin-left: 8px;
 }
+
+/* global page number styles */
+
+:global(.pageNumbers) {
+    flex-basis: 100%;
+    display: flex;
+    max-height: 35px;
+    list-style: none;
+    padding: 5px;
+    justify-content: center; 
+}
+
+:global(.pageNumbers):hover {
+    cursor: pointer;
+}
+
+:global(.page), :global(.currentPage) {
+    margin: 0 4px;
+    font-weight: 400;
+    font-size: 1.1em;
+    padding: 5px 7px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.9)
+}
+
+:global(.fa-chevron-circle-up) {
+    font-size: 1.5em;
+    transform: rotate(20deg);
+}
+
+:global(.currentPage) {
+    text-decoration: underline;
+}

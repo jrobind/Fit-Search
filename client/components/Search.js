@@ -51,18 +51,18 @@ const Search = ({
 
                 )) : <div>{noResults ? 'NO RESULTS FOUND...' : <Loading />} </div>} 
             </div>
-                <ul className="pageNumbers">
-                    {pageNumbers.map((number) => (
-                        <li className={currentPage === number ? 'currentPage' : 'page'}
-                            id={number} 
-                            key={number} 
-                            onClick={handlePageClick}
-                        >
-                            {number}
-                        </li>
-                    ))}
-                </ul>
         </div>
+        <ul className="pageNumbers">
+            {pageNumbers.map((number) => (
+                <li className={currentPage === number ? 'currentPage' : 'page'}
+                    id={number} 
+                    key={number} 
+                    onClick={handlePageClick}
+                >
+                    {number}
+                </li>
+            ))}
+        </ul>
     </div>
 );
 

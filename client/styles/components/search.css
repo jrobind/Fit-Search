@@ -1,6 +1,6 @@
 /* search container styles*/
-
 .searchContainer {
+    flex-basis: 100%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -125,12 +125,6 @@
     .bio {
         font-size: 0.75em;
     }
-}
-
-@media screen and (max-width: 720px) {
-    .searchContainer {
-        flex-direction: column;
-    } 
 }
 
 @media screen and (max-width: 570px) {
