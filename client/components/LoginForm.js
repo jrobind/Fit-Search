@@ -86,8 +86,8 @@ class LoginForm extends Component {
 
 LoginForm.propTypes = {
     handleLoginSubmission: PropTypes.func.isRequired,
-    interestSuccess: PropTypes.bool.isRequired,
-    requestSuccess: PropTypes.bool.isRequired, 
+    interestSuccess: PropTypes.bool,
+    requestSuccess: PropTypes.bool, 
     userType: PropTypes.string,
     loggedIn: PropTypes.bool,
     userProfile: PropTypes.object,

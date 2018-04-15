@@ -33,9 +33,9 @@ const Nav = ({
 );
 
 Nav.propTypes = {
-    loggedIn: PropTypes.bool.isRequired,
+    loggedIn: PropTypes.bool,
     interestRequests: PropTypes.object.isRequired,
-    interestRequestSuccess: PropTypes.bool.isRequired,
+    interestRequestSuccess: PropTypes.bool,
     userAuth: PropTypes.object.isRequired,
     handleLogout: PropTypes.func.isRequired,
     userProfile: PropTypes.object.isRequired

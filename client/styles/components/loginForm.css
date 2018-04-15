@@ -49,7 +49,7 @@
 }
 
 @media screen and (max-width: 800px) {
-    .loginContainer {
+    .form {
         margin: 0 20%;
 
     }

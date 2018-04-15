@@ -50,6 +50,7 @@ html, body {
         flex-wrap: wrap;
     list-style: none;
     padding: 5px;
+    max-height: 35px;
     font-size: 0.9em;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -72,6 +73,8 @@ html, body {
     color: white;
     background-color: rgba(0, 0, 0, 0.9);
 }
+
+/* font awesome styles */
 
 :global(.fa-chevron-circle-up) {
     font-size: 1.5em;
