@@ -60,6 +60,21 @@ class Home extends Component {
                             </p>
                         </div>
                     </section>
+                                          
+                    <section className={styles.teaserContainer}>
+                        <p className={styles.teaser}>
+                            Our unqiue trainer review system encourages trainer accountablity - making it easier for you to find trainers who deliver high quality, tailor made, personal coaching services.
+                        </p>
+                            
+                        <div className={styles.imgBlock}>                           
+                            <div className={styles.teaserImgContainerOne}>
+                                <img src={require('../images/teaser(1).jpg')}/>
+                            </div>          
+                            <div className={styles.teaserImgContainerTwo}>
+                                <img src={require('../images/teaser(2).jpg')}/>
+                            </div> 
+                        </div>
+                    </section>
                 </div>
             )   
     }
