@@ -1,10 +1,16 @@
 .loginContainer {
-    flex-basis: 100%;
+    -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
 }
 
 .form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     margin: 0 30%;
 }
 
@@ -26,7 +32,9 @@
     font-size: 0.95em;
     border: 2px solid rgba(0, 0, 0, 0.95);
     padding: 8px;
-    align-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
     width: 60%;
     margin-top: 20px; 
 }
@@ -34,6 +42,8 @@
 .submit:hover{
     background-color: white;
     color: rgba(0, 0, 0, 0.95);
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
     cursor: pointer;
 }
