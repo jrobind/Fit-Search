@@ -50,19 +50,19 @@ const Search = ({
                     </div>
 
                 )) : <div>{noResults ? 'NO RESULTS FOUND...' : <Loading />} </div>} 
+                <ul className="pageNumbers">
+                    {pageNumbers.map((number) => (
+                        <li className={currentPage === number ? 'currentPage' : 'page'}
+                            id={number} 
+                            key={number} 
+                            onClick={handlePageClick}
+                        >
+                            {number}
+                        </li>
+                    ))}
+                </ul>
             </div>
         </div>
-        <ul className="pageNumbers">
-            {pageNumbers.map((number) => (
-                <li className={currentPage === number ? 'currentPage' : 'page'}
-                    id={number} 
-                    key={number} 
-                    onClick={handlePageClick}
-                >
-                    {number}
-                </li>
-            ))}
-        </ul>
     </div>
 );
 
