@@ -38,6 +38,9 @@ class SearchContainer extends Component {
     }
     
     handleUpdateSearch(searchQuery, reset) {
+        // reset page number
+        this.setState(() => ({currentPage: 1}));
+        
         reset ? this.handleResetSearch() : null;
 
         if (searchQuery) {
