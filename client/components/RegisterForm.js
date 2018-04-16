@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 import styles from '../styles/components/registerForm.css';
 
 class RegisterForm extends Component {
@@ -45,7 +46,7 @@ class RegisterForm extends Component {
     }
     
     render() {
-        const { registerSuccess } = this.props;
+        const { registerSuccess, registerPending } = this.props;
         
         return(
             <div className={styles.registerContainer}>
@@ -107,7 +108,7 @@ class RegisterForm extends Component {
                         I am a trainer
                     </label>
             
-                    <input className={styles.submit} type='submit'/>
+                    {!registerPending ? <input className={styles.submit} type='submit'/> : <Loading text='Processing' />}
                 </form>
                 <hr className={styles.hr}/>
                 <p>Already have an account? <Link to='/login'>Login</Link></p>
@@ -118,7 +119,8 @@ class RegisterForm extends Component {
                 
 RegisterForm.propTypes = {
     handleRegister: PropTypes.func.isRequired,
-    registerSuccess: PropTypes.bool.isRequired
+    registerSuccess: PropTypes.bool.isRequired,
+    registerPending: PropTypes.bool.isRequired
 }
 
 export default RegisterForm;

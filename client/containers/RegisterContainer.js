@@ -7,30 +7,34 @@ class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            registerSuccess: false
+            registerSuccess: false,
+            registerPending: false
         }
         
         this.handleRegister= this.handleRegister.bind(this);
     }
     
     handleRegister(userData) {
+        this.setState(() => ({registerPending: true}));
+        
         apiRegisterUser(userData)
             .then(({ data }) => {
                 if (data && data !== 'duplicate') {
-                    this.setState(() => ({registerSuccess: true}));
+                    this.setState(() => ({registerSuccess: true, registerPending: false}));
                 } else {
-                    this.setState(() => ({registerSuccess: false}));
+                    this.setState(() => ({registerSuccess: false, registerPending: false}));
                 }
             })
             .catch((error) => alert('Registration error!'))
     }
     
     render() {
-        const { registerSuccess } = this.state;
+        const { registerSuccess, registerPending } = this.state;
         
         return <RegisterForm 
                         handleRegister={this.handleRegister} 
-                        registerSuccess={registerSuccess} 
+                        registerSuccess={registerSuccess}
+                        registerPending={registerPending}
                     />;
     }
 }
