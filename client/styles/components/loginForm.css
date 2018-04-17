@@ -54,3 +54,9 @@
 
     }
 }
+
+@media screen and (max-width: 500px) {
+    .loginContainer h1 {
+        margin: 50px 30% 15px 30%;
+    }
+}

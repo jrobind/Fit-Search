@@ -150,11 +150,12 @@
 
     .ratings img {
         width: 60px;
-        height: 12px;
+        height: 13px;
     }
     
     .hourly {
         font-size: 0.75em;
+        line-height: 16px;
     }
     
     .region select {

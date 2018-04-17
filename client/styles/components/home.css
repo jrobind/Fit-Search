@@ -1,3 +1,7 @@
+.homeContainer {
+    height: 100%;
+}
+
 /*hero section*/
 
 .hero {
@@ -9,7 +13,6 @@
         -ms-flex-direction: column;
             flex-direction: column;
     background: url('../../images/home-photo.jpg') center center / cover;
-    height: calc(100vh - 72px);
 }
 
 .welcome {
@@ -23,7 +26,7 @@
 }
 
 .titleContainer {
-    margin-top: 120px;
+    margin-top: 10%;
 }
 
 .titleContainer h1, .titleContainer p {
@@ -113,8 +116,8 @@
 
 .processContainer h1 {
     -webkit-box-flex: 0;
-        -ms-flex: 0 1 100%;
-            flex: 0 1 100%;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
     font-size: 2.3em;
     max-width: 850px;
     margin-bottom: 15px;
@@ -150,30 +153,6 @@
 
 /* review */
 
-.reviewOne, .reviewTwo {
-    color: white;
-    font-size: 1em;
-    text-align: left
-}
-
-.reviewOne p, .reviewTwo p {
-    max-width: 600px;
-    font-weight: 300;
-    margin: 0;
-}
-
-.reviewContainer h1 {
-    font-size: 2.3em;
-    margin-bottom: 55px;
-    color: white;
-}
-
-.reviewOne img, .reviewTwo img {
-    max-width: 100%;
-    max-height: 100%;
-    width: 100%;
-}
-
 .reviewImgContainerOne, .reviewImgContainerTwo {
     width: 230px;
     max-height: 240px;
@@ -184,7 +163,7 @@
             box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 1);
 }
 
-.reviewTwo {
+.reviewBlock {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -192,6 +171,25 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+}
+
+.reviewOne, .reviewTwo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    color: white;
+    font-size: 1em;
+    text-align: left;
+}
+
+.reviewOne img, .reviewTwo img {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
 }
 
 .reviewImgContainerOne {
@@ -202,6 +200,19 @@
     -ms-flex-item-align: end;
         align-self: flex-end;
     margin: 40px 0 20px 0;
+}
+
+.reviewOne p, .reviewTwo p {
+    max-width: 600px;
+    font-weight: 300;
+    margin: 0;
+}
+
+.reviewContainer h1 {
+    width: 95%;
+    font-size: 2.3em;
+    margin-bottom: 55px;
+    color: white;
 }
 
 /* teaser section styles */
@@ -217,15 +228,16 @@
     -webkit-box-align: start;
         -ms-flex-align: start;
             align-items: flex-start;
-    padding: 40px 30px 80px 30px;
+    padding: 40px 30px 40px 30px;
     text-align: left;
 }
 
 .teaser {
     font-size: 2.1em;
     font-weight: bold;
+    width: 95%;
     max-width: 650px;
-    margin: 0 0 65px 5%;
+    margin: 0 20px 65px 5%;
 }
 
 .imgBlock {
@@ -262,7 +274,17 @@
     right: -380px;
 }
 
+.teaserImgContainerOne {
+    margin-bottom: 20px;
+}
+
 /*media queries*/
+
+@media screen and (orientation: landscape) {
+    .hero {
+        min-height: 650px;
+    }
+}
 
 @media screen and (max-width: 1330px) {
     .imgBlock {
@@ -271,7 +293,7 @@
     }
     
     .teaser {
-        margin: 0 0 140px 0;
+        margin: 0 20px 140px 0;
     }
 
     .teaserImgContainerOne, .teaserImgContainerTwo {
@@ -335,6 +357,7 @@
 @media screen and (max-width: 780px) {
     .teaser {
         margin: 0 0 420px 5%;
+        font-size: 1.9em;
     }
     
     .imgBlock {
@@ -352,10 +375,6 @@
 }
 
 @media screen and (max-width: 515px) {
-    .teaserContainer {
-        padding-bottom: 40px;
-    }
-    
     .processContainer h1 {
         width: 80%;
         max-width: 700px;
@@ -366,7 +385,6 @@
     }
     
     .teaser {
-        font-size: 1.7em;
         margin-bottom: 370px;
     }
     
@@ -386,7 +404,7 @@
 
 @media screen and (max-width: 380px) {
     .teaser {
-        margin: 0 0 315px 0;
+        margin: 0 0 315px 5px;
     }
     
     .teaserImgContainerTwo {

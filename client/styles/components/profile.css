@@ -5,7 +5,8 @@
 }
 
 .profileContainer {
-    padding: 40px 0;
+    position: relative;
+    padding: 50px 0;
 }
 
 .updateSuccess {
@@ -216,8 +217,9 @@
 
 .notes div {
     font-size: 0.95em;
+    width: 90%;
     color: white;
-    margin: 5px 25px 0 25px;
+    margin: 5px 0 0 0;
 }
 
 /* bottom card styles */

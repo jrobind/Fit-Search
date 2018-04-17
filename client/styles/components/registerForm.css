@@ -20,7 +20,6 @@
 }
 
 .registerContainer h1 {
-    margin: 170px 0 15px 0;
     font-size: 2.1em;
     margin: 100px 0 15px 0;
 }
@@ -94,5 +93,11 @@
 @media screen and (max-width: 850px) {
     .registerContainer {
         margin: 0 16%;   
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .registerContainer h1 {
+        margin: 50px 0 15px 0;
     }
 }

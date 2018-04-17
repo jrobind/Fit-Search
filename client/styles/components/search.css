@@ -77,7 +77,8 @@
 }
 
 .bio {
-    margin: 6px 10px;
+    width: 95%;
+    margin: 6px 0;
     font-size: 0.9em;
 }
 
