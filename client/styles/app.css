@@ -41,7 +41,6 @@ html {
         flex-wrap: wrap;
     list-style: none;
     padding: 5px;
-    max-height: 35px;
     font-size: 0.9em;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
@@ -54,6 +53,7 @@ html {
 
 :global(.page) {
     margin: 4px 3px 0 3px;
+    min-height: 20px;
 }
 
 :global(.page), :global(.currentPage) {
@@ -68,6 +68,7 @@ html {
 :global(.currentPage) {
     text-decoration: underline;
     margin: 4px 3px 0 3px;
+    min-height: 20px;
 }
 
 /* font awesome styles */

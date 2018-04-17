@@ -39,9 +39,11 @@ class Home extends Component {
         const { height } = this.state;
         let name;
         
-        if (profile !== null) {
-            name = profile === 'new user' ? 'Welcome - please setup your profile' : `Welcome ${profile.name}`;  
-        } 
+        if (profile) {
+            if (profile !== null) {
+                name = profile === 'new user' ? 'Welcome - please setup your profile' : `Welcome ${profile.name}`;  
+            }    
+        }
 
         return(
                 <div className={styles.homeContainer}>

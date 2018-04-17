@@ -374,6 +374,12 @@
     }
 }
 
+@media screen and (max-width: 695px) { /* fix for IE11 */
+    .reviewContainer {
+        display: block;
+    }
+}
+
 @media screen and (max-width: 515px) {
     .processContainer h1 {
         width: 80%;
@@ -399,6 +405,25 @@
     
     .teaserImgContainerTwo {
         top: -320px;
+    }
+}
+
+@media screen and (max-width: 430px) { /* fix for IE11 */
+    .reviewContainer {
+        padding: 40px 10% 60px 10%;
+        text-align: center;
+    }
+    
+    .reviewImgContainerOne, .reviewImgContainerTwo {
+        margin: 20px auto;
+    }
+    
+    .reviewImgContainerTwo {
+        margin-top: 50px;
+    }
+    
+    .reviewTwo {
+        display: block;
     }
 }
 
