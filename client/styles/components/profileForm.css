@@ -2,7 +2,7 @@
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%;
     margin: 50px 0 0 0;
-    padding-bottom: 20px;
+    padding-bottom: 50px;
 }
 
 .form {
@@ -23,9 +23,9 @@
     font-weight: bold;
 }
 
-.form input[type='text'], .form textarea {
+.form input[type='text'], .form input[type='number'], .form textarea, select {
     margin: 5px 0;
-    padding: 3px;
+    padding: 5px;
 }
 
 .submit {
