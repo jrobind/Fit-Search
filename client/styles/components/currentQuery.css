@@ -8,10 +8,11 @@
             flex-direction: column;
     padding-bottom: 15px;
     border-bottom: 1px solid white;
+    min-height: 155px;
 }
 
 .queryContainer div {
-    font-size: 0.9em;
+    font-size: 0.91em;
 }
 
 .button {
@@ -64,6 +65,7 @@
     .queryContainer {
         max-width: 85px;
         min-width: 85px;
+        min-height: 0;
     }
     
     .button {
