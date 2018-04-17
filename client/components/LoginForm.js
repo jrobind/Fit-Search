@@ -49,9 +49,10 @@ class LoginForm extends Component {
         
         if (requestSuccess && loggedIn && userProfile) {
             if (userType === 'trainer') {
-                return interestSuccess ? <Redirect to='/' /> : <Loading text='Just a minute'/>;
+                return interestSuccess ? <Redirect to='/' /> : <Loading text='Just a second'/>;
+            } else if (userType === 'client') {
+                return userProfile.profile ? <Redirect to='/' /> : <Loading text='Just a second'/>;
             }
-            return <Redirect to='/' />;
         } else {
             return(
                 <div className={styles.loginContainer}>
