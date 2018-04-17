@@ -1,5 +1,5 @@
-const formatPagination = ({ numberPerPage, currentPage, searchResults, reviews }) => {
-    const results = reviews || searchResults;
+const formatPagination = ({ numberPerPage, currentPage, searchResults, reviews, requests }) => {
+    const results = reviews || searchResults || requests;
     
     const lastResultIndex = currentPage * numberPerPage;
     const firstResultIndex = lastResultIndex - numberPerPage;
