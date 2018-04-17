@@ -29,16 +29,6 @@ html {
             flex-direction: column;
 }
 
-/* global home styles */
-
-:global(.fa-quote-left) {
-    margin-right: 8px;
-}
-
-:global(.fa-quote-right) {
-    margin-left: 8px;
-}
-
 /* global page number styles */
 
 :global(.pageNumbers) {
@@ -75,6 +65,11 @@ html {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
+:global(.currentPage) {
+    text-decoration: underline;
+    margin: 4px 3px 0 3px;
+}
+
 /* font awesome styles */
 
 :global(.fa-chevron-circle-up) {
@@ -84,9 +79,17 @@ html {
             transform: rotate(20deg);
 }
 
-:global(.currentPage) {
-    text-decoration: underline;
-    margin: 4px 3px 0 3px;
+:global(.fa-quote-left) {
+    margin-right: 8px;
+}
+
+:global(.fa-quote-right) {
+    margin-left: 8px;
+}
+
+:global(.fa-envelope), :global(.fa-thumbs-up) {
+    font-size: 2.1em;
+    margin: 0 10px 0;
 }
 
 /* global profile form styles */

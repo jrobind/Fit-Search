@@ -131,7 +131,7 @@
 /* explain section styles */
 
 .explain {
-    padding: 40px 0;
+    padding: 40px 20%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -141,17 +141,35 @@
             flex-direction: column;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
-            justify-content: center;
     background-color: rgba(0, 0, 0, 0.9);
+    
 }
 
-.explain p {
+.explain h1 {
+    margin: 5px auto 30px auto;
+    text-align: center;
+    font-size: 2.3em;
     font-weight: 700;
-    font-size: 2.1em;
     color: white;
-    width: 65%;
+    width: 70%;
     max-width: 500px;
-    margin: 0 10% 30px 10%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+
+.sendEmail, .thumb {
+    font-size: 1.5em;
+    color: white;
+    width: 75%;
+    max-width: 600px;
+}
+
+.sendEmail {
+    align-self: center;
+}
+
+.thumb {
+    align-self: center;
 }
 
 /*media queries*/
@@ -173,6 +191,12 @@
     }
 }
 
+@media screen and (max-width: 750px) {
+    .explain {
+        padding: 40px 10%;    
+    }
+}
+
 @media screen and (max-width: 540px) {
     .imgContainer {
         width: 130px;
@@ -184,9 +208,31 @@
         font-size: 0.75em;
         padding: 10px 5px;
     }
+    
+    .noRequests {
+        margin: 20px 0 0 20px;
+        font-size: 1.8em;
+        max-width: 250px;
+    }
 }
 
 @media screen and (max-width: 445px) {
+    .explain {
+        padding: 40px 5%;
+    }
+    
+    .explain h1 {
+        font-size: 2em;
+    }
+    
+    .explain h1, .sendEmail, .thumb {
+        width: 90%;
+    }
+
+    .sendEmail, .thumb {
+        font-size: 1.3em;
+    }
+    
     .button {
         top: auto;
         bottom: 10px;

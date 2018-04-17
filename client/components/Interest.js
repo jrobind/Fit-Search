@@ -53,8 +53,12 @@ const Interest = ({
         </div> 
         
         <div className={styles.explain}>
-            <p>
-                Make sure to contact your interested clients by their email address. Clients may feel nervous or wary about exercising, and for many this will be their first time with a trainer, so make sure to send a polite message that will encourage client/trainer trust!
+            <h1>Establishing a client base made easy.</h1>
+            <p className={styles.sendEmail}>
+                <i className="fas fa-envelope"></i> Contact your interested clients by their email address. Clients may feel nervous or wary about personal training, so be sure to send a friendly message.
+            </p>
+            <p className={styles.thumb}>
+                <i className="fas fa-thumbs-up"></i> After initial contact, make sure to book your client in for an introductory taster session. This is your chance to begin building a strong trainer/client relationship.
             </p>
         </div>
     </div>
