@@ -36,12 +36,12 @@ class ProfileContainer extends Component {
         const { profile, requestPending, requestSuccess } = this.props;
         const { state: locationState } = this.props.location;
 
-        if (profile && requestSuccess) {
+        if (profile !== 'new user' && requestSuccess) {
             return <Profile 
                         {...this.props}
                         locationState={locationState} 
                     />
-        } else if (!profile) {
+        } else if (profile === 'new user') {
             return <CreateProfile 
                         {...this.props} 
                         createProfile={this.handleCreateProfile}

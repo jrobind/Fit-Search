@@ -60,7 +60,7 @@ CreateProfile.propTypes = {
     createProfile: PropTypes.func.isRequired,
     userType: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    profile: PropTypes.object,
+    profile: PropTypes.string.isRequired,
     requestPending: PropTypes.bool,
     requestSuccess: PropTypes.bool,
     reviews: PropTypes.array,

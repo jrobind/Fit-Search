@@ -17,7 +17,7 @@ const Nav = ({
 
             {loggedIn && userType === 'client' || loggedIn && interestRequestSuccess && userType === 'trainer' ? <li><NavLink activeClassName={styles.active} to='/portal'>Profile Portal</NavLink></li> : null}
 
-            {loggedIn && userType === 'client' && userProfile.profile && <li><NavLink activeClassName={styles.active} to='/search'>Search</NavLink></li>}
+            {loggedIn && userType === 'client' && userProfile.profile !== 'new user' && <li><NavLink activeClassName={styles.active} to='/search'>Search</NavLink></li>}
 
             {interestRequestSuccess && loggedIn && <li><NavLink activeClassName={styles.active} to='/interest'>Interest Requests<span className={styles.requestNotifications}>{requests.length}</span></NavLink></li>}
 
