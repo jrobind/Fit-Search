@@ -45,7 +45,7 @@ const Trainer = ({
 Trainer.propTypes = {
     profile: PropTypes.object.isRequired,
     reviews: PropTypes.array.isRequired,
-    reviewAverage: PropTypes.number.isRequired,
+    reviewAverage: PropTypes.number,
     handleInterestSubmission: PropTypes.func.isRequired,
     componentState: PropTypes.object.isRequired,
     userId: PropTypes.string,
