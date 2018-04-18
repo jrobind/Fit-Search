@@ -49,7 +49,7 @@ const Search = ({
                         {profile.bio ? <div className={styles.bio}>{profile.bio.slice(0, 130)}... <span className={styles.readmore}> Find out more!</span></div> : <span>No bio just yet!</span>}
                     </div>
 
-                )) : <div className={styles.noResults}>{noResults ? 'NO RESULTS FOUND...' : <Loading />} </div>} 
+                )) : <div>{noResults ? <h2 className={styles.noResults}>NO RESULTS FOUND...</h2> : <Loading />} </div>} 
                 <ul className="pageNumbers">
                     {pageNumbers.map((number) => (
                         <li className={currentPage === number ? 'currentPage' : 'page'}
