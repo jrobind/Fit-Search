@@ -25,7 +25,8 @@
 
 .form input[type='text'], .form input[type='number'], .form textarea, select {
     margin: 5px 0;
-    padding: 5px;
+    padding: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .submit {

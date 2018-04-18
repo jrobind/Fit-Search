@@ -18,15 +18,14 @@
     color: crimson;
 }
 
-.form textarea {
-    height: 130px;
-    padding: 3px;
+.form textarea, .form input[type='number'] {
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    padding: 7px;
     margin: 5px 0;
 }
 
-.form input[type='number'] {
-    margin: 5px 0;
-    padding: 3px;
+.form textarea {
+    height: 130px;
 }
 
 .submit {
