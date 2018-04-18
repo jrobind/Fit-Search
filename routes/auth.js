@@ -27,7 +27,7 @@ router.post('/register', middleware.checkForDuplicateEmail, (req, res) => {
         password: req.body.password,
         userType: req.body.checked
     });
-    
+    // set password hash
     bcrypt.genSalt(10, (error, salt) => {
         bcrypt.hash(newUser.password, salt, (error, hash) => {
             if (error) {
