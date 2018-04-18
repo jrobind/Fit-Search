@@ -229,7 +229,7 @@
     font-weight: bold;
     width: 95%;
     max-width: 650px;
-    margin: 0 20px 65px 5%;
+    margin: 25px 20px 65px 5%;
 }
 
 .imgBlock {
@@ -285,7 +285,7 @@
     }
     
     .teaser {
-        margin: 0 20px 140px 0;
+        margin: 25px 20px 140px 0;
     }
 
     .teaserImgContainerOne, .teaserImgContainerTwo {
@@ -327,7 +327,7 @@
 
 @media screen and (max-width: 980px) {
     .teaser {
-        margin: 0 0 335px 5%;
+        margin: 25px 0 335px 5%;
     }
     
     .imgBlock {
@@ -348,7 +348,7 @@
 
 @media screen and (max-width: 780px) {
     .teaser {
-        margin: 0 0 420px 5%;
+        margin: 25px 0 420px 5%;
         font-size: 1.9em;
     }
     
@@ -421,7 +421,7 @@
 
 @media screen and (max-width: 380px) {
     .teaser {
-        margin: 0 0 315px 5px;
+        margin: 25px 0 315px 5px;
     }
     
     .teaserImgContainerTwo {
