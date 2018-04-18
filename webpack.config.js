@@ -2,8 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
-
-module.exports = {
+var config = {
     entry: ['babel-polyfill', './client/index.js'],
     output: {
         path: '/',
@@ -37,3 +36,18 @@ module.exports = {
     ],
     mode: 'development'
 }
+
+if(process.env.NODE_ENV === 'production') {
+    config.mode = 'production';
+    
+    config.plugins.push(
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            }
+        }),
+        new webpack.optimize.UglifyJsPlugin()
+    )
+}
+
+module.exports = conifg;

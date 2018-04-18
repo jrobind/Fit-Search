@@ -2,11 +2,11 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const webpack = require('webpack');
-const webpackMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('./webpack.config.js');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
+require('dotenv').config();
 
 // require routes
 const profileRoutes = require('./routes/profile');
@@ -17,10 +17,9 @@ const interestRoutes  = require('./routes/interest');
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(webpackMiddleware(webpack(webpackConfig)));
 
 app.use(session({
-    secret: 'fit-search super secret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
 }));
@@ -37,7 +36,6 @@ app.use('/api', authRoutes);
 app.use('/api/review', reviewRoutes);
 app.use('/api/interest', interestRoutes);
 
-// catch-all route
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, './client/index.html'));
 });
