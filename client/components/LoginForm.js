@@ -47,6 +47,7 @@ class LoginForm extends Component {
                 loggingIn
               } = this.props;
         
+        // progress only if user login request has been successful
         if (requestSuccess && loggedIn && userProfile) {
             if (userType === 'trainer') {
                 return interestSuccess ? <Redirect to='/' /> : <Loading text='Just a second'/>;

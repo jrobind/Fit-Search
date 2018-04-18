@@ -2,10 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
-var config = {
+module.exports = {
     entry: ['babel-polyfill', './client/index.js'],
     output: {
-        path: '/',
+        path: path.join(__dirname, '/dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -31,23 +31,10 @@ var config = {
     },
     plugins: [
         new htmlWebpackPlugin({
-            template: 'client/index.html'
-        })
-    ],
-    mode: 'development'
-}
-
-if(process.env.NODE_ENV === 'production') {
-    config.mode = 'production';
-    
-    config.plugins.push(
-        new webpack.DefinePlugin({
-            'process.env': {
-                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-            }
+            template: 'client/index.html',
+            inject: false
         }),
-        new webpack.optimize.UglifyJsPlugin()
-    )
+        new webpack.optimize.OccurrenceOrderPlugin()
+    ],
+    mode: 'production'
 }
-
-module.exports = conifg;
