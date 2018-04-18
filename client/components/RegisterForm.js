@@ -108,7 +108,7 @@ class RegisterForm extends Component {
                         I am a trainer
                     </label>
             
-                    {!registerPending ? <input className={styles.submit} type='submit'/> : <Loading text='Processing' />}
+                    {!registerPending ? <input className='submit' type='submit'/> : <Loading text='Processing' />}
                 </form>
                 <hr className={styles.hr}/>
                 <p>Already have an account? <Link to='/login'>Login</Link></p>

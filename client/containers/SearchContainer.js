@@ -17,10 +17,20 @@ class SearchContainer extends Component {
         this.handleUpdateSearch = this.handleUpdateSearch.bind(this);
         this.handleResetSearch = this.handleResetSearch.bind(this);
         this.handlePageClick = this.handlePageClick.bind(this);
+        this.handleNumberPerPage = this.handleNumberPerPage.bind(this);
     }
     
-    componentDidMount() {
+    handleNumberPerPage(width) {
+        if (width > 1300) {
+            this.setState(({numberPerPage: 15}));
+        } else if (width > 900 && width < 1300) {
+            this.setState(({numberPerPage: 10}));
+        }
+    }
+    
+    componentDidMount() { 
         const { getSearchQuery } = this.props;
+        this.handleNumberPerPage(window.innerWidth);
         
         getSearchQuery('trainer');
     }

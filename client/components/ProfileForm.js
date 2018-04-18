@@ -50,7 +50,7 @@ const ProfileForm = ({
         {userType === 'trainer' ? <div className={styles.trainer}><label>Location notes <strong>(maximum 250 characters)</strong></label>
         <textarea id='notes' type='text' onChange={handleInput} value={state.notes} maxLength='250' ></textarea></div> : null}
 
-        <input className={styles.submit} type='submit'/>
+        <input className='submit' type='submit'/>
     </form>
 );
 

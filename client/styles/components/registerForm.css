@@ -9,7 +9,7 @@
     color: rgb(0, 0, 0);
 }
 
-.form {
+.form, .success {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -35,28 +35,6 @@
     color: crimson;
 }
 
-.submit {
-    border: none;
-    background-color: rgba(0, 0, 0, 0.95);
-    color: white;
-    border-radius: 5px;
-    font-size: 0.95em;
-    border: 2px solid rgba(0, 0, 0, 0.95);
-    padding: 8px;
-    margin: auto;
-    width: 60%;
-    margin-top: 15px; 
-}
-
-.submit:hover{
-    background-color: white;
-    color: rgba(0, 0, 0, 0.95);
-    -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
 .radioLabel {
     font-weight: 600;
 }
@@ -73,13 +51,6 @@
 }
 
 .success {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
     font-weight: 700;
     font-size: 1em;
     padding: 8px;

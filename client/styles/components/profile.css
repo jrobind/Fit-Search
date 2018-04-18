@@ -12,7 +12,6 @@
 .updateSuccess {
     font-weight: 700;
     font-size: 1.15em;
-    letter-spacing: 1px;
     padding: 5px;
     color: white; 
     position: absolute;
@@ -23,7 +22,7 @@
     margin-bottom: 50px;
 }
 
-/*profile card styles*/
+/* profile card styles */
 
 .card {
     margin: auto;
@@ -90,13 +89,12 @@
     width: 180px;
 }
 
-.update {
+.update, .clientUpdate {
     width: 130px;
 }
 
 .clientUpdate {
     top: 92%;
-    width: 130px;
 }
 
 .update:hover, .clientUpdate:hover, .interest:hover {
@@ -108,7 +106,9 @@
     cursor: pointer;
 }
 
-.avatar {
+/* avatar, name and review styles */
+
+.avatar, .nameAndReview, .notes {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -136,16 +136,7 @@
     display: block;
 }
 
-/* name and review styles */
-
-.nameAndReview {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+.nameAndReview, .notes {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
@@ -158,7 +149,7 @@
     margin: 0 0 5px 0;
 }
 
-.reviewInfo {
+.reviewInfo, .info {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -170,18 +161,14 @@
 }
 
 .reviewInfo div {
-    margin-left: 3px;
+    margin: 4px 0 0 3px;
     font-size: 0.8em;
     display: inline-block;
-    margin-top: 4px;
 }
 
 /* trainer info styles */
 
 .info {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -194,16 +181,6 @@
 }
 
 .notes {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
     margin: 15px 0 35px 0;
 }
 
@@ -219,7 +196,7 @@
     font-size: 0.95em;
     width: 90%;
     color: white;
-    margin: 5px 0 0 0;
+    margin: 5px 0;
 }
 
 /* bottom card styles */

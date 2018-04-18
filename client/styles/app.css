@@ -118,6 +118,36 @@ html {
     border: none;
 }
 
+/* global submit button styles */
+
+:global(.submit), :global(.loginSubmit) {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: white;
+    border-radius: 5px;
+    font-size: 0.95em;
+    border: 2px solid rgba(0, 0, 0, 0.95);
+    padding: 8px;
+    margin: auto;
+    width: 60%;
+    margin-top: 15px; 
+}
+
+:global(.loginSubmit) {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+}
+
+:global(.submit):hover, :global(.loginSubmit):hover {
+    background-color: white;
+    color: rgba(0, 0, 0, 0.95);
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
 /*media queries*/
 
 @media screen and (max-width: 600px) {

@@ -2,7 +2,7 @@
     height: 100%;
 }
 
-/*hero section*/
+/* hero styles */
 
 .hero {
     display: -webkit-box;
@@ -112,20 +112,22 @@
     background-color: rgba(0, 0, 0, 0.95);
 }
 
-/* process */
+/* process styles */
+
+.processExplained, .processContainer h1 {
+        max-width: 850px;
+}
 
 .processContainer h1 {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 auto;
             flex: 0 1 auto;
     font-size: 2.3em;
-    max-width: 850px;
     margin-bottom: 15px;
 }
 
 .processExplained {
     font-size: 1.1em;
-    max-width: 850px;
     margin-bottom: 3px;
 }
 
@@ -151,7 +153,7 @@
     padding: 13px;
 }
 
-/* review */
+/* review styles */
 
 .reviewImgContainerOne, .reviewImgContainerTwo {
     width: 230px;
@@ -161,16 +163,6 @@
     border-radius: 20px;
     -webkit-box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 1);
             box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 1);
-}
-
-.reviewBlock {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
 }
 
 .reviewOne, .reviewTwo {

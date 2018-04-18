@@ -61,15 +61,21 @@
     }
 }
 
+/* media queries */
+
 @media screen and (max-width: 520px) {
     .queryContainer {
-        max-width: 85px;
-        min-width: 85px;
+        max-width: 87px;
+        min-width: 87px;
         min-height: 0;
     }
     
+    .queryContainer div {
+        font-size: 9.2px;
+    }
+    
     .button {
-        padding: 5px 5px;
+        padding: 4px 4px;
         margin-bottom: 2px;
     }
     
