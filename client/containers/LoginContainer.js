@@ -17,7 +17,7 @@ class LoginContainer extends Component {
     
     handleLoginSubmission(userData) {
         const { loginUser } = this.props;
-        
+        // set loggingIn toggle so we can provide feedback
         this.setState(() => ({loggingIn: true}));
         
         loginUser(userData)

@@ -12,7 +12,7 @@ class Loading extends React.Component {
     componentDidMount() {
         const { text, speed } = this.props;
         const stopper = text + '...';
-        
+        // use setInterval to dynamically append period to loading text
         this.interval = setInterval(() => {
             if (this.state.text === stopper) {
                this.setState(() => ({text})); 

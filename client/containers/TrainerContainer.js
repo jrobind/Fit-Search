@@ -21,13 +21,13 @@ class TrainerContainer extends Component {
     componentDidMount() {
         let { trainerId } = this.props.location.state || this.props.history.location.state;
         const { userId, getSelectedTrainer, resetSelectedTrainer } = this.props;
-        
+
         resetSelectedTrainer();
 
         getSelectedTrainer(trainerId)
             .then(({ profile }) => {
                 this.setupGeocode(profile);
-            
+                // check whether user has registered interest with trainer or not
                 apiGetInterestRequests(trainerId)
                     .then(({ data }) => {
                         if (data.filter(({ requestee }) => requestee._id === userId).length) {
@@ -40,7 +40,7 @@ class TrainerContainer extends Component {
     
     setupGeocode({ base }) {
         const geocoder = !window.google ? null : new google.maps.Geocoder();
-
+        // use google map api to establish trainer town/city coordinates
         geocoder.geocode({'address': base + ' UK'}, (results, status) => {
             if (status === 'OK') {
                 this.setState(() => ({
@@ -55,7 +55,7 @@ class TrainerContainer extends Component {
     
     handleInterestSubmission() {
         const { userId, trainerId } = this.props;
-        
+        // toggle interestRegistered so we can disble the button to prevent submission again
         apiCreateInterestRequest({requesteeId: userId, trainerId})
             .then(({data}) => data ? this.setState(() => ({interestRegistered: true})) : null)
             .catch((error) => console.log(error));

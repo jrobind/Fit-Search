@@ -44,7 +44,6 @@ const logoutUser = () => (
     }
 )
 
-
 export const handleLoginUser = (userData) => {
     return (dispatch) => {
         return apiLoginUser(userData)
@@ -53,6 +52,7 @@ export const handleLoginUser = (userData) => {
                     dispatch(requestPending());
                     dispatch(loginUser(data.userType, data.id));
                     dispatch(handleGetUserProfile(data.id));
+                    // if trainer, then we need interest requests
                     data.userType === 'trainer' ? dispatch(handleGetInterestRequests(data.id)) : null;
                     dispatch(requestSuccces());
                 } else {
@@ -62,7 +62,6 @@ export const handleLoginUser = (userData) => {
             });
     }
 }
-
 
 export const handleLogoutUser = () => {
     return (dispatch) => {

@@ -77,7 +77,7 @@ class LoginForm extends Component {
                             value={this.state.password} 
                         />
 
-                        {!loggingIn ? <input className='loginSubmit' type='submit'/> : <Loading text='logging in...'/> }
+                        {!loggingIn ? <input className='loginSubmit' type='submit'/> : <Loading text='Logging in'/> }
                     </form>
                 </div>
             )      

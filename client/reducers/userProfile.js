@@ -1,4 +1,9 @@
-import { GET_USER_PROFILE, RESET_USER_PROFILE, REQUEST_PENDING, REQUEST_SUCCESS } from '../actions/userProfile';
+import { 
+    GET_USER_PROFILE, 
+    RESET_USER_PROFILE, 
+    REQUEST_PENDING, 
+    REQUEST_SUCCESS 
+} from '../actions/userProfile';
 
 const initialState = {
     profile: null,

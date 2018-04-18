@@ -9,13 +9,13 @@ export const requestPending = () => (
     {
         type: REQUEST_PENDING
     }
-)
+);
 
 export const requestSuccces = () => (
     {
         type: REQUEST_SUCCESS
     }
-)
+);
 
 const getUserProfile = (profile, reviews, reviewAverage) => (
     {
@@ -37,6 +37,7 @@ export const handleGetUserProfile = (id) => {
        return apiGetProfile(id)
             .then(({ data }) => {
                 dispatch(requestPending());
+                // if no profile is returned then the user is new
                 !data.profile ? dispatch(getUserProfile('new user', data.reviews, data.reviewAverage)) : dispatch(getUserProfile(data.profile, data.reviews, data.reviewAverage));
                 dispatch(requestSuccces());
                 return data;

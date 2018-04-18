@@ -22,6 +22,7 @@ const interestRequests = (state = initialState, action) => {
             }
         case RESET_INTEREST_REQUESTS :
             return {
+                ...state,
                 requests: null,
                 requestPending: false,
                 requestSuccess: false

@@ -17,7 +17,7 @@ class ProfileContainer extends Component {
     componentDidMount() {
         const { state } = this.props.location;
         const { id, getUserProfile } = this.props;
-        
+        // if updated, make sure we retrieve latest profile
         if (state !== undefined && state.profileUpdated === true) {
             getUserProfile(id);
         }

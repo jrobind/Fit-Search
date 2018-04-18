@@ -29,9 +29,9 @@ class Review extends Component {
     
     handleReviewSubmission(reviewData) {
         const { userProfile: { name, avatar }, userId, trainerId, getSelectedTrainer } = this.props;
-        
+        // set reviewPending toggle so we can provide feedback
         this.setState(() => ({reviewPending: true}));
-
+        // set review data author information before passing to api
         reviewData.authorName = name;
         reviewData.authorAvatar = avatar;
         reviewData.authorId = userId;
@@ -59,7 +59,10 @@ class Review extends Component {
         return ( 
             <div className={styles.reviewContainer}>
 
-                <ReviewForm submitReview={this.handleReviewSubmission} reviewSuccess={reviewSuccess}/>
+                <ReviewForm 
+                    submitReview={this.handleReviewSubmission} 
+                    reviewSuccess={reviewSuccess}
+                />
 
                 <div className={styles.reviews}>
                     {currentResults.map((review) => 
@@ -78,6 +81,7 @@ class Review extends Component {
                         </div> 
                     )}
                 </div>
+                
                 <ul className="pageNumbers">
                     {pageNumbers.map((number) => (
                         <li className={currentPage === number ? 'currentPage' : 'page'}

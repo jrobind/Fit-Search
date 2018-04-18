@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../styles/app.css';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import NavContainer from '../containers/NavContainer';
@@ -11,17 +10,11 @@ import ProfileContainer from '../containers/ProfileContainer';
 import UpdateProfile from './UpdateProfile';
 import TrainerContainer from '../containers/TrainerContainer';
 import InterestContainer from '../containers/InterestContainer';
+import '../styles/app.css';
 
 class App extends Component {
     render() {
-        const { 
-            userAuth, 
-            userAuth: { userType }, 
-            interestRequests, 
-            loggedIn, 
-            userProfile 
-        } = this.props; 
-        console.log(this.props);
+        const { userAuth: { userType }, loggedIn, userProfile } = this.props; 
         
         return(
             <Router>
@@ -62,16 +55,12 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { userAuth, interestRequests, userProfile, searchResults, selectedTrainer } = state;
+    const { userAuth, userProfile } = state;
     const loggedIn = !userAuth ? false : userAuth.loggedIn;
 
     return {
         loggedIn,
         userAuth,
-        interestRequests,
-        userProfile,
-        searchResults,
-        selectedTrainer,
         userProfile
     }
 }

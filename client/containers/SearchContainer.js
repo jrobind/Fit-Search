@@ -21,6 +21,7 @@ class SearchContainer extends Component {
     }
     
     handleNumberPerPage(width) {
+        // set the number of results per page depending on deivce
         if (width > 1300) {
             this.setState(({numberPerPage: 15}));
         } else if (width > 900 && width < 1300) {
@@ -31,7 +32,7 @@ class SearchContainer extends Component {
     componentDidMount() { 
         const { getSearchQuery } = this.props;
         this.handleNumberPerPage(window.innerWidth);
-        
+        // by default grab all trainers for now
         getSearchQuery('trainer');
     }
     
@@ -48,7 +49,7 @@ class SearchContainer extends Component {
     }
     
     handleUpdateSearch(searchQuery, reset) {
-        // reset page number
+        // reset page number after search query
         this.setState(() => ({currentPage: 1}));
         
         reset ? this.handleResetSearch() : null;
@@ -56,14 +57,14 @@ class SearchContainer extends Component {
         if (searchQuery) {
             this.setState((prevState) => {
                 const val = !prevState.currentQuery ? '' : '&'; 
-
+                
                 return {
                     currentQuery: prevState.currentQuery + val + searchQuery
                 }
             }, () => {
                 const { getSearchQuery } = this.props;
                 const { currentQuery } = this.state;
-                
+                // after new query string has been set to state above we can now get the results
                 getSearchQuery(currentQuery)
                     .then((data) => {
                         !data.length ? this.setState(() => ({noResults: true})) : this.setState(() => ({noResults: false}));

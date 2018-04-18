@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from '../styles/components/home.css';
 
-
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -15,9 +14,7 @@ class Home extends Component {
     }
     
     handleResize() {
-        this.setState(() => ({
-            height: window.innerHeight -72 // take into account navbar
-        }));   
+        this.setState(() => ({height: window.innerHeight -72})); // take into account navbar  
     }
     
     componentDidMount() {
@@ -48,7 +45,9 @@ class Home extends Component {
         return(
                 <div className={styles.homeContainer}>
                     <div style={{height}} className={styles.hero}>
+            
                         {!loggedIn && !profile ? null : <p className={styles.welcome}>{name}</p>}
+            
                         <div className={styles.titleContainer}>
                             <h1>FIND YOUR FITNESS GURU</h1>
                             <p>The hassle-free personal trainer search</p>
@@ -77,7 +76,7 @@ class Home extends Component {
                             </div>
                             <p>
                                 <i className="fas fa-quote-left"></i>
-                                    I have been training with Michael Doe for over three months now. In one word Michael has been AMAZING! I've lost over 10kg and put on over 3kg in muscle mass. I feel incredible, I'm able to do so much more with my life. Michael's sessions are hard work but at the same time really fun. I am so glad I found Fit-Search.
+                                    I've been training with Michael Doe for over three months now. In one word Michael has been, AMAZING! I've lost over 10kg and put on over 3kg in muscle mass. I feel incredible, I'm able to do so much more with my life. Michael's sessions are hard work but at the same time really fun. I am so glad I found Fit-Search.
                                 <i className="fas fa-quote-right"></i>
                             </p>
                         </div>
@@ -87,7 +86,7 @@ class Home extends Component {
                             </div>
                             <p>
                                 <i className="fas fa-quote-left"></i>
-                                    I stumbled upon Fit-Search around six months ago. Within a few days I found a trainer who lived locally. The process was painless and very professional. Shelly, my trainer, contacted me after I registered my interest with her and organised my first free taster session. All I can say is, I'm hooked! I've lost over 15kg and I feel fitter than ever. What a life-changing six months it's been! And its all thanks to Fit-Search and Shelly. 
+                                    I stumbled upon Fit-Search around six months ago. Within a few days I found a trainer who lived locally. The process was painless and very professional. Shelly, my trainer, contacted me after I registered my interest with her and organised my free taster session. All I can say is, I'm hooked! I've lost over 15kg and I feel fitter than ever. What a life-changing six months it's been! And its all thanks to Fit-Search and Shelly. 
                                 <i className="fas fa-quote-right"></i>
                             </p>
                         </div>

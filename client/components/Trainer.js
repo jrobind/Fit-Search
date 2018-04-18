@@ -16,7 +16,8 @@ const Trainer = ({
     <div>
         {!profile ? <Loading /> : 
             <div className={styles.trainerContainer}>
-                <div className={styles.topContainer}>
+    
+                <section className={styles.topContainer}>
                     <Profile 
                         profile={profile} 
                         updateLink={handleInterestSubmission}
@@ -24,18 +25,19 @@ const Trainer = ({
                         reviewAverage={reviewAverage}
                         reviews={reviews}
                     />
-                </div>
+                </section>
                 
-                <div className={styles.middleContainer}>
-                    <h3><i className="fas fa-chevron-circle-up"></i> Like what you see? Check the areas covered by the trainer below. If you're happy, register your interest with them today! </h3>
-    
+                <section className={styles.middleContainer}>
+                    <h3>
+                        <i className="fas fa-chevron-circle-up"></i> Like what you see? Check the areas covered by the trainer below. If you're happy, register your interest with them today! 
+                    </h3>
                     {!coordinates ? <Loading color='white'/> : <MapContainer base={profile.base} radius={profile.radius} coordinates={coordinates}/>}
-                </div>
+                </section>
                 
-                <div className={styles.bottomContainer}>
+                <section className={styles.bottomContainer}>
                     <h3>Leaving trainer reviews encourages accountability - tell us about your exprerience below.</h3>
                     <Review />
-                </div>
+                </section>
 
             </div>
         }

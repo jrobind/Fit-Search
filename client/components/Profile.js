@@ -26,6 +26,7 @@ const Profile = ({
     
         <div className={styles.profileContainer}>
             <div className={styles.card}>
+    
                 <div className={!rate ? styles.clientTop : styles.top}>
                     <div className={styles.avatar}>
                         <div className={styles.imgContainer}>

@@ -50,10 +50,12 @@ class RegisterForm extends Component {
         
         return(
             <div className={styles.registerContainer}>
+            
                 {!registerSuccess ? null :  <div className={styles.success}>
                     <span>Registration successful!</span>
                     <Link to='/login'>login now</Link>
                 </div>}
+            
                 <h1>Signup</h1>
                 <form className={styles.form} onSubmit={this.handleSubmission}>
 
@@ -77,13 +79,11 @@ class RegisterForm extends Component {
                         pattern="(?=.*\d)(?=.*[a-zA-Z]).{6,}"
                         required
                     />
-                    <p>Password should contain at least <strong>1 number</strong> and should be <strong>6 characters</strong> in length</p>
             
+                    <p>Password should contain at least <strong>1 number</strong> and should be <strong>6 characters</strong> in length</p>
                     <p><strong><span>* </span>Who are you?</strong></p>
             
-                    <label className={styles.radioLabel} 
-                        htmlFor="client"
-                    >
+                    <label className={styles.radioLabel} htmlFor="client">
                         <input 
                             type="radio" 
                             id="client" 
@@ -94,9 +94,7 @@ class RegisterForm extends Component {
                         I'm looking for a trainer
                     </label>
             
-                    <label className={styles.radioLabel} 
-                        htmlFor="trainer"
-                    >
+                    <label className={styles.radioLabel} htmlFor="trainer">
                         <input 
                             type="radio" 
                             id="trainer" 
@@ -109,6 +107,7 @@ class RegisterForm extends Component {
                     </label>
             
                     {!registerPending ? <input className='submit' type='submit'/> : <Loading text='Processing' />}
+                    
                 </form>
                 <hr className={styles.hr}/>
                 <p>Already have an account? <Link to='/login'>Login</Link></p>

@@ -13,26 +13,34 @@ const Search = ({
     currentResults,
     pageNumbers,
     history, 
-    handlePageClick,
+    handlePageClick
 }) => (
     <div className={styles.searchContainer}>
+    
         <SearchBar 
             handleUpdateSearch={handleUpdateSearch} 
             searchResults={searchResults}
             currentQuery={currentQuery}
         />
+    
         <div className={styles.results}>
             <div className={styles.trainerCardContainer}>
                 {searchResults.length ? currentResults.map(({ profile, _id, reviewAverage, numberOfReviews }) => (
-                    <div className={styles.card} key={_id} onClick={() => {
-                        history.push({
-                            pathname: '/search/trainer',
-                            state: {
-                                trainerId: _id
-                            }
-                        });
-                    }}>
-                        <div className={styles.rate}><strong>£{profile.rate}</strong></div>
+                    <div 
+                        className={styles.card} 
+                        key={_id} 
+                        onClick={() => {
+                            history.push({
+                                pathname: '/search/trainer',
+                                state: {
+                                    trainerId: _id
+                                }
+                            });
+                        }}
+                    >
+                        <div className={styles.rate}>
+                            <strong>£{profile.rate}</strong>
+                        </div>
                         <h4>{profile.name}</h4>
                         
                         <div className={styles.imgContainer}>
@@ -46,7 +54,8 @@ const Search = ({
                             
                         <div><strong>{profile.base}</strong>, <strong>{profile.region}</strong></div>
                         
-                        {profile.bio ? <div className={styles.bio}>{profile.bio.slice(0, 130)}... <span className={styles.readmore}> Find out more!</span></div> : <span>No bio just yet!</span>}
+                        {profile.bio ? <div className={styles.bio}>{profile.bio.slice(0, 130)}... <span className={styles.readmore}> Find out more!</span></div> : 
+                        <span>No bio just yet!</span>}
                     </div>
 
                 )) : <div>{noResults ? <h2 className={styles.noResults}>NO RESULTS FOUND...</h2> : <Loading />} </div>} 

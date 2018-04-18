@@ -12,7 +12,7 @@ const initialState = {
 
 export const initApp = () => {
     const store = createStore(reducer, initialState, middleware);
-    // save state only when page is closed/refreshed
+    // persist certain redux store data to local storage
     store.subscribe(() => {
         const { userAuth, userProfile, interestRequests } = store.getState();
 

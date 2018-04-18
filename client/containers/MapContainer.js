@@ -26,7 +26,7 @@ class MapContainer extends Component {
             fillColor: '#FF0000',
             fillOpacity: 0.15,
             map: map, 
-            radius: radius * 1609.344
+            radius: radius * 1609.344 // convert miles to meters
         });
     }
     

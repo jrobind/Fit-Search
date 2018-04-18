@@ -11,21 +11,53 @@ const ProfileForm = ({
     <form className={styles.form} onSubmit={handleSubmission}>
         <div className={styles.default}>
             <label><span>* </span>Full name </label>
-            <input id='name' type='text' onChange={handleInput} placeholder=' fullname' value={state.name} maxLength='30' required />
+            <input 
+                id='name' 
+                type='text' 
+                onChange={handleInput} 
+                placeholder=' fullname' 
+                value={state.name} 
+                maxLength='30' 
+                required 
+            />
         </div>
 
         <div className={styles.default}>
             <label><span>* </span>Avatar URL </label>
-            <input id='avatar' type='text' onChange={handleInput} placeholder='avatar' value={state.avatar} required />
+            <input 
+                id='avatar' 
+                type='text' 
+                onChange={handleInput} 
+                placeholder='avatar' 
+                value={state.avatar} 
+                required 
+            />
         </div>
     
         <div className={styles.default}>
             <label><span>* </span>Bio <strong>(maximum 750 characters)</strong></label>
-            <textarea id='bio' type='text' onChange={handleInput} placeholder=' type a short bio' value={state.bio} required maxLength='500' ></textarea>
+            <textarea 
+                id='bio' 
+                type='text' 
+                onChange={handleInput} 
+                placeholder='type a short bio' 
+                value={state.bio} 
+                required 
+                maxLength='500' 
+            ></textarea>
         </div>
 
         {userType === 'trainer' ? <div className={styles.trainer}><label><span>* </span>Hourly rate £ </label>
-        <input id='rate' type='number' onChange={handleInput} placeholder=' hourly rate' value={state.rate} required min='0' max='150' step='0.5' /></div> : null}
+        <input 
+            id='rate' 
+            type='number' 
+            onChange={handleInput} 
+            placeholder=' hourly rate' 
+            value={state.rate} 
+            required min='0' 
+            max='150' 
+            step='0.5' 
+        /></div> : null}
 
         {userType === 'trainer' ? <div className={styles.trainer}><label><span>* </span>Region </label>
         <select id="region" value={state.region} onChange={handleInput}>
@@ -42,13 +74,34 @@ const ProfileForm = ({
         </select></div> : null}
 
         {userType === 'trainer' ? <div className={styles.trainer}><label><span>* </span>Base town/city </label>
-        <input id='base' type='text' onChange={handleInput} placeholder=' Romford, Sheffield.. etc' value={state.base} required /></div> : null}
+        <input 
+            id='base' 
+            type='text' 
+            onChange={handleInput} 
+            placeholder=' London, Sheffield.. etc' 
+            value={state.base} 
+            required 
+        /></div> : null}
 
         {userType === 'trainer' ? <div className={styles.trainer}><label><span>* </span>Radius Covered <strong>(miles)</strong></label>
-        <input id='radius' type='number' onChange={handleInput} placeholder='15' value={state.radius} min='1' max='100'/></div> : null}
+        <input 
+            id='radius' 
+            type='number' 
+            onChange={handleInput} 
+            placeholder='15' 
+            value={state.radius} 
+            min='1' 
+            max='100'
+        /></div> : null}
 
         {userType === 'trainer' ? <div className={styles.trainer}><label>Location notes <strong>(maximum 250 characters)</strong></label>
-        <textarea id='notes' type='text' onChange={handleInput} value={state.notes} maxLength='250' ></textarea></div> : null}
+        <textarea 
+            id='notes' 
+            type='text' 
+            onChange={handleInput} 
+            value={state.notes} 
+            maxLength='250' 
+        ></textarea></div> : null}
 
         <input className='submit' type='submit'/>
     </form>

@@ -24,7 +24,7 @@ class InterestContainer extends Component {
     
     handleRemoveInterest(requestId) {
         const { getInterestRequests, trainerId } = this.props;
-        
+        // reset back to page 1
         this.setState(() => ({currentPage: 1}));
         
         apiRemoveInterestRequest(requestId)

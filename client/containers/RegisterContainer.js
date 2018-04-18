@@ -15,6 +15,7 @@ class Register extends Component {
     }
     
     handleRegister(userData) {
+        // toggle registerPending so we can provide feedback
         this.setState(() => ({registerPending: true}));
         
         apiRegisterUser(userData)

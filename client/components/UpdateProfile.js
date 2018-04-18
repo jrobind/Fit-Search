@@ -51,11 +51,12 @@ class UpdateProfile extends Component {
         e.preventDefault();
         e.target.reset();
         
+        // update profile and then redirect back to profile component
         apiUpdateProfile(id, data)
             .then(() => {
                 this.props.history.push({
                     pathname: '/portal',
-                    state: { profileUpdated: true}
+                    state: {profileUpdated: true}
                 });
             })
             .catch((error) => console.log(error));
