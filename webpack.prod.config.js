@@ -1,7 +1,10 @@
+const path = require('path');
 const config = require('./webpack.config.js');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+config.output.path = path.join(__dirname, '/dist');
+config.mode = 'development';
 
 config.plugins.push(
     new webpack.DefinePlugin({
@@ -9,8 +12,6 @@ config.plugins.push(
             "NODE_ENV": JSON.stringify("production")
             }
     }),
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new UglifyJsPlugin({
         sourceMap: false,
         uglifyOptions: {
@@ -18,7 +19,7 @@ config.plugins.push(
             output: {
                 comments: false,
                 beautify: false,
-              }
+            }
           }
       })
 );

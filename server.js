@@ -2,11 +2,14 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const webpack = require('webpack');
+const webpackMiddleware = require ('webpack-dev-middleware');
 const webpackConfig = require('./webpack.config.js');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const passport = require('passport');
 require('dotenv').config();
+
+const isDevelopment = app.get('env') !== 'production';
 
 // require routes
 const profileRoutes = require('./routes/profile');
@@ -17,6 +20,7 @@ const interestRoutes  = require('./routes/interest');
 app.use(express.static(path.join(__dirname, 'client')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(webpackMiddleware(webpack(webpackConfig)));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -36,8 +40,19 @@ app.use('/api', authRoutes);
 app.use('/api/review', reviewRoutes);
 app.use('/api/interest', interestRoutes);
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './client/index.html'));
-});
+// check for dev or production env
+if (isDevelopment) {
+    app.use(webpackMiddleware(webpack(webpackConfig)));
+    
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, './client/index.html'));
+    });
+    
+} else {
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.join(__dirname, './dist/index.html'));
+    });
+}
 
 app.listen(process.env.PORT || 3000, () => console.log('server has started'));

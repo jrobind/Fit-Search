@@ -1,11 +1,10 @@
-const path = require('path');
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: ['babel-polyfill', './client/index.js'],
     output: {
-        path: path.join(__dirname, '/dist'),
+        path: '/',
         filename: 'bundle.js'
     },
     module: {
@@ -33,8 +32,7 @@ module.exports = {
         new htmlWebpackPlugin({
             template: 'client/index.html',
             inject: false
-        }),
-        new webpack.optimize.OccurrenceOrderPlugin()
+        })
     ],
-    mode: 'production'
+    mode: 'development'
 }
