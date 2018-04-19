@@ -38,7 +38,7 @@ class CreateProfile extends Component {
     }
     
     render() {
-        const { userType } = this.props;
+        const { userType, updatePending } = this.props;
         
         return(
             <div className="createProfileContainer">
@@ -50,6 +50,7 @@ class CreateProfile extends Component {
                     handleInput={this.handleInput}
                     state={this.state}
                     userType={userType}
+                    updatePending={updatePending}
                 />
             </div>
         )
@@ -64,7 +65,8 @@ CreateProfile.propTypes = {
     requestPending: PropTypes.bool,
     requestSuccess: PropTypes.bool,
     reviews: PropTypes.array,
-    reviewAverage: PropTypes.number
+    reviewAverage: PropTypes.number,
+    updatePending: PropTypes.bool.isRequired
 }
 
 export default CreateProfile;

@@ -10,6 +10,9 @@ import Loading from '../components/Loading';
 class ProfileContainer extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            updatePending: false
+        }
         
         this.handleCreateProfile = this.handleCreateProfile.bind(this);
     }
@@ -17,36 +20,46 @@ class ProfileContainer extends Component {
     componentDidMount() {
         const { state } = this.props.location;
         const { id, getUserProfile } = this.props;
+        
         // if updated, make sure we retrieve latest profile
         if (state !== undefined && state.profileUpdated === true) {
-            getUserProfile(id);
+            this.setState(() => ({updatePending: true}));
+            getUserProfile(id)
+                .then(() => this.setState(() => ({updatePending: false})));
         }
     }
     
     handleCreateProfile(id, data) {
         const { getUserProfile } = this.props;
+        // toggle pending to provide feedback
+        this.setState(() => ({updatePending: true}));
         
         apiUpdateProfile(id, data)
             .then(() => {
-                getUserProfile(id);
+                getUserProfile(id)
+                    .then(() => {
+                        this.setState(() => ({updatePending: false}));
+                    })
             });
     }
     
     render() {
         const { profile, requestPending, requestSuccess } = this.props;
+        const { updatePending } = this.state;
         const { state: locationState } = this.props.location;
 
-        if (profile !== 'new user' && requestSuccess) {
+        if (profile !== 'new user' && requestSuccess && !updatePending) {
             return <Profile 
                         {...this.props}
-                        locationState={locationState} 
+                        locationState={locationState}
                     />
         } else if (profile === 'new user') {
             return <CreateProfile 
                         {...this.props} 
                         createProfile={this.handleCreateProfile}
+                        updatePending={updatePending}
                     />
-        } else if (requestPending) {
+        } else {
             return <Loading />
         }
     }

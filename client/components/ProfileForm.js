@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Loading from './Loading';
 import styles from '../styles/components/profileForm.css';
 
 const ProfileForm = ({ 
     userType, 
     handleInput, 
     handleSubmission,
-    state
+    state,
+    updatePending
 }) => (
     <form className={styles.form} onSubmit={handleSubmission}>
         <div className={styles.default}>
@@ -103,7 +105,8 @@ const ProfileForm = ({
             maxLength='250' 
         ></textarea></div> : null}
 
-        <input className='submit' type='submit'/>
+        {!updatePending ? <input className='submit' type='submit'/> : 
+        <Loading text='Processing'/>}
     </form>
 );
 
@@ -111,7 +114,8 @@ ProfileForm.propTypes = {
     userType: PropTypes.string.isRequired,
     handleInput: PropTypes.func.isRequired,
     handleSubmission: PropTypes.func.isRequired,
-    state: PropTypes.object.isRequired
+    state: PropTypes.object.isRequired,
+    updatePending: PropTypes.bool
 }
 
 export default ProfileForm;
