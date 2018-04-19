@@ -4,7 +4,7 @@ const ReviewModel = require('./Review');
 const InterestModel = require('./Interest');
 require('dotenv').config();
 
-mongoose.connect(process.env.PRODUCTION_URL);
+mongoose.connect(process.env.DATABASE_URL);
 
 // enable promises with mongoose
 mongoose.Promise = Promise;
