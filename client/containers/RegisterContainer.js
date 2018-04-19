@@ -24,6 +24,7 @@ class Register extends Component {
                     this.setState(() => ({registerSuccess: true, registerPending: false}));
                 } else {
                     this.setState(() => ({registerSuccess: false, registerPending: false}));
+                    alert('Email address already in use.');
                 }
             })
             .catch((error) => alert('Registration error!'))
