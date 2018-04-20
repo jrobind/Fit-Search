@@ -70,7 +70,7 @@ const ProfileForm = ({
             <option>East of England</option>
             <option>East Midlands</option>
             <option>West Midlands</option>
-            <option>Yorkshire and the Humber</option>
+            <option>Yorkshire & Humber</option>
             <option>North West</option>
             <option>North East</option>
         </select></div> : null}
