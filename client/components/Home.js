@@ -45,15 +45,17 @@ class Home extends Component {
         return(
                 <div className={styles.homeContainer}>
                     <div style={{height}} className={styles.hero}>
-            
-                        {!loggedIn && !profile ? null : <p className={styles.welcome}>{name}</p>}
-            
-                        <div className={styles.titleContainer}>
-                            <h1>FIND YOUR FITNESS GURU</h1>
-                            <p>The hassle-free personal trainer search</p>
-                        </div>
-                        <div className={styles.scrollContainer}>
-                            <div className={styles.scrollCircle}>&#8595;</div>
+                        <div className={styles.titleWrap}>
+                            {!loggedIn && !profile ? null : <p className={styles.welcome}>{name}</p>}
+
+                            <div className={styles.titleContainer}>
+                                <h1>FIND YOUR FITNESS GURU</h1>
+                                <p>The hassle-free personal trainer search</p>
+                            </div>
+
+                            <div className={styles.scrollContainer}>
+                                <div className={styles.scrollCircle}>&#8595;</div>
+                            </div>
                         </div>
                     </div>
             
