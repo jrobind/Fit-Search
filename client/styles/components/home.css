@@ -26,7 +26,8 @@
 }
 
 .titleContainer {
-    margin-top: 10%;
+    margin: 270px auto 0 auto;
+    padding: 0 10px;
 }
 
 .titleContainer h1, .titleContainer p {
@@ -347,6 +348,10 @@
 }
 
 @media screen and (max-width: 780px) {
+    .titleContainer {
+        margin: 240px auto 0 auto;
+    }
+    
     .teaser {
         margin: 25px 0 420px 5%;
         font-size: 1.9em;
@@ -420,6 +425,10 @@
 }
 
 @media screen and (max-width: 380px) {
+    .titleContainer h1 {
+        font-size: 2.7em;
+    }
+    
     .teaser {
         margin: 25px 0 315px 5px;
     }
