@@ -105,7 +105,7 @@ const ProfileForm = ({
             maxLength='250' 
         ></textarea></div> : null}
 
-        {!updatePending ? <input className='submit' type='submit'/> : 
+        {!updatePending ? <input className='submit' type='submit' value='Submit'/> : 
         <Loading text='Processing'/>}
     </form>
 );
