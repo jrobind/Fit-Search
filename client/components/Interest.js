@@ -8,7 +8,7 @@ const Interest = ({
     handlePageClick,
     pageData: { pageNumbers, currentResults },
     currentPage,
-    deletePending
+    componentState: { deletePending, requestId }
 }) => (
     <div className={styles.interestContainer}>
         <section className={styles.background}>
@@ -32,7 +32,7 @@ const Interest = ({
 
                             <button className={styles.button} onClick={() => {
                                 handleRemoveInterest(_id);
-                            }}>{deletePending ? 'Deleting...' : 'Delete request'}</button>
+                            }}>{deletePending && requestId === _id ? 'Deleting...' : 'Delete request'}</button>
 
                             <div className={styles.bioContainer}>
                                 <h4 className={styles.bio}>User bio</h4>
@@ -73,7 +73,7 @@ Interest.propTypes = {
     trainerId: PropTypes.string.isRequired,
     handlePageClick: PropTypes.func.isRequired,
     handleRemoveInterest: PropTypes.func.isRequired,
-    deletePending: PropTypes.bool.isRequired
+    componentState: PropTypes.object.isRequired
 }
 
 export default Interest;

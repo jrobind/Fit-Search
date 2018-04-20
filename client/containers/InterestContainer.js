@@ -11,7 +11,8 @@ class InterestContainer extends Component {
         this.state = {
             currentPage: 1,
             numberPerPage: 2,
-            deletePending: false 
+            deletePending: false,
+            requestId: null
         }
         
         this.handlePageClick = this.handlePageClick.bind(this);
@@ -26,24 +27,28 @@ class InterestContainer extends Component {
     handleRemoveInterest(requestId) {
         const { getInterestRequests, trainerId } = this.props;
         // reset back to page 1 and toggle deletePending for feedback
-        this.setState(() => ({currentPage: 1, deletePending: true}));
+        this.setState(() => ({
+            currentPage: 1,
+            deletePending: true,
+            requestId
+        }));
         
         apiRemoveInterestRequest(requestId)
             .then((data) => {
-                this.setState(() => ({deletePending: false}));
-                getInterestRequests(trainerId);
+                getInterestRequests(trainerId)
+                    .then(() => this.setState(() => ({deletePending: false, requestId: null})));
             })
             .catch((error) => console.log(error));
     }
     
     render() {
-        const { currentPage, numberPerPage, deletePending } = this.state;
+        const { currentPage, numberPerPage } = this.state;
         const { requests } = this.props;
         const pageData = formatPagination({currentPage, numberPerPage, requests});
         
         return <Interest 
                     {...this.props}
-                    deletePending={deletePending}
+                    componentState={this.state}
                     pageData={pageData}
                     handlePageClick={this.handlePageClick}
                     handleRemoveInterest={this.handleRemoveInterest} 
