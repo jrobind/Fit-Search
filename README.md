@@ -40,16 +40,16 @@ Install dependencies:
 npm install
 ```
 
-Next, you will need to set your own session secret in the __server.js file__. Additionally, you will also need to setup MongoDB locally within the __/models__ directory and paste your local db connection here:
+Next, you will need to set your own session secret in the __server.js file__. Additionally, you will also need to setup MongoDB locally on your own computer or via a third-party provider. Once you have your database URL, go to the __index.js__ file within the __/models__ directory and paste your URL here:
 
 ```js
-mongoose.connect(process.env.DATABASE_URL);
+mongoose.connect(/* database URL */);
 ```     
 
 lastly, to start the development server run:
 
 ```
-npm node server.js
+node server.js
 ```
 
 ## Contributions
