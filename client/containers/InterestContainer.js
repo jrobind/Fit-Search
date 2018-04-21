@@ -50,6 +50,7 @@ class InterestContainer extends Component {
                     {...this.props}
                     componentState={this.state}
                     pageData={pageData}
+                    currentPage={currentPage}
                     handlePageClick={this.handlePageClick}
                     handleRemoveInterest={this.handleRemoveInterest} 
                 />;

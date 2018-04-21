@@ -8,7 +8,7 @@ In an effort to learn ES6, React, and Redux, this is __Fit-Search__ - a simple p
 
 * __Search and Review__: The main basis of the application revolves around the trainer search and review system. Users are able to search for trainers across England, using specific search filters. Users are encouraged to leave reviews on trainer pages. The review system helps users place trust in well established, high quaility trainers that have been reviewed by others. 
 
-* __Registering Interest__: If users decide they like a trainer and wish to highlight their interest, they can send the trainer a personal interest request. The trainers will recieve these requests on their own accounts and contact the users going forward to organise initial consultations and taster sessions. For the trainers, the interest request functionality helps them to easily keep track of potential clientele.  
+* __Register Interest__: If users decide they like a trainer and wish to highlight their interest, they can send the trainer a personal interest request. The trainers will recieve these requests on their own accounts and contact the users going forward to organise initial consultations and taster sessions. For the trainers, the interest request functionality helps them to easily keep track of potential clientele.  
 
 ## Show me the demo!
 
