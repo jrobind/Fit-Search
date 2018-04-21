@@ -1,4 +1,4 @@
-# :muscle: Fit-Search
+# ![search page](client/images/logo.png)
 
 In an effort to learn ES6, React, and Redux, this is __Fit-Search__ - a simple personal trainer search application. My orginal intention was to build an SPA but the project has morphed into a more complex full-stack one, with an API backend built with Express and MongoDB.
 
@@ -40,7 +40,7 @@ Install dependencies:
 npm install
 ```
 
-Next, you will need to set your own session secret in the __server.js file__. Additionally, you will also need to setup MongoDB locally on your own computer or via a third-party provider. Once you have your database URL, go to the __index.js__ file within the __/models__ directory and paste your URL here:
+Next, you will need to set your own session secret in the `server.js` file. Additionally, you will also need to setup MongoDB locally on your own computer or via a third-party provider. Once you have your database URL, go to the `index.js` file within the `/models` directory and paste your URL here:
 
 ```js
 mongoose.connect(/* database URL */);
