@@ -1,14 +1,14 @@
-# ![search page](client/images/logo.png)
+# :muscle: Fit-Search
 
 In an effort to learn ES6, React, and Redux, this is __Fit-Search__ - a simple personal trainer search application. My orginal intention was to build an SPA but the project has morphed into a more complex full-stack one, with an API backend built with Express and MongoDB.
 
 ## Features
 
-You can sign up as a trainer or, alternatively, as a client searching for a trainer. Both account types are able to set up their own basic user profiles. However, each account type has it's own unique functionality. 
+* __Create User Profiles__: You can sign up as a trainer or, alternatively, as a user/client searching for a trainer. Both account types are able to set up their own basic user profiles. However, each account type has it's own unique functionality. 
 
-The main basis of the application revolves around the trainer search and review system. Clients are able to search for trainers across England, using specific search filters. Clients are encouraged to leave reviews on trainer pages. The review system helps clients place trust in well established, high quaility trainers that have been reviewed by other users. 
+* __Search and Review__: The main basis of the application revolves around the trainer search and review system. Users are able to search for trainers across England, using specific search filters. Users are encouraged to leave reviews on trainer pages. The review system helps users place trust in well established, high quaility trainers that have been reviewed by others. 
 
-To keep the process as simple as possible, if clients decide they like a trainer and wish to highlight their interest, they can send the trainer a personal interest request. The trainers will recieve these requests on their own accounts and contact the clients going forward to organise initial consultations and taster sessions. For the trainers, the main focus of the application is the interest request functionality, which ultimately helps trainers to easily keep track of potential clientele.  
+* __Registering Interest__: If users decide they like a trainer and wish to highlight their interest, they can send the trainer a personal interest request. The trainers will recieve these requests on their own accounts and contact the users going forward to organise initial consultations and taster sessions. For the trainers, the interest request functionality helps them to easily keep track of potential clientele.  
 
 ## Show me the demo!
 
