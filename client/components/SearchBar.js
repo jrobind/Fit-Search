@@ -103,11 +103,11 @@ class SearchBar extends Component {
             
                 <div className={styles.ratings}>
                     <h5 className={styles.h5}>Average Trainer Review</h5>
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../images/ratings-5.png')}/></a>                                                          
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '4') : null}><img src={require('../images/ratings-4.png')}/></a>                                                            
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '3') : null}><img src={require('../images/ratings-3.png')}/></a>                                                             
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '2') : null}><img src={require('../images/ratings-2.png')}/></a>                                                               
-                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '1') : null}><img src={require('../images/ratings-1.png')}/></a>          
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '5') : null}><img src={require('../images/ratings-5.png')} alt='5 stars'/></a>                                                          
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '4') : null}><img src={require('../images/ratings-4.png')} alt='4 stars'/></a>                                                            
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '3') : null}><img src={require('../images/ratings-3.png')} alt='3 stars'/></a>                                                             
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '2') : null}><img src={require('../images/ratings-2.png')} alt='2 stars'/></a>                                                               
+                    <a onClick={() => !starsClicked ? this.handleSearchSelection('stars', '1') : null}><img src={require('../images/ratings-1.png')} alt='1 star'/></a>        
                 </div>
                                                                                                                  
                 <div className={styles.hourly}>

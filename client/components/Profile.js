@@ -30,7 +30,7 @@ const Profile = ({
                 <div className={!rate ? styles.clientTop : styles.top}>
                     <div className={styles.avatar}>
                         <div className={styles.imgContainer}>
-                            <img src={avatar}/>
+                            <img src={avatar} alt='user avatar'/>
                         </div>
                     </div>
 

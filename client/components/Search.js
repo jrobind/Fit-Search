@@ -44,7 +44,7 @@ const Search = ({
                         <h4>{profile.name}</h4>
                         
                         <div className={styles.imgContainer}>
-                            <img src={profile.avatar}/>
+                            <img src={profile.avatar} alt='trainer avatar'/>
                         </div>
                                                         
                         <div className={styles.trainerReviews}>

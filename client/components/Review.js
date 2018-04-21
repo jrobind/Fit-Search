@@ -69,7 +69,7 @@ class Review extends Component {
                         <div key={review._id} className={styles.reviewCard}>
                             <div className={styles.avatar}>
                                 <div className={styles.avatarImgContainer}>
-                                    <img src={review.authorAvatar}/>
+                                    <img src={review.authorAvatar} alt='review author avatar'/>
                                 </div>
                                 <span>{review.authorName}</span>
                             </div>

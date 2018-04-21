@@ -74,21 +74,21 @@ class Home extends Component {
                         <h1>Not convinced? See what our users have to say.</h1>
                         <div className={styles.reviewOne}>
                             <div className={styles.reviewImgContainerOne}>
-                                <img src={require('../images/review-one.jpg')}/>
+                                <img src={require('../images/review-one.jpg')} alt='man running'/>
                             </div>
                             <p>
                                 <i className="fas fa-quote-left"></i>
-                                    I've been training with Josh Howell for over three months now. In one word Michael has been, AMAZING! I've lost over 10kg and put on over 3kg in muscle mass. I feel incredible, I'm able to do so much more with my life. Michael's sessions are hard work but at the same time really fun. I am so glad I found Fit-Search.
+                                    I've been training with Josh Howell for over three months now. In one word Josh has been, AMAZING! I've lost over 10kg and put on over 3kg in muscle mass. I feel incredible, I'm able to do so much more with my life. Josh's sessions are hard work but at the same time really fun. I am so glad I found Fit-Search.
                                 <i className="fas fa-quote-right"></i>
                             </p>
                         </div>
                         <div className={styles.reviewTwo}>
                             <div className={styles.reviewImgContainerTwo}>
-                                <img src={require('../images/review-two.jpg')}/>
+                                <img src={require('../images/review-two.jpg')} alt='woman running'/>
                             </div>
                             <p>
                                 <i className="fas fa-quote-left"></i>
-                                    I stumbled upon Fit-Search around six months ago. Within a few days I found a trainer who lived locally. The process was painless and very professional. Kelly, my trainer, contacted me after I registered my interest with her and organised my free taster session. All I can say is, I'm hooked! I've lost over 15kg and I feel fitter than ever. What a life-changing six months it's been! And its all thanks to Fit-Search and Shelly. 
+                                    I stumbled upon Fit-Search around six months ago. Within a few days I found a trainer who lived locally. The process was painless and very professional. Kelly - my trainer - contacted me after I registered my interest with her and organised my free taster session. All I can say is, I'm hooked! I've lost over 15kg and I feel fitter than ever. What a life-changing six months it's been! And its all thanks to Fit-Search and Shelly. 
                                 <i className="fas fa-quote-right"></i>
                             </p>
                         </div>
@@ -101,10 +101,10 @@ class Home extends Component {
                             
                         <div className={styles.imgBlock}>                           
                             <div className={styles.teaserImgContainerOne}>
-                                <img src={require('../images/teaser(1).jpg')}/>
+                                <img src={require('../images/teaser(1).jpg')} alt='user reviews screenshot'/>
                             </div>          
                             <div className={styles.teaserImgContainerTwo}>
-                                <img src={require('../images/teaser(2).jpg')}/>
+                                <img src={require('../images/teaser(2).jpg')} alt='search page screenshot'/>
                             </div> 
                         </div>
                     </section>
