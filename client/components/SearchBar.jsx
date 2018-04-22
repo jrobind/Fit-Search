@@ -90,7 +90,7 @@ class SearchBar extends Component {
     }
     
     render() {
-        const { searchResults, currentQuery } = this.props;
+        const { currentQuery } = this.props;
         const { starsClicked, rateClicked, locationSubmitted } = this.state;
         
         return(
@@ -147,7 +147,6 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-    searchResults: PropTypes.array.isRequired,
     handleUpdateSearch: PropTypes.func.isRequired,
     currentQuery: PropTypes.string.isRequired
 }

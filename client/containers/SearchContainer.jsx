@@ -9,6 +9,7 @@ class SearchContainer extends Component {
         super(props);
         this.state = {
             noResults: false,
+            resultsPending: false,
             currentQuery: '',
             currentPage: 1,
             numberPerPage: 6
@@ -31,16 +32,23 @@ class SearchContainer extends Component {
     
     componentDidMount() { 
         const { getSearchQuery } = this.props;
+        
         this.handleNumberPerPage(window.innerWidth);
+        
+        // toggle pending for loading feedback
+        this.setState(() => ({resultsPending: true}));
         // by default grab all trainers for now
-        getSearchQuery('trainer');
+        getSearchQuery('trainer')
+            .then(() => this.setState(() => ({resultsPending: false})));
     }
     
     handleResetSearch() {
         const { getSearchQuery } = this.props;
         
-        this.setState(() => ({currentQuery: ''}));
-        getSearchQuery('trainer');
+        this.setState(() => ({currentQuery: '', resultsPending: true, noResults: false}));
+        
+        getSearchQuery('trainer')
+            .then(() => this.setState(() => ({resultsPending: false})));
     }
     
     handlePageClick(e) {
@@ -59,7 +67,8 @@ class SearchContainer extends Component {
                 const val = !prevState.currentQuery ? '' : '&'; 
                 
                 return {
-                    currentQuery: prevState.currentQuery + val + searchQuery
+                    currentQuery: prevState.currentQuery + val + searchQuery,
+                    resultsPending: true
                 }
             }, () => {
                 const { getSearchQuery } = this.props;
@@ -67,7 +76,8 @@ class SearchContainer extends Component {
                 // after new query string has been set to state above we can now get the results
                 getSearchQuery(currentQuery)
                     .then((data) => {
-                        !data.length ? this.setState(() => ({noResults: true})) : this.setState(() => ({noResults: false}));
+                        !data.length ? this.setState(() => ({noResults: true, resultsPending: false})) : 
+                        this.setState(() => ({noResults: false, resultsPending: false}));
                     })
                     .catch((error) => console.log(error));
             });   
@@ -75,18 +85,18 @@ class SearchContainer extends Component {
     }
     
     render() {
-        const { currentPage, numberPerPage} = this.state;
+        const { currentPage, numberPerPage } = this.state;
         const { searchResults } = this.props;
         const { pageNumbers, currentResults } = formatPagination({currentPage, numberPerPage, searchResults});
         
         return <Search 
-                    {...this.props} 
-                    handleUpdateSearch={this.handleUpdateSearch}   
-                    handlePageClick={this.handlePageClick}
-                    componentState={this.state}
-                    currentResults={currentResults}
-                    pageNumbers={pageNumbers}
-                />;
+                {...this.props} 
+                handleUpdateSearch={this.handleUpdateSearch}   
+                handlePageClick={this.handlePageClick}
+                componentState={this.state}
+                currentResults={currentResults}
+                pageNumbers={pageNumbers}
+            />;   
     }
 }
 

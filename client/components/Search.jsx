@@ -8,8 +8,7 @@ import styles from '../styles/components/search.css';
 
 const Search = ({ 
     handleUpdateSearch, 
-    searchResults, 
-    componentState: { currentQuery, noResults, currentPage },
+    componentState: { currentQuery, noResults, currentPage, resultsPending },
     currentResults,
     pageNumbers,
     history, 
@@ -19,13 +18,13 @@ const Search = ({
     
         <SearchBar 
             handleUpdateSearch={handleUpdateSearch} 
-            searchResults={searchResults}
             currentQuery={currentQuery}
         />
     
         <div className={styles.results}>
             <div className={styles.trainerCardContainer}>
-                {searchResults.length ? currentResults.map(({ profile, _id, reviewAverage, numberOfReviews }) => (
+                {noResults ? <h2 className={styles.noResults}>NO RESULTS FOUND...</h2> : 
+                currentResults.length && !resultsPending ? currentResults.map(({ profile, _id, reviewAverage, numberOfReviews }) => (
                     <div 
                         className={styles.card} 
                         key={_id} 
@@ -58,8 +57,9 @@ const Search = ({
                         <span>No bio just yet!</span>}
                     </div>
 
-                )) : <div>{noResults ? <h2 className={styles.noResults}>NO RESULTS FOUND...</h2> : <Loading />} </div>} 
-                <ul className="pageNumbers">
+                )) : <Loading />}
+                
+                {!resultsPending ? <ul className="pageNumbers">
                     {pageNumbers.map((number) => (
                         <li className={currentPage === number ? 'currentPage' : 'page'}
                             id={number} 
@@ -69,7 +69,7 @@ const Search = ({
                             {number}
                         </li>
                     ))}
-                </ul>
+                </ul> : null}
             </div>
         </div>
     </div>
@@ -77,7 +77,6 @@ const Search = ({
 
 Search.propTypes = {
     handleUpdateSearch: PropTypes.func.isRequired,
-    searchResults: PropTypes.array.isRequired,
     componentState: PropTypes.object.isRequired,
     handlePageClick: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
