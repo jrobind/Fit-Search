@@ -28,14 +28,14 @@
 /* media queries */
 
 @media screen and (max-width: 800px) {
-    .form {
-        margin: 0 20%;
-
+    .form, .loginContainer h1 {
+        margin-left: 20%;
+        margin-right: 20%;
     }
 }
 
 @media screen and (max-width: 500px) {
     .loginContainer h1 {
-        margin: 50px 30% 15px 30%;
+        margin: 50px 20% 15px 20%;
     }
 }

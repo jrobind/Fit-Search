@@ -2,14 +2,17 @@ const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: ['babel-polyfill', './client/index.js'],
+    entry: ['babel-polyfill', './client/index.jsx'],
     output: {
         path: '/',
         filename: 'bundle.js'
     },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     module: {
         rules: [
-            {test: /\.(js)$/, use: 'babel-loader', exclude: /node_modules/},
+            {test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/},
             {
                 test: /\.css$/,
                 use: [

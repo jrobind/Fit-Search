@@ -59,6 +59,8 @@
     color: green;
 }
 
+/* media queries */
+
 @media screen and (max-width: 850px) {
     .registerContainer {
         margin: 0 16%;   
