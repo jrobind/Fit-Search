@@ -44,11 +44,11 @@ class ProfileContainer extends Component {
     }
     
     render() {
-        const { profile, requestPending, requestSuccess } = this.props;
+        const { profile } = this.props;
         const { updatePending } = this.state;
         const { state: locationState } = this.props.location;
 
-        if (profile !== 'new user' && requestSuccess && !updatePending) {
+        if (profile !== 'new user' && !updatePending) {
             return <Profile 
                         {...this.props}
                         locationState={locationState}
@@ -67,14 +67,12 @@ class ProfileContainer extends Component {
 
 const mapStateToProps = (state) => {
     const { userType, id } = state.userAuth;
-    const { profile, requestSuccess, requestPending, reviews, reviewAverage } = state.userProfile;
+    const { profile, reviews, reviewAverage } = state.userProfile;
     
     return {
         profile,
         userType,
         id,
-        requestSuccess,
-        requestPending,
         reviews,
         reviewAverage
     } 

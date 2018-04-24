@@ -85,8 +85,6 @@ Profile.propTypes = {
     updateLink: PropTypes.func,
     interestRegistered: PropTypes.bool,
     userType: PropTypes.string,
-    requestSuccess: PropTypes.bool,
-    requestPending: PropTypes.bool,
     id: PropTypes.string
 }
 
