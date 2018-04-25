@@ -197,6 +197,10 @@
         background: url('../../images/trainer-image-small.jpg') center center / cover;
     }
     
+    .card {
+        margin: 65px auto 0 auto;    
+    }
+    
     .imgContainer {
         width: 130px;
         height: 125px;
@@ -215,7 +219,7 @@
     }
 }
 
-@media screen and (max-width: 445px) {
+@media screen and (max-width: 445px) {    
     .explain {
         padding: 40px 5%;
     }
