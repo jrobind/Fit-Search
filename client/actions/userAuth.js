@@ -10,6 +10,7 @@ export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const AUTH_REQUEST_PENDING = 'AUTH_REQUEST_PENDING';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const USER_LOADED = 'USER_LOADED';
 
 export const authRequestPending = () => (
     {
@@ -20,6 +21,12 @@ export const authRequestPending = () => (
 export const loginFailed = () => (
     {
         type: LOGIN_FAILED
+    }
+)
+
+export const userLoaded = () => (
+    {
+        type: USER_LOADED
     }
 )
 
@@ -44,9 +51,16 @@ export const handleLoginUser = (userData) => {
                 if (data) {
                     dispatch(authRequestPending());
                     dispatch(loginUser(data.userType, data.id));
-                    dispatch(handleGetUserProfile(data.id));
+                    
                     // if trainer, then we need interest requests
-                    data.userType === 'trainer' ? dispatch(handleGetInterestRequests(data.id)) : null;
+                    if (data.userType === 'trainer') {
+                        dispatch(handleGetInterestRequests(data.id));
+                        dispatch(handleGetUserProfile(data.id))
+                            .then(() => (dispatch(userLoaded())));
+                    } else {
+                        dispatch(handleGetUserProfile(data.id))
+                            .then(() => (dispatch(userLoaded())));
+                    }
                 } else {
                     dispatch(loginFailed());
                     return 'failed';

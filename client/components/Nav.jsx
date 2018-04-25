@@ -5,8 +5,8 @@ import styles from '../styles/components/nav.css';
 
 const Nav = ({ 
     loggedIn, 
-    interestRequestSuccess,
     handleLogout,
+    userLoaded,
     interestRequests: { requests },
     userAuth: { userType },
     userProfile
@@ -15,17 +15,17 @@ const Nav = ({
         <ul className={styles.navbar}>
             <li className={styles.logo}><Link to='/'><img src={require('../images/logo.png')}/></Link></li>
 
-            {loggedIn && userType === 'client' || loggedIn && interestRequestSuccess && userType === 'trainer' ? <li><NavLink activeClassName={styles.active} to='/portal'>Profile Portal</NavLink></li> : null}
+            {loggedIn && userLoaded && <li><NavLink activeClassName={styles.active} to='/portal'>Profile Portal</NavLink></li>}
 
-            {loggedIn && userType === 'client' && userProfile.profile && userProfile.profile !== 'new user' && <li><NavLink activeClassName={styles.active} to='/search'>Search</NavLink></li>}
+            {userLoaded && userType === 'client' && userProfile.profile !== 'new user' && <li><NavLink activeClassName={styles.active} to='/search'>Search</NavLink></li>}
 
-            {interestRequestSuccess && loggedIn && <li><NavLink activeClassName={styles.active} to='/interest'>Interest Requests<span className={styles.requestNotifications}>{requests.length}</span></NavLink></li>}
+            {userLoaded && userType === 'trainer' && <li><NavLink activeClassName={styles.active} to='/interest'>Interest Requests<span className={styles.requestNotifications}>{requests.length}</span></NavLink></li>}
 
-            {!loggedIn ? <li><NavLink activeClassName={styles.active} to='/sign-up'>Sign up</NavLink></li> : null}
+            {!loggedIn && !userLoaded && <li><NavLink activeClassName={styles.active} to='/sign-up'>Sign up</NavLink></li>}
 
-            {!loggedIn && <li><NavLink activeClassName={styles.active} to='/login'>Login</NavLink></li>}
+            {!loggedIn && !userLoaded && <li><NavLink activeClassName={styles.active} to='/login'>Login</NavLink></li>}
             
-            {loggedIn && userType === 'client' || loggedIn && interestRequestSuccess && userType === 'trainer' ? <li><a onClick={() => {
+            {loggedIn && userLoaded ? <li><a onClick={() => {
                 handleLogout();
             }}>Logout</a></li> : null}
         </ul>
@@ -34,11 +34,11 @@ const Nav = ({
 
 Nav.propTypes = {
     loggedIn: PropTypes.bool,
+    userLoaded: PropTypes.bool,
     interestRequests: PropTypes.object.isRequired,
-    interestRequestSuccess: PropTypes.bool,
+    userProfile: PropTypes.object.isRequired,
     userAuth: PropTypes.object.isRequired,
-    handleLogout: PropTypes.func.isRequired,
-    userProfile: PropTypes.object.isRequired
+    handleLogout: PropTypes.func.isRequired
 }
 
 export default Nav;
