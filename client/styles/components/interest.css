@@ -4,7 +4,7 @@
 }
 
 .background {
-    background: url('../../images/trainer-image.jpg') center center / cover;
+    background: url('../../images/trainer-image-large.jpg') center center / cover;
     min-height: 500px;
 }
 
@@ -193,6 +193,10 @@
 }
 
 @media screen and (max-width: 540px) {
+    .background {
+        background: url('../../images/trainer-image-small.jpg') center center / cover;
+    }
+    
     .imgContainer {
         width: 130px;
         height: 125px;
