@@ -20,7 +20,6 @@ const selectedTrainer = (state = initialState, action) => {
             }
         case RESET_SELECTED_TRAINER : 
             return {
-                ...state,
                 profile: null,
                 id: null,
                 reviews: null,

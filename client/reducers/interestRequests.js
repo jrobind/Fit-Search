@@ -1,4 +1,4 @@
-import { GET_INTEREST_REQUESTS, RESET_INTEREST_REQUESTS, API_REQUEST_PENDING } from '../actions/interestRequests';
+import { GET_INTEREST_REQUESTS, RESET_INTEREST_REQUESTS, INTEREST_REQUEST_PENDING } from '../actions/interestRequests';
 
 const initialState = {
     requests: null,
@@ -8,24 +8,23 @@ const initialState = {
 
 const interestRequests = (state = initialState, action) => {
     switch(action.type) {
+        case INTEREST_REQUEST_PENDING :
+            return {
+                ...state,
+                requestPending: !state.requestPending
+            }
         case GET_INTEREST_REQUESTS :
             return {
                 ...state,
                 requests: action.requests,
-                requestPending: false,
-                requestSuccess: true
-            }
-        case API_REQUEST_PENDING :
-            return {
-                ...state,
-                requestPending: true
+                requestPending: !state.requestPending,
+                requestSuccess: !state.requestSuccess
             }
         case RESET_INTEREST_REQUESTS :
             return {
-                ...state,
                 requests: null,
-                requestPending: false,
-                requestSuccess: false
+                requestSuccess: false,
+                requestPending: false
             }
         default :
             return state;

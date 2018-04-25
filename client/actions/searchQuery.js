@@ -18,7 +18,6 @@ const getSearchQuery = (profiles) => (
     }
 );
 
-
 export const handleGetSearchQuery = (query) => {
     return (dispatch) => {
        return apiGetSeachQuery(query)

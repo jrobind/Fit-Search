@@ -1,8 +1,7 @@
 import { 
     GET_USER_PROFILE, 
     RESET_USER_PROFILE, 
-    REQUEST_PENDING, 
-    REQUEST_SUCCESS 
+    PROFILE_REQUEST_PENDING
 } from '../actions/userProfile';
 
 const initialState = {
@@ -15,32 +14,27 @@ const initialState = {
 
 const userProfile = (state = initialState, action) => {
     switch(action.type) {
-        case REQUEST_PENDING : 
+        case PROFILE_REQUEST_PENDING : 
             return {
                 ...state,
-                requestPending: true
+                requestPending: !state.requestPending
             }
         case GET_USER_PROFILE :
             return {
                 ...state,
                 profile: action.profile,
                 reviews: action.reviews,
-                reviewAverage: action.reviewAverage
-            }
-        case REQUEST_SUCCESS :
-            return {
-                ...state,
-                requestPending: false,
-                requestSuccess: true
+                reviewAverage: action.reviewAverage,
+                requestPending: !state.requestPending,
+                requestSuccess: !state.requestSuccess
             }
         case RESET_USER_PROFILE :
             return {
-                ...state,
                 profile: null,
                 reviews: null,
                 reviewAverage: null,
-                requestPending: false,
-                requestSuccess: false
+                requestSuccess: false,
+                requestPending: false
             }
         default :
             return state;

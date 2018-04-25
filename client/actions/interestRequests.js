@@ -2,7 +2,7 @@ import { apiGetInterestRequests } from '../utils/api';
 
 export const RESET_INTEREST_REQUESTS = 'RESET_INTEREST_REQUESTS';
 export const GET_INTEREST_REQUESTS = 'GET_INTEREST_REQUESTS';
-export const API_REQUEST_PENDING = 'API_REQUEST_PENDING';
+export const INTEREST_REQUEST_PENDING = 'INTEREST_REQUEST_PENDING';
 
 
 export const resetInterestRequests = () => (
@@ -11,12 +11,11 @@ export const resetInterestRequests = () => (
     }
 );
 
-export const apiRequestPending = () => (
+export const interestRequestPending = () => (
     {
-        type: API_REQUEST_PENDING
+        type: INTEREST_REQUEST_PENDING
     }
 );
-
 
 const getInterestRequests = (requests) => (
     {
@@ -25,10 +24,9 @@ const getInterestRequests = (requests) => (
     }
 );
 
-
 export const handleGetInterestRequests = (id) => {
     return (dispatch) => {
-        dispatch(apiRequestPending());
+        dispatch(interestRequestPending());
         return apiGetInterestRequests(id)
             .then(({ data }) => {
                 dispatch(getInterestRequests(data));

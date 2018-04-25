@@ -1,8 +1,7 @@
 import { 
     LOGIN_USER, 
     LOGOUT_USER,
-    REQUEST_PENDING, 
-    REQUEST_SUCCESS,
+    AUTH_REQUEST_PENDING, 
     LOGIN_FAILED
 } from '../actions/userAuth';
 
@@ -16,39 +15,35 @@ const initialState = {
 
 const userAuth = (state = initialState, action) => {
     switch(action.type) {
-        case REQUEST_PENDING :
+        case AUTH_REQUEST_PENDING :
             return {
                 ...state,
-                requestPending: true
+                requestPending: !state.requestPending
             }
         case LOGIN_USER :
             return {
                 ...state,
-                loggedIn: true,
+                loggedIn: !state.loggedIn,
+                requestPending: !state.requestPending,
+                requestSuccess: !state.requestSuccess,
                 userType: action.userType,
-                id: action.id
+                id: action.id,
             }
         case LOGIN_FAILED :
             return {
-                ...state,
-                loggedIn: false,
-                requestPending: false,
-                requestSuccess: false
-            }
-        case REQUEST_SUCCESS :
-            return {
-                ...state,
-                requestPending: false,
-                requestSuccess: true
-            }
-        case LOGOUT_USER :
-            return {
-                ...state,
                 loggedIn: false,
                 userType: null,
                 id: null,
-                requestPending: false,
                 requestSuccess: false,
+                requestPending: false
+            }
+        case LOGOUT_USER :
+            return {
+                loggedIn: false,
+                userType: null,
+                id: null,
+                requestSuccess: false,
+                requestPending: false
             }
         default :
             return state;

@@ -2,18 +2,11 @@ import { apiGetProfile } from '../utils/api';
 
 export const GET_USER_PROFILE = 'GET_USER_PROFILE';
 export const RESET_USER_PROFILE = 'RESET_USER_PROFILE';
-export const REQUEST_PENDING = 'REQUEST_PENDING';
-export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
+export const PROFILE_REQUEST_PENDING = 'PROFILE_REQUEST_PENDING';
 
-export const requestPending = () => (
+export const profileRequestPending = () => (
     {
-        type: REQUEST_PENDING
-    }
-);
-
-export const requestSuccces = () => (
-    {
-        type: REQUEST_SUCCESS
+        type: PROFILE_REQUEST_PENDING
     }
 );
 
@@ -36,10 +29,9 @@ export const handleGetUserProfile = (id) => {
     return (dispatch) => {
        return apiGetProfile(id)
             .then(({ data }) => {
-                dispatch(requestPending());
+                dispatch(profileRequestPending());
                 // if no profile is returned then the user is new
                 !data.profile ? dispatch(getUserProfile('new user', data.reviews, data.reviewAverage)) : dispatch(getUserProfile(data.profile, data.reviews, data.reviewAverage));
-                dispatch(requestSuccces());
                 return data;
             })
             .catch((error) => console.log(error));

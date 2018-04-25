@@ -8,19 +8,12 @@ import { handleGetInterestRequests, resetInterestRequests } from './interestRequ
 
 export const LOGIN_USER = 'LOGIN_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
-export const REQUEST_PENDING = 'REQUEST_PENDING';
-export const REQUEST_SUCCESS = 'REQUEST_SUCCESS';
+export const AUTH_REQUEST_PENDING = 'AUTH_REQUEST_PENDING';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
 
-export const requestPending = () => (
+export const authRequestPending = () => (
     {
-        type: REQUEST_PENDING
-    }
-)
-
-export const requestSuccces = () => (
-    {
-        type: REQUEST_SUCCESS
+        type: AUTH_REQUEST_PENDING
     }
 )
 
@@ -49,12 +42,11 @@ export const handleLoginUser = (userData) => {
         return apiLoginUser(userData)
             .then(({ data }) => {
                 if (data) {
-                    dispatch(requestPending());
+                    dispatch(authRequestPending());
                     dispatch(loginUser(data.userType, data.id));
                     dispatch(handleGetUserProfile(data.id));
                     // if trainer, then we need interest requests
                     data.userType === 'trainer' ? dispatch(handleGetInterestRequests(data.id)) : null;
-                    dispatch(requestSuccces());
                 } else {
                     dispatch(loginFailed());
                     return 'failed';
@@ -68,7 +60,7 @@ export const handleLogoutUser = () => {
         return apiLogoutUser()
             .then(({ data }) => {
                 if (data) {
-                    dispatch(requestPending());
+                    dispatch(authRequestPending());
                     dispatch(logoutUser());
                     dispatch(resetUserProfile());
                     dispatch(resetSelectedTrainer());
