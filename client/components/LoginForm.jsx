@@ -39,7 +39,7 @@ class LoginForm extends Component {
     
     render() {
         const { 
-                requestSuccess,
+                authSuccess,
                 interestSuccess,
                 userType, 
                 loggedIn, 
@@ -47,11 +47,11 @@ class LoginForm extends Component {
                 loggingIn
               } = this.props;
         
-        if (requestSuccess && loggedIn) {
+        if (authSuccess && loggedIn) {
             if (userType === 'trainer') {
-                return interestSuccess && userProfile.profile ? <Redirect to='/' /> : <Loading text='Just a second'/>;
+                return interestSuccess && userProfile.profile && userProfile.requestSuccess ? <Redirect to='/' /> : <Loading text='Just a second'/>;
             } else if (userType === 'client') {
-                return userProfile.profile ? <Redirect to='/' /> : <Loading text='Just a second'/>;
+                return userProfile.profile && userProfile.requestSuccess ? <Redirect to='/' /> : <Loading text='Just a second'/>;
             }
         } else {
             return(
@@ -88,7 +88,7 @@ class LoginForm extends Component {
 LoginForm.propTypes = {
     handleLoginSubmission: PropTypes.func.isRequired,
     interestSuccess: PropTypes.bool,
-    requestSuccess: PropTypes.bool, 
+    authSuccess: PropTypes.bool, 
     userType: PropTypes.string,
     loggedIn: PropTypes.bool,
     userProfile: PropTypes.object,
