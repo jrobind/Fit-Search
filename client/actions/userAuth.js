@@ -54,8 +54,8 @@ export const handleLoginUser = (userData) => {
                     
                     // if trainer, then we need interest requests
                     if (data.userType === 'trainer') {
-                        dispatch(handleGetInterestRequests(data.id));
-                        dispatch(handleGetUserProfile(data.id))
+                        dispatch(handleGetInterestRequests(data.id))
+                            .then(() => dispatch(handleGetUserProfile(data.id)))
                             .then(() => (dispatch(userLoaded())));
                     } else {
                         dispatch(handleGetUserProfile(data.id))
