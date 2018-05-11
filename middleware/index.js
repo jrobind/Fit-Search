@@ -1,6 +1,25 @@
+const fs = require('fs');
 const db = require('../models');
 const utils = require('../utils');
 const middlewareObj = {};
+
+// gzip middleware
+middlewareObj.serverGzipped = (contentType) => (req, res, next) => {
+    // does browser support gzip and does file exist
+    const acceptedEncodings = req.acceptsEncodings();
+    
+    if (acceptedEncodings.indexOf('gzip') === -1 || !fs.existsSync(`./dist/${req.url}.gz`)) {
+        next();
+        return;
+    }
+    
+    // update request's url
+    req.url = `${req.url}.gz`;
+    // set headers
+    res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', contentType);
+    next();
+}
 
 middlewareObj.checkForDuplicateEmail = (req, res, next) => {
     db.UserModel.find({email: req.body.email})
@@ -11,8 +30,7 @@ middlewareObj.checkForDuplicateEmail = (req, res, next) => {
             } else {
                 next();
             }
-        })
-        .catch((error) => console.log(error));
+        });
 };
 
 middlewareObj.processSearchQuery = (req, res, next) => {
@@ -53,8 +71,7 @@ middlewareObj.processSearchQuery = (req, res, next) => {
         .then((trainers) => {
             res.locals.queryResult = utils.formatQueryReturn(trainers);
             next();  
-        })
-        .catch((error) => console.log(error));
+        });
 };
 
 module.exports = middlewareObj;

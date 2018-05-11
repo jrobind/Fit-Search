@@ -2,6 +2,7 @@ const path = require('path');
 const config = require('./webpack.config.js');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 config.output.path = path.join(__dirname, '/dist');
 config.mode = 'development';
@@ -21,7 +22,8 @@ config.plugins.push(
                 beautify: false,
             }
           }
-      })
+      }),
+    new CompressionPlugin()
 );
 
 module.exports = config;

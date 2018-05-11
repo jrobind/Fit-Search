@@ -17,10 +17,11 @@ const authRoutes = require('./routes/auth');
 const reviewRoutes = require('./routes/review');
 const interestRoutes  = require('./routes/interest');
 
-app.use(express.static(path.join(__dirname, 'client')));
+// middleware for gzip
+const middleware = require('./middleware');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(webpackMiddleware(webpack(webpackConfig)));
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -33,6 +34,12 @@ require('./config/passport')(passport);
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+
+// gzip
+app.get('*.js', middleware.serverGzipped('text/javascript'));
+app.get('*.css', middleware.serverGzipped('text/css'));
+
+app.use(express.static(path.join(__dirname, './dist')));
 
 // routes
 app.use('/api/profile', profileRoutes);
