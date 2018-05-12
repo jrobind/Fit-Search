@@ -1,6 +1,6 @@
 # :muscle: Fit-Search
 
-In an effort to learn ES6, React, and Redux, this is __Fit-Search__ - a simple personal trainer search application. My orginal intention was to build an SPA but the project has morphed into a more complex full-stack one, with an API backend built with Express and MongoDB.
+In an effort to learn ES6, React, and Redux, this is __Fit-Search__ - a personal trainer search application. My orginal intention was to build a simple SPA but the project has morphed into a more complex full-stack one, with an API backend built using Express and MongoDB.
 
 ## Features
 
