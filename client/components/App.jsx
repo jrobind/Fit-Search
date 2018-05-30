@@ -15,7 +15,6 @@ import '../styles/app.css';
 class App extends Component {
     render() {
         const { userAuth: { userType }, loggedIn, userProfile, state } = this.props; 
-        console.log(state)
         return(
             <Router>
                 <div className='app-container'>
