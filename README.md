@@ -19,12 +19,12 @@ Feel free to sign-up and play around. The auth is built using basic Passport loc
 ### Trainer account
 
 * Email: james@outlook.com
-* password: fit123
+* Password: fit123
 
 ### Client/user account
 
 * Email: emma@outlook.com
-* password: fit123
+* Password: fit123
 
 ## Running the app
 
