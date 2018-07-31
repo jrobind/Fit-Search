@@ -111,6 +111,8 @@ class RegisterForm extends Component {
                 </form>
                 <hr className={styles.hr}/>
                 <p>Already have an account? <Link to='/login'>Login</Link></p>
+
+                <div className="spacer"></div>
             </div>
         )   
     }

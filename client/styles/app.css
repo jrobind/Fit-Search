@@ -29,6 +29,11 @@ html {
             flex-direction: column;
 }
 
+:global(.spacer) {
+    margin: 15px 0;
+    width: 100%;
+}
+
 /* global page number styles */
 
 :global(.pageNumbers) {
@@ -41,7 +46,7 @@ html {
         flex-wrap: wrap;
     list-style: none;
     padding: 0;
-    margin: 25px auto;
+    /* margin: 25px auto; */
     font-size: 0.9em;
     -webkit-box-pack: center;
         -ms-flex-pack: center;

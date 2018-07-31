@@ -70,6 +70,8 @@ const Search = ({
                         </li>
                     ))}
                 </ul> : null}
+
+                <div className="spacer"></div>
             </div>
         </div>
     </div>

@@ -92,7 +92,9 @@ class Review extends Component {
                             {number}
                         </li>
                     ))}
-                </ul>    
+                </ul>
+
+                <div className="spacer"></div>    
             </div>
         )
     } 
