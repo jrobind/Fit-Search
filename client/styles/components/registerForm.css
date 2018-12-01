@@ -9,6 +9,11 @@
     color: rgb(0, 0, 0);
 }
 
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
 .form, .success {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -21,7 +26,7 @@
 
 .registerContainer h1 {
     font-size: 2.1em;
-    margin: 100px 0 15px 0;
+    margin: 100px 42% 15px 42%;
 }
 
 .form input[type='email'], .form input[type='password'] {

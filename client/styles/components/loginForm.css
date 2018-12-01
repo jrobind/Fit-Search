@@ -11,7 +11,8 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin: 0 30%;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .form input[type='email'], .form input[type='password'] {
@@ -21,7 +22,7 @@
 }
 
 .loginContainer h1 {
-    margin: 100px 30% 15px 30%;
+    margin: 100px 47% 15px 47%;
     font-size: 2.1em;
 }
 
